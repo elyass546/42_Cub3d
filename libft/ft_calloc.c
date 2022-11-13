@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mkorchi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/13 19:51:08 by mkorchi          ###   ########.fr       */
+/*   Created: 2021/11/02 16:02:33 by mkorchi           #+#    #+#             */
+/*   Updated: 2021/11/05 15:59:23 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../main.h"
+#include "libft.h"
 
-void	init( void )
+void	*ft_calloc(size_t count, size_t size)
 {
-	
+	void	*str;
+
+	str = malloc (count * size);
+	if (str == NULL)
+		return (str);
+	ft_bzero(str, size * count);
+	return (str);
 }

@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mkorchi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/13 19:51:08 by mkorchi          ###   ########.fr       */
+/*   Created: 2021/11/01 14:47:06 by mkorchi           #+#    #+#             */
+/*   Updated: 2021/11/03 08:56:14 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../main.h"
+#include "libft.h"
 
-void	init( void )
+void	*ft_memset(void *b, int c, size_t len)
 {
-	
+	size_t			n;
+	unsigned char	*str;
+
+	n = 0;
+	str = b;
+	while (n < len)
+	{
+		str[n] = (unsigned char) c;
+		n++;
+	}
+	return (b);
 }

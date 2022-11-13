@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mkorchi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/13 19:51:08 by mkorchi          ###   ########.fr       */
+/*   Created: 2021/11/01 14:27:37 by mkorchi           #+#    #+#             */
+/*   Updated: 2021/11/03 08:55:10 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../main.h"
+#include "libft.h"
 
-void	init( void )
+size_t	ft_strlen(const char *s)
 {
-	
+	size_t	n;
+
+	n = 0;
+	while (s[n])
+		n++;
+	return (n);
 }

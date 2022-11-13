@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mkorchi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/13 19:51:08 by mkorchi          ###   ########.fr       */
+/*   Created: 2021/11/04 10:00:54 by mkorchi           #+#    #+#             */
+/*   Updated: 2021/11/04 14:46:17 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../main.h"
+#include "libft.h"
 
-void	init( void )
+void	ft_putendl_fd(char *s, int fd)
 {
-	
+	if (s != NULL)
+		ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }
