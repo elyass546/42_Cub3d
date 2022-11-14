@@ -10,9 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "main.h"
+
 int	main( int argc, char **argv )
 {
 	(void) argc;
 	(void) argv;
+
+	t_pars 	*map;
+
+	map = parsing("map.cub");
 	return (0);
 }
