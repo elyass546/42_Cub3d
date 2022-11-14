@@ -5,13 +5,20 @@ CC = @cc
 
 RM = @rm -f
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -fsanitize=address -g3
 
 LIBFT	=	libft/libft.a
 
+HEADERS =	main.h parsing/parsing.h  raycasting/raycasting.h
+
 SRC =		main.c											\
 			parsing/parsing.c								\
+			parsing/ft_split.c								\
+			parsing/get_next_line.c							\
 			raycasting/init.c								\
+			raycasting/img.c								\
+			raycasting/mlx_funs.c							\
+			raycasting/actions.c							\
 
 OBJ = $(SRC:.c=.o)
 
@@ -21,7 +28,7 @@ all :	$(NAME)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(OBJ)  $(LIBFT)
-	$(CC) $(CFLAGS) $(LIBFT) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(LIBFT) -lmlx -framework OpenGL -framework AppKit  $(OBJ) -o $(NAME)
 	@echo [GAME CREATED]
 
 $(LIBFT):
