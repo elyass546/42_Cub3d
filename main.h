@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:17:19 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/14 18:13:03 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/14 18:50:23 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "libft/libft.h"
 # include <mlx.h>
 # include "raycasting/raycasting.h"
+# include "parsing/parsing.h"
 
 
 

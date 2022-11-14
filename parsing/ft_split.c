@@ -14,7 +14,7 @@
 
 static int	is_space(char c)
 {
-	if ((c >= '\t' && c <= '\r') || (c == ' '))
+	if (c == ' ')
 		return (1);
 	return (0);
 }
@@ -83,15 +83,15 @@ static int	process(char **strs, char const *s)
 	return (1);
 }
 
-void	free_all(char **strs)
-{
-	int	i;
+// static void	free_all(char **strs)
+// {
+// 	int	i;
 
-	i = 0;
-	while (strs[i])
-		free(strs[i++]);
-	free(strs);
-}
+// 	i = 0;
+// 	while (strs[i])
+// 		free(strs[i++]);
+// 	free(strs);
+// }
 
 char	**my_split(char const *s)
 {
