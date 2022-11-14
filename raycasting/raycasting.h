@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/14 18:38:48 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/14 19:53:11 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define P2 PI / 2
 # define P3 3 * PI / 2
 # define DR 0.0174533
+ 
 
 # define LEFT 123
 # define RIGHT 124
@@ -39,8 +40,7 @@
 
 # define TILE 64
 
-# include <stdio.h>
-# include <mlx.h>
+# include "../parsing/parsing.h"
 
 typedef struct	s_img {
 	void	*img;
@@ -64,10 +64,11 @@ typedef struct s_ray
 
 typedef struct s_player {
 	t_point	pos;
-	float	pdx;
-	float	pdy;
-	float	angle;
-	float	fov;
+	int		turn_direction;
+	int		walk_direction;	
+	float	rotation_angle; 
+	float	walk_speed;
+	float	turn_speed;
 }	t_player;
 
 
@@ -77,7 +78,7 @@ typedef struct s_data
 	void		*win;
 	t_player	player;
 	t_img		img;
-	//t_map *map --  when ie-laabb is done
+	t_pars		*map;
 }	t_data;
 
 
@@ -93,6 +94,11 @@ int			action(int keycode, t_data *data);
 //			img.c
 void		create_img(t_data *data);
 void		my_mlx_pixel_put(t_img *data, int x, int y, int color);
+
+
+//			extra_math.c
+double 		rad2deg(double radians);
+double		deg2rad(double degrees);
 
 
 #endif
