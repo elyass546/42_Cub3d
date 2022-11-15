@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 14:06:49 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/14 18:32:07 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/15 15:15:28 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
+// destroy any existing image and create a new on 
 void	create_img(t_data *data)
 {
 	if (data->img.img != NULL)
 		mlx_destroy_image(data->mlx, data->img.img);
-	data->img.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	data->img.img = mlx_new_image(data->mlx, data->width, data->height);
 	data->img.addr = mlx_get_data_addr(data->img.img, &data->img.bits_per_pixel,
 		&data->img.line_length, &data->img.endian);
 }
+
 

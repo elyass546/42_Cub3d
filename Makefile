@@ -20,6 +20,7 @@ SRC =		main.c											\
 			raycasting/mlx_funs.c							\
 			raycasting/actions.c							\
 			raycasting/extra_math.c							\
+			raycasting/draw.c								\
 
 OBJ = $(SRC:.c=.o)
 
