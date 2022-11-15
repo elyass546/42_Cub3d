@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:01 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/14 18:21:02 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/15 12:28:35 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	map_storing(char *file, t_pars *pars)
 		return ;
 	while (line && i < pars->row)
 	{
-		if (line[0] == '1')
+		if (is_mapchar(line[0]))
 		{
 			pars->map[i] = ft_strdup(line);
 			i++;
@@ -126,13 +126,14 @@ static void	init(t_pars *pars)
 	pars->map = NULL;
 }
 
-void	parsing(char *file)
+t_pars	*parsing(char *file)
 {
 	int		fd;
 	char	*line;
-	t_pars	pars;
+	t_pars	*pars;
 
-	init(&pars);
+	pars = malloc(sizeof(t_pars));
+	init(pars);
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		ft_error("File doesn't exist\n");
@@ -141,20 +142,18 @@ void	parsing(char *file)
 		ft_error("Empty map\n");
 	while (line)
 	{
-		if (pars.id < 6)
-			check_line(line, &pars);
+		if (pars->id < 6)
+			check_line(line, pars);
 		else
 		{
-			if (line[0] == '1')
-				pars.row++;
+			if (is_mapchar(line[0]))
+				pars->row++;
 		}
 		free(line);
 		line = get_next_line(fd);
 	}
 	close(fd);
-	if (pars.id == 6)
-		map_storing(file, &pars);
-	int i = 0;
-	while (i < pars.row)
-		printf("%s\n", pars.map[i++]);
+	if (pars->id == 6)
+		map_storing(file, pars);
+	return (pars);
 }

@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:05 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/14 18:21:07 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/15 12:27:41 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <math.h>
-# include <mlx.h>
 # include "../libft/libft.h"
 
 typedef struct s_gnl {
@@ -43,10 +42,12 @@ typedef struct s_pars {
 }			t_pars;
 
 
-// ***************** parsing *************************
+// ***************** parsing ************************* //
 
-void	parsing(char *file);
+t_pars	*parsing(char *file);
+
 char	*get_next_line(int fd);
 char	**my_split(char const *s);
 
+int		is_mapchar(char c);
 #endif

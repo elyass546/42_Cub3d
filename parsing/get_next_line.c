@@ -6,11 +6,19 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:20:57 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/14 18:20:58 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/14 22:42:24 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+
+int	is_mapchar(char c)
+{
+	if (c == ' ' || c == '1' || c == '0' || c == 'N' || c == 'S' || c == 'E'
+		|| c == 'W')
+		return (1);
+	return (0);
+}
 
 char	*ft_sjoin(char *s1, char c)
 {
