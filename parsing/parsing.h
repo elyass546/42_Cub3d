@@ -6,9 +6,10 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:05 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/16 12:43:48 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/16 15:36:08 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef PARSING_H
 # define PARSING_H
@@ -34,6 +35,7 @@ typedef struct s_pars {
 	char	*west;
 	char	*east;
 	char	player_pos;
+	int		map_index;
 	int		floor;
 	int		ceilling;
 	int		id;
@@ -49,5 +51,5 @@ t_pars	*parsing(char *file);
 char	*get_next_line(int fd);
 char	**my_split(char const *s);
 
-int		is_mapchar(char c);
+int		is_mapchar(char c, t_pars *pars);
 #endif
