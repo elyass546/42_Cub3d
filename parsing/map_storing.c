@@ -6,11 +6,34 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:43:55 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/16 18:28:53 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/16 23:10:01 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+
+void	find_player_pos(t_pars *pars)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < pars->row)
+	{
+		player_pos(pars->map[i], pars);
+		j = 0;
+		while (pars->map[i][j])
+		{
+			if (is_playerchar(pars->map[i][j]))
+			{
+				pars->player_y = j;
+				pars->player_x = i;				
+			}
+			j++;
+		}
+		i++;
+	}
+}
 
 void	map_storing(char *file, t_pars *pars)
 {
@@ -38,6 +61,7 @@ void	map_storing(char *file, t_pars *pars)
 	while (i < pars->row)
 		pars->map[i++] = get_next_line(fd);
 	pars->map[i] = NULL;
+	find_player_pos(pars);
 }
 
 void	north(t_pars *pars, char *str)
