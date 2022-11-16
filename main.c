@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:42:35 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/15 16:11:38 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/16 15:18:21 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,10 @@ int	main( int argc, char **argv )
 
 	pars = parsing("map.cub");
 	pars->col = 23; // to remove later
-	data = init(pars->col * TILE_SIZE, pars->row * TILE_SIZE);
-	data->pars = pars;
-	create_img(data);
-	draw_walls(data);
-	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+	data = init_data(pars);
+	update_screen(data);
+	// mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+	
 	printf("height of screen : %d\n", pars->row);
 	printf("width of screen : %d\n", pars->col);
 		

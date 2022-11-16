@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/15 15:18:51 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/16 15:18:07 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define P3 3 * PI / 2
 # define DR 0.0174533
  
-
+// arrows
 # define LEFT 123
 # define RIGHT 124
 # define DOWN 125
@@ -70,6 +70,7 @@ typedef struct s_player {
 	float	rotation_angle; 
 	float	walk_speed;
 	float	turn_speed;
+	int		height;
 }	t_player;
 
 
@@ -86,16 +87,17 @@ typedef struct s_data
 
 
 //			init.c
-t_data		*init( int x, int y );
+t_data		*init_data( t_pars *pars);
 void		free_exit(t_data *data, int status);
 
 
 //			actions.c
 int			action(int keycode, t_data *data);
+void		update_screen(t_data *data);
 
 
 //			img.c
-void		create_img(t_data *data);
+void		create_new_img(t_data *data);
 void		my_mlx_pixel_put(t_img *data, int x, int y, int color);
 
 
@@ -104,8 +106,11 @@ double 		rad2deg(double radians);
 double		deg2rad(double degrees);
 
 //			draw.c
-void		draw_square(t_img *img, int x, int y, int color);
+t_point		new_point(int x, int y);
+void		draw_square(t_img *img, t_point pos, int color, int size);
 void		draw_walls(t_data *data);
+void		draw_player(t_data *data);
+void		dda(t_img *img, t_point a, t_point b, int color);
 
 
 
