@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:01 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/15 12:28:35 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/16 15:21:52 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,57 +55,94 @@ void	map_storing(char *file, t_pars *pars)
 	pars->map = malloc(sizeof(char *) * (pars->row + 1));
 	if (!pars->map)
 		return ;
-	while (line && i < pars->row)
+	while(i < pars->map_index)
 	{
-		if (is_mapchar(line[0]))
-		{
-			pars->map[i] = ft_strdup(line);
-			i++;
-		}
 		free(line);
 		line = get_next_line(fd);
+		i++;
 	}
+	i = 0;
+	while (i < pars->row - 1)
+		pars->map[i++] = get_next_line(fd);
 	pars->map[i] = NULL;
+}
+
+void	north(t_pars *pars, char *str)
+{
+	if (!pars->north)
+	{
+		pars->north = ft_strdup(str);
+		pars->id++;
+		pars->map_index++;
+	}
+}
+
+void	south(t_pars *pars, char *str)
+{
+	if (!pars->south)
+	{
+		pars->south = ft_strdup(str);
+		pars->id++;
+		pars->map_index++;
+	}
+}
+
+void	west(t_pars *pars, char *str)
+{
+	if (!pars->west)
+	{
+		pars->west = ft_strdup(str);
+		pars->id++;
+		pars->map_index++;
+	}
+}
+
+void	east(t_pars *pars, char *str)
+{
+	if (!pars->east)
+	{
+		pars->east = ft_strdup(str);
+		pars->id++;
+		pars->map_index++;
+	}
 }
 
 void	check_line(char *line, t_pars *pars)
 {
-	char **s;
-
+	int			i;
+	char		**s;
+	const char	*check[] = {"NO", "SO", "WE", "EA"};
+	void		(*funcptr[4])(t_pars *, char *) =
+		{north, south, west, east};
+	i = 0;
 	if (line[0] == '\0' || !line)
+	{
+		pars->map_index++;
 		return ;
+	}
 	s = my_split(line);
 	if (!s[1] || !s)
 		ft_error("path not exist\n");
-	if ((ft_strncmp("NO", s[0], 2) == 0) && !pars->north)
+	while (i < 4)
 	{
-		pars->north = ft_strdup(s[1]);
-		pars->id++;
+		if (ft_strncmp(check[i], line, 2) == 0)
+		{
+			funcptr[i](pars, line);
+			return ;
+		}
+		i++;
 	}
-	else if ((ft_strncmp("SO", s[0], 2) == 0) && !pars->south)
-	{
-		pars->south = ft_strdup(s[1]);
-		pars->id++;
-	}
-	else if ((ft_strncmp("WE", s[0], 2) == 0) && !pars->west)
-	{
-		pars->west = ft_strdup(s[1]);
-		pars->id++;
-	}
-	else if ((ft_strncmp("EA", s[0], 2) == 0) && !pars->east)
-	{
-		pars->east = ft_strdup(s[1]);
-		pars->id++;
-	}
-	else if ((ft_strncmp("F", s[0], 1) == 0) && !pars->floor)
+	if ((ft_strncmp("F", s[0], 1) == 0) && !pars->floor)
 	{
 		pars->floor = set_colors(s[1]);
 		pars->id++;
+		pars->map_index++;
 	}
 	else if ((ft_strncmp("C", s[0], 1) == 0) && !pars->ceilling)
 	{
 		pars->ceilling = set_colors(s[1]);
 		pars->id++;
+		pars->map_index++;
 	}
 	else
 		ft_error("Textures settings doen't correct\n");
@@ -119,6 +156,7 @@ static void	init(t_pars *pars)
 	pars->id = 0;
 	pars->col = 0;
 	pars->row = 0;
+	pars->map_index = 0;
 	pars->north = NULL;
 	pars->south = NULL;
 	pars->east = NULL;
@@ -146,7 +184,7 @@ t_pars	*parsing(char *file)
 			check_line(line, pars);
 		else
 		{
-			if (is_mapchar(line[0]))
+			if (is_mapchar(line[0], pars))
 				pars->row++;
 		}
 		free(line);

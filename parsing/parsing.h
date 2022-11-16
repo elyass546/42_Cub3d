@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:05 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/15 12:27:41 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/16 15:14:53 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_pars {
 	char	*west;
 	char	*east;
 	char	player_pos;
+	int		map_index;
 	int		floor;
 	int		ceilling;
 	int		id;
@@ -49,5 +50,5 @@ t_pars	*parsing(char *file);
 char	*get_next_line(int fd);
 char	**my_split(char const *s);
 
-int		is_mapchar(char c);
+int		is_mapchar(char c, t_pars *pars);
 #endif
