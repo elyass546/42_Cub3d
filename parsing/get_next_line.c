@@ -6,16 +6,22 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:20:57 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/16 18:19:45 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/16 19:24:43 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
+int	is_playerchar(char c)
+{
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+		return (1);
+	return (0);
+}
+
 int	is_mapchar(char c, t_pars *pars)
 {
-	if (c == ' ' || c == '1' || c == '0' || c == 'N' || c == 'S' || c == 'E'
-		|| c == 'W')
+	if (c == ' ' || c == '1' || c == '0' || is_playerchar(c))
 		return (1);
 	pars->map_index++;
 	return (0);

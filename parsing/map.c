@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:45:16 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/16 18:18:37 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/16 19:33:10 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	check_line(char *line, t_pars *pars)
 {
 	int			i;
 	const char	*check[] = {"NO ", "SO ", "WE ", "EA "};
-	const void	(*funcptr[4])(t_pars *, char *) = {north, south, west, east};
+	void	(*funcptr[4])(t_pars *, char *) = {north, south, west, east};
 
 	i = 0;
 	if (line[0] == '\0' || !line)
@@ -76,4 +76,21 @@ void	check_line(char *line, t_pars *pars)
 		i++;
 	}
 	colors_checker(line, pars);
+}
+
+void	player_pos(char *line, t_pars *pars)
+{
+	int i;
+
+	i = 0;
+	while (i < ft_strlen(line) - 1)
+	{
+		if (is_playerchar(line[i]) && !pars->player_pos)
+		{
+			pars->player_pos = line[i];
+			return ;
+		}
+		i++;
+	}
+	ft_error("Duplicat player position\n");
 }

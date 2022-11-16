@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:01 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/16 18:20:07 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/16 19:33:24 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static void	init(t_pars *pars)
 	pars->col = 0;
 	pars->row = 0;
 	pars->map_index = 0;
+	pars->player_pos = 0;
 	pars->north = NULL;
 	pars->south = NULL;
 	pars->east = NULL;
@@ -58,6 +59,7 @@ void	parsing_helper(char *line, t_pars *pars, int fd)
 {
 	while (line)
 	{
+		// player_pos(line, pars);
 		if (pars->id < 6)
 			check_line(line, pars);
 		else

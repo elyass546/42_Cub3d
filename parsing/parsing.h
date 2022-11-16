@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:05 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/16 18:20:32 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/16 19:32:15 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,14 @@ char	**my_split(char const *s);
 int		is_mapchar(char c, t_pars *pars);
 int		map_name_checker(char *str);
 int		set_colors(char *str);
+int		is_playerchar(char c);
 
 void	ft_error(char *str);
 void	north(t_pars *pars, char *str);
 void	south(t_pars *pars, char *str);
 void	west(t_pars *pars, char *str);
 void	east(t_pars *pars, char *str);
+void	player_pos(char *line, t_pars *pars);
 void	check_line(char *line, t_pars *pars);
 void	map_storing(char *file, t_pars *pars);
 

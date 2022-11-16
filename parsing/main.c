@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:47:34 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/16 18:13:11 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/16 19:33:38 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ int main(int ac, char **av)
 	for (int i = 0; map->map[i]; i++)
 		printf("%s\n", map->map[i]);
 	printf("\n%s\n", map->east);
+	// printf("\n%c\n", map->player_pos);
 }
