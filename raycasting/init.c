@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/14 19:57:02 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/15 14:09:34 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,19 @@ static void	init_player_config(t_data *data)
 	
 }
 
-t_data	*init( void )
+// later WIDTH AND HEIGHT WILL BE FIX
+t_data	*init( int x, int y )
 {
 	t_data	*data;
 
 	data = malloc(sizeof(t_data));
 	if (!data)
 		return (NULL);
+	data->height = y;
+	data->width = x;
 	data->mlx = mlx_init();
-	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "CUB3D");
+	data->win = mlx_new_window(data->mlx, x, y, "CUB3D");
 	data->img.img = NULL;
-	create_img(data);
 	init_player_config(data);
 	return (data);
 }

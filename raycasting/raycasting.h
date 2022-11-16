@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/14 19:53:11 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/15 15:18:51 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@
 # define HEIGHT 512
 # define WIDTH 1024
 
-# define TILE 64
+# define TILE_SIZE 64
 
 # include "../parsing/parsing.h"
+# include <mlx.h>
 
 typedef struct	s_img {
 	void	*img;
@@ -78,12 +79,14 @@ typedef struct s_data
 	void		*win;
 	t_player	player;
 	t_img		img;
-	t_pars		*map;
+	t_pars		*pars;
+	int			height;
+	int			width;
 }	t_data;
 
 
 //			init.c
-t_data		*init( void );
+t_data		*init( int x, int y );
 void		free_exit(t_data *data, int status);
 
 
@@ -99,6 +102,11 @@ void		my_mlx_pixel_put(t_img *data, int x, int y, int color);
 //			extra_math.c
 double 		rad2deg(double radians);
 double		deg2rad(double degrees);
+
+//			draw.c
+void		draw_square(t_img *img, int x, int y, int color);
+void		draw_walls(t_data *data);
+
 
 
 #endif
