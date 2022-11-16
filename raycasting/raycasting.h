@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/16 15:18:07 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/16 15:55:06 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void		free_exit(t_data *data, int status);
 
 //			actions.c
 int			action(int keycode, t_data *data);
+int			action_key_up(int keycode, t_data *data);
 void		update_screen(t_data *data);
 
 
