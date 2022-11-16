@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:42:35 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/16 15:53:09 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/16 17:25:16 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	main( int argc, char **argv )
 	t_pars 	*pars;
 	t_data	*data;
 
-	pars = parsing("map.cub");
-	pars->col = 23; // to remove later
+	pars = parsing(argv[1]);
+	pars->col = 19; // to remove later
 	data = init_data(pars);
 	update_screen(data);
 	// mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
