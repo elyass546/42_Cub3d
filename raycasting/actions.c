@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/16 15:25:12 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/16 15:55:27 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,19 @@ int	action(int keycode, t_data *data)
 {
 	if (keycode == ESC)
 		free_exit(data, 0);
-	else if (keycode >= RIGHT && keycode <= UP)
+	else if (keycode >= LEFT && keycode <= UP)
 	{
 		handle_arrow(keycode, data);	
 	}
+	return (0);
+}
+
+int	action_key_up(int keycode, t_data *data)
+{
+	if (keycode == UP || keycode == DOWN)
+		data->player.walk_direction = 0;
+	else if (keycode == RIGHT || keycode == LEFT)
+		data->player.turn_direction = 0;
+		
 	return (0);
 }

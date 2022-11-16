@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:51:48 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/16 13:32:22 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/16 15:44:00 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	draw_walls(t_data *data)
 	int	j;
 	int	color;
 
-	i = 4;
+	i = 0;
 	while (data->pars->map[i]) // map[i]
 	{
 		j = 0;
