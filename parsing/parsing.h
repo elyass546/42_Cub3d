@@ -6,10 +6,9 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:05 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/16 15:37:53 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/16 18:20:32 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef PARSING_H
 # define PARSING_H
@@ -43,7 +42,6 @@ typedef struct s_pars {
 	int		row;
 }			t_pars;
 
-
 // ***************** parsing ************************* //
 
 t_pars	*parsing(char *file);
@@ -52,6 +50,15 @@ char	*get_next_line(int fd);
 char	**my_split(char const *s);
 
 int		is_mapchar(char c, t_pars *pars);
+int		map_name_checker(char *str);
+int		set_colors(char *str);
 
 void	ft_error(char *str);
+void	north(t_pars *pars, char *str);
+void	south(t_pars *pars, char *str);
+void	west(t_pars *pars, char *str);
+void	east(t_pars *pars, char *str);
+void	check_line(char *line, t_pars *pars);
+void	map_storing(char *file, t_pars *pars);
+
 #endif

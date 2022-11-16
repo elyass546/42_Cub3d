@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 09:47:11 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/15 13:59:45 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/16 18:19:32 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ static int	process(char **strs, char const *s)
 	k = 0;
 	while (s[i])
 	{
-		if ((!is_space(s[0]) && i == 0) || (i > 0 && !is_space(s[i]) && is_space(s[i - 1])))
+		if ((!is_space(s[0]) && i == 0) || (i > 0 && !is_space(s[i])
+				&& is_space(s[i - 1])))
 		{
 			str = getstring(s + i);
 			if (str == NULL)
@@ -82,16 +83,6 @@ static int	process(char **strs, char const *s)
 	strs[k] = 0;
 	return (1);
 }
-
-// static void	free_all(char **strs)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (strs[i])
-// 		free(strs[i++]);
-// 	free(strs);
-// }
 
 char	**my_split(char const *s)
 {
