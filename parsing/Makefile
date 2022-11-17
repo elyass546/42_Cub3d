@@ -31,7 +31,7 @@ all :	$(NAME) clean
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(OBJ)  $(LIBFT)
-	$(CC) $(CFLAGS) $(LIBFT) -lmlx -framework OpenGL -framework AppKit  $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(LIBFT) $(OBJ) -o $(NAME)
 	@echo [GAME CREATED]
 
 $(LIBFT):

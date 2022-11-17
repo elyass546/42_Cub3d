@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:45:16 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/16 19:33:10 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/17 17:24:49 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ void	colors_checker(char *line, t_pars *pars)
 	s = my_split(line);
 	if (!s[1] || !s)
 		ft_error("path not exist\n");
-	if ((ft_strncmp("F", s[0], 1) == 0) && !pars->floor)
+	if ((ft_strncmp("F", s[0], ft_strlen(s[0])) == 0) && !pars->floor)
 	{
 		pars->floor = set_colors(s[1]);
 		pars->id++;
 		pars->map_index++;
 	}
-	else if ((ft_strncmp("C", s[0], 1) == 0) && !pars->ceilling)
+	else if ((ft_strncmp("C", s[0], ft_strlen(s[0])) == 0) && !pars->ceilling)
 	{
 		pars->ceilling = set_colors(s[1]);
 		pars->id++;
@@ -57,7 +57,8 @@ void	colors_checker(char *line, t_pars *pars)
 void	check_line(char *line, t_pars *pars)
 {
 	int			i;
-	const char	*check[] = {"NO ", "SO ", "WE ", "EA "};
+	char		**s;
+	const char	*check[] = {"NO", "SO", "WE", "EA"};
 	void	(*funcptr[4])(t_pars *, char *) = {north, south, west, east};
 
 	i = 0;
@@ -66,11 +67,14 @@ void	check_line(char *line, t_pars *pars)
 		pars->map_index++;
 		return ;
 	}
+	s = my_split(line);
+	if (!s || !s[1] || s[2])
+		ft_error("path not exist\n");
 	while (i < 4)
 	{
-		if (ft_strncmp(check[i], line, 3) == 0)
+		if (ft_strncmp(check[i], s[0], ft_strlen(s[0])) == 0)
 		{
-			funcptr[i](pars, line);
+			funcptr[i](pars, s[1]);
 			return ;
 		}
 		i++;
@@ -86,11 +90,9 @@ void	player_pos(char *line, t_pars *pars)
 	while (i < ft_strlen(line) - 1)
 	{
 		if (is_playerchar(line[i]) && !pars->player_pos)
-		{
 			pars->player_pos = line[i];
-			return ;
-		}
+		else if (is_playerchar(line[i]) && pars->player_pos)
+			ft_error("Duplicate player position\n");
 		i++;
 	}
-	ft_error("Duplicat player position\n");
 }

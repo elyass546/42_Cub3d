@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_storing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:43:55 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/16 23:10:01 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/17 17:05:52 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,28 @@ void	find_player_pos(t_pars *pars)
 	int	j;
 
 	i = 0;
+	pars->col = ft_strlen(pars->map[0]);
 	while (i < pars->row)
 	{
+		if (ft_strlen(pars->map[i]) > pars->col)
+			pars->col = ft_strlen(pars->map[i]);
 		player_pos(pars->map[i], pars);
 		j = 0;
 		while (pars->map[i][j])
 		{
 			if (is_playerchar(pars->map[i][j]))
 			{
-				pars->player_y = j;
-				pars->player_x = i;				
+				pars->player_y = i;
+				pars->player_x = j;				
 			}
+			else if (!is_mapchar(pars->map[i][j], pars))
+				ft_error("Element zayd a chamchoun\n");
 			j++;
 		}
 		i++;
 	}
+	if (!pars->player_pos)
+		ft_error("Player not found\n");
 }
 
 void	map_storing(char *file, t_pars *pars)
