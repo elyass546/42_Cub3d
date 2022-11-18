@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:42:35 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/16 17:25:16 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/18 14:32:23 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,20 @@ int	destroy(t_data *data)
 int	main( int argc, char **argv )
 {
 	(void) argc;
-	(void) argv;
 	t_pars 	*pars;
 	t_data	*data;
-
+	if (argc != 2)
+		ft_error("Wrong number of parameter\n");
+	if (map_name_checker(argv[1]))
+		ft_error("Map doesn't end with .cub\n");
 	pars = parsing(argv[1]);
-	pars->col = 19; // to remove later
 	data = init_data(pars);
 	update_screen(data);
-	// mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 	
 	printf("height of screen : %d\n", pars->row);
 	printf("width of screen : %d\n", pars->col);
-		
+	printf("position of the player : %c\n", pars->player_pos);
+
 	mlx_hook(data->win, 02, 1L<<0 ,action, data);
 	mlx_hook(data->win, 03, 1L<<1 ,action_key_up, data);
 	mlx_hook(data->win, 17, 0, destroy, data);

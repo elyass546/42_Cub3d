@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/16 17:44:18 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/18 15:49:46 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	move_player(t_data *data)
 	t_player	*player;
 	
 	player = &data->player;
+	
 	player->rotation_angle += player->turn_direction * player->turn_speed;
 	move_step = player->walk_direction * player->walk_speed;
 	
@@ -49,7 +50,7 @@ void	update_screen(t_data *data)
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }
 
-void	handle_arrow(int keycode, t_data *data)
+void	handle_arrows(int keycode, t_data *data)
 {
 	if (keycode == RIGHT)
 		data->player.turn_direction = 1;
@@ -62,20 +63,51 @@ void	handle_arrow(int keycode, t_data *data)
 	update_screen(data);
 }
 
+void	handle_side_walk(int key, t_data *data)
+{
+	float	new_angle;
+
+	if (key == A_KEY)
+	{
+		new_angle = data->player.rotation_angle - PI / 2;
+		if ( new_angle < 0 )
+			new_angle += 2 * PI;
+	}
+	else
+	{
+		new_angle = data->player.rotation_angle + PI / 2;
+		if ( new_angle > 2 * PI)
+			new_angle -= 2 * PI;
+	}
+	if ( !wall_collision(data, data->player.pos.x + cos(new_angle) * data->player.walk_speed,
+		data->player.pos.y + sin(new_angle) * data->player.walk_speed))
+	{
+		data->player.pos.x += cos(new_angle) * data->player.walk_speed;
+		data->player.pos.y += sin(new_angle) * data->player.walk_speed;
+		update_screen(data);
+	}
+}
+
+// since W and S will behave like the arrows keys
+// we just gonna use the same function
 int	action(int keycode, t_data *data)
 {
 	if (keycode == ESC)
 		free_exit(data, 0);
 	else if (keycode >= LEFT && keycode <= UP)
-	{
-		handle_arrow(keycode, data);	
-	}
+		handle_arrows(keycode, data);
+	else if (keycode == W_KEY)
+		handle_arrows(UP, data);
+	else if (keycode == S_KEY)
+		handle_arrows(DOWN, data);
+	else if (keycode == A_KEY || keycode == D_KEY)
+		handle_side_walk(keycode, data);
 	return (0);
 }
 
 int	action_key_up(int keycode, t_data *data)
 {
-	if (keycode == UP || keycode == DOWN)
+	if (keycode == UP || keycode == DOWN || keycode == W_KEY || keycode == S_KEY)
 		data->player.walk_direction = 0;
 	else if (keycode == RIGHT || keycode == LEFT)
 		data->player.turn_direction = 0;

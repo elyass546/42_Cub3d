@@ -15,6 +15,8 @@ SRC =		main.c											\
 			parsing/parsing.c								\
 			parsing/ft_split.c								\
 			parsing/get_next_line.c							\
+			parsing/map_storing.c							\
+			parsing/map.c									\
 			raycasting/init.c								\
 			raycasting/img.c								\
 			raycasting/mlx_funs.c							\
