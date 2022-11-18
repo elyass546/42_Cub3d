@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/18 15:49:46 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/18 16:04:49 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,5 @@ int	action_key_up(int keycode, t_data *data)
 		data->player.walk_direction = 0;
 	else if (keycode == RIGHT || keycode == LEFT)
 		data->player.turn_direction = 0;
-		
 	return (0);
 }
