@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:05 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/16 23:03:07 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/18 19:29:41 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ typedef struct s_pars {
 	char	player_pos;
 	int		player_x;
 	int		player_y;
-	int		map_index;
+	int		map_start_index;
+	int		map_end_index;
 	int		floor;
 	int		ceilling;
 	int		id;
@@ -51,6 +52,7 @@ t_pars	*parsing(char *file);
 char	*get_next_line(int fd);
 char	**my_split(char const *s);
 
+int		is_space(char c);
 int		is_mapchar(char c, t_pars *pars);
 int		map_name_checker(char *str);
 int		set_colors(char *str);
@@ -63,6 +65,7 @@ void	west(t_pars *pars, char *str);
 void	east(t_pars *pars, char *str);
 void	player_pos(char *line, t_pars *pars);
 void	check_line(char *line, t_pars *pars);
+void	is_surrounded_by_walls(t_pars *data);
 void	map_storing(char *file, t_pars *pars);
 
 #endif

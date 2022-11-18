@@ -4,13 +4,13 @@ CC = @cc
 
 RM = @rm -f
 
-CFLAGS = -fsanitize=address -g3
+SEG = -fsanitize=address -g3
 
 LIBFT	=	../libft/libft.a
 
 HEADERS =	../main.h parsing.h  #../raycasting/raycasting.h
 
-SRC =		main.c									\
+SRC =		main.c		valid_map.c					\
 			map.c									\
 			parsing.c								\
 			map_storing.c								\
@@ -31,7 +31,7 @@ all :	$(NAME) clean
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(OBJ)  $(LIBFT)
-	$(CC) $(CFLAGS) $(LIBFT) $(OBJ) -o $(NAME)
+	$(CC) $(SEG) $(LIBFT) $(OBJ) -o $(NAME)
 	@echo [GAME CREATED]
 
 $(LIBFT):

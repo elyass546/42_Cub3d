@@ -6,15 +6,15 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 09:47:11 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/16 18:19:32 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/18 17:08:19 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-static int	is_space(char c)
+int	is_space(char c)
 {
-	if (c == ' ' || c == '\t')
+	if (c == ' ')
 		return (1);
 	return (0);
 }

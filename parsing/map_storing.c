@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_storing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:43:55 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/17 17:05:52 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/18 22:07:27 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	map_storing(char *file, t_pars *pars)
 	pars->map = malloc(sizeof(char *) * (pars->row + 1));
 	if (!pars->map)
 		return ;
-	while (i < pars->map_index - 1)
+	while (i < pars->map_start_index - 1)
 	{
 		free(line);
 		line = get_next_line(fd);
@@ -66,47 +66,99 @@ void	map_storing(char *file, t_pars *pars)
 	}
 	i = 0;
 	while (i < pars->row)
-		pars->map[i++] = get_next_line(fd);
+	{
+		if (line[0] == '\0')
+			pars->map[i] = ft_strdup("");
+		else
+			pars->map[i] = line;
+		free(line);
+		line = get_next_line(fd);
+		i++;
+	}
 	pars->map[i] = NULL;
-	find_player_pos(pars);
+	// find_player_pos(pars);
 }
 
 void	north(t_pars *pars, char *str)
 {
+	char	**s;
+
 	if (!pars->north)
 	{
+		s = my_split(str);
+		if (!s || !s[1] || s[2])
+		{
+			if (s)
+				free_all(s);
+			ft_error("path not exist\n");
+		}
 		pars->north = ft_strdup(str);
 		pars->id++;
-		pars->map_index++;
+		pars->map_start_index++;
 	}
+	else
+		ft_error("This path is already set\n");
 }
 
 void	south(t_pars *pars, char *str)
 {
+	char	**s;
+
 	if (!pars->south)
 	{
+		s = my_split(str);
+		if (!s || !s[1] || s[2])
+		{
+			if (s)
+				free_all(s);
+			ft_error("path not exist\n");
+		}
 		pars->south = ft_strdup(str);
 		pars->id++;
-		pars->map_index++;
+		pars->map_start_index++;
 	}
+	else
+		ft_error("This path is already set\n");
 }
 
 void	west(t_pars *pars, char *str)
 {
+	char	**s;
+
 	if (!pars->west)
 	{
+		s = my_split(str);
+		if (!s || !s[1] || s[2])
+		{
+			if (s)
+				free_all(s);
+			ft_error("path not exist\n");
+		}
 		pars->west = ft_strdup(str);
 		pars->id++;
-		pars->map_index++;
+		pars->map_start_index++;
 	}
+	else
+		ft_error("This path is already set\n");
 }
 
 void	east(t_pars *pars, char *str)
 {
+	char	**s;
+
 	if (!pars->east)
 	{
+		s = my_split(str);
+		if (!s || !s[1] || s[2])
+		{
+			if (s)
+				free_all(s);
+			ft_error("path not exist\n");
+		}
 		pars->east = ft_strdup(str);
 		pars->id++;
-		pars->map_index++;
+		pars->map_start_index++;
 	}
+	else
+		ft_error("This path is already set\n");
 }

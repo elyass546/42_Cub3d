@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:01 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/17 17:23:39 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/18 22:07:41 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ static void	init(t_pars *pars)
 	pars->id = 0;
 	pars->col = 0;
 	pars->row = 0;
-	pars->map_index = 0;
+	pars->map_start_index = 0;
+	pars->map_end_index = 0;
 	pars->player_pos = 0;
 	pars->north = NULL;
 	pars->south = NULL;
@@ -59,16 +60,11 @@ void	parsing_helper(char *line, t_pars *pars, int fd)
 {
 	while (line)
 	{
-		if (pars->id < 6)
-			check_line(line, pars);
-		else
-		{
-			if (is_mapchar(line[0], pars))
-				pars->row++;
-		}
+		check_line(line, pars);
 		free(line);
 		line = get_next_line(fd);
 	}
+	
 }
 
 t_pars	*parsing(char *file)
@@ -87,7 +83,8 @@ t_pars	*parsing(char *file)
 		ft_error("Empty map\n");
 	parsing_helper(line, pars, fd);
 	close(fd);
-	if (pars->id == 6)
-		map_storing(file, pars);
+	// printf("pars->id : %d\npars->map_index : %d\n", pars->id, pars->map_start_index);
+	// if (pars->id == 6)
+	// 	map_storing(file, pars);
 	return (pars);
 }
