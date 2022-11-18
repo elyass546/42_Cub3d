@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/16 15:55:06 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/18 16:48:55 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # define P2 PI / 2
 # define P3 3 * PI / 2
 # define DR 0.0174533
+# define FOV 1.0472
+# define HALF_FOV 0.523599
  
 // arrows
 # define LEFT 123
@@ -59,7 +61,15 @@ typedef struct s_point {
 
 typedef struct s_ray
 {
-
+	float	ray_angle;
+	float	wall_hit_x;
+	float	wall_hit_y;
+	int		was_hit_vertical;
+	int		is_ray_facing_up;
+	int		is_ray_facing_down;
+	int		is_ray_facing_right;
+	int		is_ray_facing_left;
+	
 }	t_ray;
 
 
@@ -101,10 +111,10 @@ void		update_screen(t_data *data);
 void		create_new_img(t_data *data);
 void		my_mlx_pixel_put(t_img *data, int x, int y, int color);
 
-
 //			extra_math.c
 double 		rad2deg(double radians);
 double		deg2rad(double degrees);
+float		rad_addition(float rad1, float rad2);
 
 //			draw.c
 t_point		new_point(int x, int y);
