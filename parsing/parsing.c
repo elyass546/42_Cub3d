@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:01 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/18 22:07:41 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/19 22:36:05 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,15 @@ static void	init(t_pars *pars)
 	pars->map = NULL;
 }
 
-void	parsing_helper(char *line, t_pars *pars, int fd)
+void	parsing_helper(char *line, t_pars *pars, int fd, char *file)
 {
+	map_storing(file, pars);
 	while (line)
 	{
 		check_line(line, pars);
 		free(line);
 		line = get_next_line(fd);
 	}
-	
 }
 
 t_pars	*parsing(char *file)
@@ -81,8 +81,10 @@ t_pars	*parsing(char *file)
 	line = get_next_line(fd);
 	if (!line)
 		ft_error("Empty map\n");
-	parsing_helper(line, pars, fd);
+	parsing_helper(line, pars, fd, file);
 	close(fd);
+	// for (int i = 0; pars->map[i]; i++)
+	// 	printf("%s\n", pars->map[i]);
 	// printf("pars->id : %d\npars->map_index : %d\n", pars->id, pars->map_start_index);
 	// if (pars->id == 6)
 	// 	map_storing(file, pars);

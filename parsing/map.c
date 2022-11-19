@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:45:16 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/18 22:28:06 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/19 22:39:36 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,32 +35,40 @@ void	colors_checker(char *line, t_pars *pars)
 	char	**s;
 
 	s = my_split(line);
-	if (!s[1] || !s || s[2])
-		ft_error("path not exist1\n");
+	if (!s[1] || !s)
+		ft_error("path not exist\n");
 	if ((ft_strncmp("F ", line, 2) == 0) && !pars->floor)
 		pars->floor = set_colors(s[1]);
 	else if ((ft_strncmp("C ", line, 2) == 0) && !pars->ceilling)
 		pars->ceilling = set_colors(s[1]);
 	else
 		ft_error("Textures settings doesn't correct\n");
-	pars->id++;
-	pars->map_start_index++;
 	free_all(s);
+}
+
+int	check_textutres(t_pars *pars)
+{
+	if (pars->north && pars->south && pars->east && pars->west)
+		return (1);
+	return (0);
 }
 
 int	check_if_filled(t_pars *pars)
 {
-	if (pars->north && pars->south && pars->east && pars->west
-		&& pars->ceilling && pars->floor)
+	if (check_textutres(pars) && pars->ceilling && pars->floor)
 		return (1);
 	return (0);
 }
 
 void	map_counter(char *line, t_pars *pars)
 {
-	int	i;
-
-	i = 0;
+	if (pars->map_end_index < pars->map_start_index)
+	{
+		pars->map[pars->map_end_index] = ft_strdup(line);
+		pars->map_end_index++;	
+	}
+	if (pars->map_end_index == pars->map_start_index)
+		pars->map[pars->map_end_index] = NULL;
 }
 
 void	check_line(char *line, t_pars *pars)
@@ -70,30 +78,26 @@ void	check_line(char *line, t_pars *pars)
 	void	(*funcptr[4])(t_pars *, char *) = {north, south, west, east};
 
 	i = 0;
-	if ((!line[0] || !line) && !pars->map)
-	{
-		pars->map_start_index++;	
-		return ;
-	}
-	if (pars->id < 6)
+	if ((!line[0] || !line) && !pars->map[0])
+			return ;
+	if (!check_if_filled(pars))
 	{
 		while (i < 4)
 		{
 			if (ft_strncmp(check[i], line, 3) == 0)
 			{
 				funcptr[i](pars, line);
-				pars->map_start_index++;
 				return ;
 			}
 			i++;
 		}
-		colors_checker(line, pars);
+		if (check_textutres(pars))
+			colors_checker(line, pars);
+		else
+			ft_error("Textures not set yet\n");
 	}
-	if (check_if_filled(pars))
-	{
+	else
 		map_counter(line , pars);
-		return ;
-	}
 }
 
 void	player_pos(char *line, t_pars *pars)

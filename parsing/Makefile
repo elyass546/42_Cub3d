@@ -1,6 +1,6 @@
 NAME = CUB3D
 
-CC = @cc
+CC = @gcc
 
 RM = @rm -f
 
@@ -28,10 +28,10 @@ OBJ = $(SRC:.c=.o)
 all :	$(NAME) clean
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(SEG) -c $< -o $@
 
 $(NAME):	$(OBJ)  $(LIBFT)
-	$(CC) $(SEG) $(LIBFT) $(OBJ) -o $(NAME)
+	@gcc -fsanitize=address -g3 $(LIBFT) $(SRC) -o $(NAME)
 	@echo [GAME CREATED]
 
 $(LIBFT):
