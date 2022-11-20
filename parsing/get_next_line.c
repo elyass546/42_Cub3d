@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:20:57 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/20 13:34:51 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/20 18:48:54 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@ int	is_playerchar(char c)
 	return (0);
 }
 
-int	is_mapchar(char c, t_pars *pars)
+int	is_mapchar(char c)
 {
 	if ((is_space(c) || c == '1' || c == '0' || is_playerchar(c)))
 		return (1);
-	pars->map_start_index++;
 	return (0);
 }
 

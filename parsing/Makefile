@@ -8,20 +8,14 @@ SEG = -fsanitize=address -g3
 
 LIBFT	=	../libft/libft.a
 
-HEADERS =	../main.h parsing.h  #../raycasting/raycasting.h
+HEADERS =	../main.h parsing.h
 
 SRC =		main.c		valid_map.c					\
-			map.c									\
+			map.c		check_map.c					\
 			parsing.c								\
-			map_storing.c								\
+			map_line_counter.c						\
 			ft_split.c								\
 			get_next_line.c							\
-			# raycasting/init.c								\
-			# raycasting/img.c								\
-			# raycasting/mlx_funs.c							\
-			# raycasting/actions.c							\
-			# raycasting/extra_math.c							\
-			# raycasting/draw.c								\
 
 OBJ = $(SRC:.c=.o)
 

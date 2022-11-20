@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:45:16 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/20 14:07:20 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/20 21:24:22 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	colors_checker(t_pars *pars, char *line)
 	char	**s;
 
 	s = my_split(line);
-	if (!s[1] || !s)
-		ft_error("path not exist\n");
+	if (!s || !s[1] || s[2])
+		ft_error("Error in colors settings\n");
 	if ((ft_strncmp("F ", line, 2) == 0) && !pars->floor)
 		pars->floor = set_colors(s[1]);
 	else if ((ft_strncmp("C ", line, 2) == 0) && !pars->ceilling)
@@ -74,14 +74,14 @@ int	check_if_filled(t_pars *pars)
 	return (0);
 }
 
-void	map_counter(char *line, t_pars *pars)
+void	map_stocking(char *line, t_pars *pars)
 {
-	if (pars->map_end_index < pars->map_start_index)
+	if (pars->map_end_index < pars->map_index)
 	{
 		pars->map[pars->map_end_index] = ft_strdup(line);
 		pars->map_end_index++;	
 	}
-	if (pars->map_end_index == pars->map_start_index)
+	if (pars->map_end_index == pars->map_index)
 		pars->map[pars->map_end_index] = NULL;
 }
 
@@ -92,7 +92,7 @@ void	check_line(char *line, t_pars *pars)
 	void	(*funcptr[5])(t_pars *, char *) = {north, south, west, east};
 
 	i = 0;
-	if (is_space(line[0]) && !pars->map[0])
+	if (is_space(line[0]) && !pars->map[0] && !check_if_filled(pars))
 		line = skip_spaces(line);
 	if ((!line[0] || !line) && !pars->map[0])
 			return ;
@@ -111,20 +111,11 @@ void	check_line(char *line, t_pars *pars)
 	if (!check_if_filled(pars))
 		colors_checker(pars, line);
 	else
-		map_counter(line , pars);
-}
-
-void	player_pos(char *line, t_pars *pars)
-{
-	int i;
-
-	i = 0;
-	while (i < ft_strlen(line) - 1)
 	{
-		if (is_playerchar(line[i]) && !pars->player_pos)
-			pars->player_pos = line[i];
-		else if (is_playerchar(line[i]) && pars->player_pos)
-			ft_error("Duplicate player position\n");
-		i++;
+		if (!line[0])
+			return ;
+		else if(!is_mapchar(line[0]))
+			ft_error("Wrong element in map\n");	
+		map_stocking(line , pars);
 	}
 }

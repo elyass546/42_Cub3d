@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:01 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/19 22:36:05 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/20 18:33:13 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,25 @@ void	ft_error(char *str)
 	exit(1);
 }
 
+void	check_comma_in_str(char *line)
+{
+	int	i;
+	int	counter;
+
+	i = 0;
+	counter = 0;
+	while (line[i])
+	{
+		if (line[i] == ',' && line[i + 1] == ',')
+			ft_error("Number of commas is incorrect!\n");
+		else if (line[i] == ',')
+			counter++;
+		i++;
+	}
+	if (counter != 2 || (line[i - 1] == ',' && !line[i]))
+		ft_error("Wrong input in the color section\n");
+}
+
 int	set_colors(char *str)
 {
 	char	**s;
@@ -26,6 +45,7 @@ int	set_colors(char *str)
 	int		g;
 	int		b;
 
+	check_comma_in_str(str);
 	s = ft_split(str, ',');
 	if (!s[1] || !s[2] || !s)
 		ft_error("Color not set\n");
@@ -46,7 +66,7 @@ static void	init(t_pars *pars)
 	pars->id = 0;
 	pars->col = 0;
 	pars->row = 0;
-	pars->map_start_index = 0;
+	pars->map_index = 0;
 	pars->map_end_index = 0;
 	pars->player_pos = 0;
 	pars->north = NULL;
@@ -58,7 +78,7 @@ static void	init(t_pars *pars)
 
 void	parsing_helper(char *line, t_pars *pars, int fd, char *file)
 {
-	map_storing(file, pars);
+	map_line_counter(file, pars);
 	while (line)
 	{
 		check_line(line, pars);
@@ -82,11 +102,7 @@ t_pars	*parsing(char *file)
 	if (!line)
 		ft_error("Empty map\n");
 	parsing_helper(line, pars, fd, file);
+	check_map(pars);
 	close(fd);
-	// for (int i = 0; pars->map[i]; i++)
-	// 	printf("%s\n", pars->map[i]);
-	// printf("pars->id : %d\npars->map_index : %d\n", pars->id, pars->map_start_index);
-	// if (pars->id == 6)
-	// 	map_storing(file, pars);
 	return (pars);
 }

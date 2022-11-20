@@ -1,21 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_storing.c                                      :+:      :+:    :+:   */
+/*   map_line_counter.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:43:55 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/20 12:40:28 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/20 21:16:46 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
-
-void	find_player_pos(t_pars *pars)
-{
-
-}
 
 int	is_map(char *line, t_pars *pars)
 {
@@ -29,7 +24,7 @@ int	is_map(char *line, t_pars *pars)
 	return (0);
 }
 
-void	map_storing(char *file, t_pars *pars)
+void	map_line_counter(char *file, t_pars *pars)
 {
 	char	*line;
 	int		fd;
@@ -40,16 +35,18 @@ void	map_storing(char *file, t_pars *pars)
 	line = get_next_line(fd);
 	if (!line)
 		ft_error("Empty map\n");
+	pars->col = ft_strlen(line);
 	while (line)
 	{
+		if (ft_strlen(line) > pars->col)
+			pars->col = ft_strlen(line);
 		if (is_map(line, pars) || line[0] == '1')
-			pars->map_start_index++;
-		if (pars->map_start_index && !line[0])
-			pars->map_start_index++;
+			pars->map_index++;
 		free(line);
 		line = get_next_line(fd);
 	}
-	pars->map = (char **)malloc(sizeof(char *) * (pars->map_start_index + 1));
+	pars->row = pars->map_index;
+	pars->map = (char **)malloc(sizeof(char *) * (pars->row + 1));
 	if (!pars->map)
 		return ; // check this after !
 	close(fd);
