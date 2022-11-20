@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:43:55 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/20 21:16:46 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/20 21:36:59 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	north(t_pars *pars, char *str)
 		s = my_split(str);
 		if (!s || !s[1] || s[2])
 			ft_error("North path not exist\n");
-		pars->north = ft_strdup(str);
+		pars->north = ft_strdup(s[1]);
 	}
 	else
 		ft_error("North path is already set\n");
@@ -77,7 +77,7 @@ void	south(t_pars *pars, char *str)
 		s = my_split(str);
 		if (!s || !s[1] || s[2])
 			ft_error("South path not exist\n");
-		pars->south = ft_strdup(str);
+		pars->south = ft_strdup(s[1]);
 	}
 	else
 		ft_error("South path is already set\n");
@@ -92,7 +92,7 @@ void	west(t_pars *pars, char *str)
 		s = my_split(str);
 		if (!s || !s[1] || s[2])
 			ft_error("West path not exist\n");
-		pars->west = ft_strdup(str);
+		pars->west = ft_strdup(s[1]);
 	}
 	else
 		ft_error("West path is already set\n");
@@ -107,7 +107,7 @@ void	east(t_pars *pars, char *str)
 		s = my_split(str);
 		if (!s || !s[1] || s[2])
 			ft_error("East path not exist\n");
-		pars->east = ft_strdup(str);
+		pars->east = ft_strdup(s[1]);
 	}
 	else
 		ft_error("East path is already set\n");
