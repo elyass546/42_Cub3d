@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:45:16 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/19 22:39:36 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/20 14:07:20 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	map_name_checker(char *str)
 	return (0);
 }
 
-void	colors_checker(char *line, t_pars *pars)
+void	colors_checker(t_pars *pars, char *line)
 {
 	char	**s;
 
@@ -51,6 +51,20 @@ int	check_textutres(t_pars *pars)
 	if (pars->north && pars->south && pars->east && pars->west)
 		return (1);
 	return (0);
+}
+
+char *skip_spaces(char *line)
+{
+	int i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (!is_space(line[i]))
+			return (line + i);
+		i++;
+	}
+	return (line + i);
 }
 
 int	check_if_filled(t_pars *pars)
@@ -75,12 +89,14 @@ void	check_line(char *line, t_pars *pars)
 {
 	int			i;
 	const char	*check[] = {"NO ", "SO ", "WE ", "EA "};
-	void	(*funcptr[4])(t_pars *, char *) = {north, south, west, east};
+	void	(*funcptr[5])(t_pars *, char *) = {north, south, west, east};
 
 	i = 0;
+	if (is_space(line[0]) && !pars->map[0])
+		line = skip_spaces(line);
 	if ((!line[0] || !line) && !pars->map[0])
 			return ;
-	if (!check_if_filled(pars))
+	if (!check_textutres(pars))
 	{
 		while (i < 4)
 		{
@@ -91,11 +107,9 @@ void	check_line(char *line, t_pars *pars)
 			}
 			i++;
 		}
-		if (check_textutres(pars))
-			colors_checker(line, pars);
-		else
-			ft_error("Textures not set yet\n");
 	}
+	if (!check_if_filled(pars))
+		colors_checker(pars, line);
 	else
 		map_counter(line , pars);
 }

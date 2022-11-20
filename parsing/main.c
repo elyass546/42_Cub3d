@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:47:34 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/19 22:38:57 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/20 12:43:40 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int main(int ac, char **av)
 	for (int i = 0; map->map[i]; i++)
 		printf("%s\n", map->map[i]);
 
-	// printf("east : %s\n", map->north);
-	// printf("east : %s\n", map->south);
-	// printf("east : %s\n", map->west);
-	// printf("east : %s\n", map->east);
-	// printf("east : %d\n", map->floor);
-	// printf("east : %d\n", map->ceilling);
+	printf("east : %s\n", map->north);
+	printf("east : %s\n", map->south);
+	printf("east : %s\n", map->west);
+	printf("east : %s\n", map->east);
+	printf("east : %d\n", map->floor);
+	printf("east : %d\n", map->ceilling);
 	// printf("east : %d\n", map->id);
 	// printf("east : %d\n", map->map_start_index);
 

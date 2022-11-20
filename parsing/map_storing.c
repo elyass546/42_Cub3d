@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:43:55 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/19 22:37:08 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/20 12:40:28 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int	is_map(char *line, t_pars *pars)
 		i++;
 	if (line[i] == '1')
 		return (1);
-	if (!line[0] && pars->map_start_index)
-		return (1);
 	return (0);
 }
 
@@ -44,7 +42,9 @@ void	map_storing(char *file, t_pars *pars)
 		ft_error("Empty map\n");
 	while (line)
 	{
-		if (is_map(line, pars))
+		if (is_map(line, pars) || line[0] == '1')
+			pars->map_start_index++;
+		if (pars->map_start_index && !line[0])
 			pars->map_start_index++;
 		free(line);
 		line = get_next_line(fd);
