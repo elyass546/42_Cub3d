@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:05 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/20 18:52:13 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/21 14:12:51 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,22 +52,24 @@ t_pars	*parsing(char *file);
 char	*get_next_line(int fd);
 
 char	**my_split(char const *s);
-
 int		is_space(char c);
 int		is_mapchar(char c);
 int		set_colors(char *str);
 int		is_playerchar(char c);
 int		map_name_checker(char *str);
+int		is_map(char *line, t_pars *pars);
+int		check_line_helper(char *line, t_pars *pars);
 
 void	ft_error(char *str);
 void	check_map(t_pars *pars);
-void	north(t_pars *pars, char *str);
-void	south(t_pars *pars, char *str);
 void	west(t_pars *pars, char *str);
 void	east(t_pars *pars, char *str);
-void	player_pos(char *line, t_pars *pars, int player_y);
+void	south(t_pars *pars, char *str);
+void	north(t_pars *pars, char *str);
 void	is_surrounded_by_walls(t_pars *data);
 void	check_line(char *line, t_pars *pars);
+void	colors_checker(t_pars *pars, char *line);
 void	map_line_counter(char *file, t_pars *pars);
+void	player_pos(char *line, t_pars *pars, int player_y);
 
 #endif

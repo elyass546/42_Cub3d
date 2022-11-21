@@ -6,18 +6,11 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:01 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/20 18:33:13 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/21 12:33:35 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
-
-void	ft_error(char *str)
-{
-	ft_putstr_fd("Error\n", 2);
-	ft_putstr_fd(str, 2);
-	exit(1);
-}
 
 void	check_comma_in_str(char *line)
 {
@@ -102,7 +95,7 @@ t_pars	*parsing(char *file)
 	if (!line)
 		ft_error("Empty map\n");
 	parsing_helper(line, pars, fd, file);
-	check_map(pars);
+	is_surrounded_by_walls(pars);
 	close(fd);
 	return (pars);
 }

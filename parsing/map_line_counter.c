@@ -6,23 +6,11 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:43:55 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/20 21:36:59 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/21 15:10:30 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
-
-int	is_map(char *line, t_pars *pars)
-{
-	int	i;
-
-	i = 0;
-	while (line[i] == ' ')
-		i++;
-	if (line[i] == '1')
-		return (1);
-	return (0);
-}
 
 void	map_line_counter(char *file, t_pars *pars)
 {
@@ -48,7 +36,7 @@ void	map_line_counter(char *file, t_pars *pars)
 	pars->row = pars->map_index;
 	pars->map = (char **)malloc(sizeof(char *) * (pars->row + 1));
 	if (!pars->map)
-		return ; // check this after !
+		return ;//check if I can return (void)
 	close(fd);
 	pars->map[0] = NULL;
 }
@@ -63,6 +51,7 @@ void	north(t_pars *pars, char *str)
 		if (!s || !s[1] || s[2])
 			ft_error("North path not exist\n");
 		pars->north = ft_strdup(s[1]);
+		free_all(s);
 	}
 	else
 		ft_error("North path is already set\n");
@@ -78,6 +67,7 @@ void	south(t_pars *pars, char *str)
 		if (!s || !s[1] || s[2])
 			ft_error("South path not exist\n");
 		pars->south = ft_strdup(s[1]);
+		free_all(s);
 	}
 	else
 		ft_error("South path is already set\n");
@@ -93,6 +83,7 @@ void	west(t_pars *pars, char *str)
 		if (!s || !s[1] || s[2])
 			ft_error("West path not exist\n");
 		pars->west = ft_strdup(s[1]);
+		free_all(s);
 	}
 	else
 		ft_error("West path is already set\n");
@@ -108,6 +99,7 @@ void	east(t_pars *pars, char *str)
 		if (!s || !s[1] || s[2])
 			ft_error("East path not exist\n");
 		pars->east = ft_strdup(s[1]);
+		free_all(s);
 	}
 	else
 		ft_error("East path is already set\n");
