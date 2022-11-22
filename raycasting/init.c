@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/21 18:37:26 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/22 02:59:54 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_data	*init_data( t_pars *pars )
 	if (!data)
 		return (NULL);
 	data->height = pars->row * TILE_SIZE;
-	data->width = pars->col * TILE_SIZE ;
+	data->width = pars->col * TILE_SIZE;
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, data->width, data->height, "CUB3D");
 	data->img.img = NULL;
