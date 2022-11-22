@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/18 14:42:31 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/21 18:37:26 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ static float	get_player_angle(char c)
 static void	init_player_config(t_data *data)
 {
 	// define pos of player
-	data->player.pos.x = data->width * 3 / 4;
-	data->player.pos.y = data->height * 3 / 4;
+	data->player.pos.x = data->pars->player_x * TILE_SIZE;
+	data->player.pos.y = data->pars->player_y * TILE_SIZE;
 	data->player.turn_direction = 0;
 	data->player.walk_direction = 0;
 	data->player.rotation_angle = get_player_angle(data->pars->player_pos);

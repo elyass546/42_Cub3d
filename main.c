@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:42:35 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/18 14:32:23 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/21 18:34:23 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	destroy(t_data *data)
 
 int	main( int argc, char **argv )
 {
-	(void) argc;
 	t_pars 	*pars;
 	t_data	*data;
 	if (argc != 2)
@@ -32,9 +31,9 @@ int	main( int argc, char **argv )
 	data = init_data(pars);
 	update_screen(data);
 	
-	printf("height of screen : %d\n", pars->row);
-	printf("width of screen : %d\n", pars->col);
-	printf("position of the player : %c\n", pars->player_pos);
+	// printf("height of screen : %d\n", pars->row);
+	// printf("width of screen : %d\n", pars->col);
+	// printf("position of the player : %c\n", pars->player_pos);
 
 	mlx_hook(data->win, 02, 1L<<0 ,action, data);
 	mlx_hook(data->win, 03, 1L<<1 ,action_key_up, data);

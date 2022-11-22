@@ -12,10 +12,10 @@ LIBFT	=	libft/libft.a
 HEADERS =	main.h parsing/parsing.h  raycasting/raycasting.h
 
 SRC =		main.c											\
-			parsing/parsing.c								\
-			parsing/ft_split.c								\
+			parsing/parsing.c	parsing/valid_map.c			\
+			parsing/ft_split.c	parsing/check_map.c			\
 			parsing/get_next_line.c							\
-			parsing/map_storing.c							\
+			parsing/map_line_counter.c						\
 			parsing/map.c									\
 			raycasting/init.c								\
 			raycasting/img.c								\
@@ -23,6 +23,7 @@ SRC =		main.c											\
 			raycasting/actions.c							\
 			raycasting/extra_math.c							\
 			raycasting/draw.c								\
+			raycasting/rays.c								\
 
 OBJ = $(SRC:.c=.o)
 

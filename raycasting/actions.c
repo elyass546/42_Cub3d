@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/18 16:04:49 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/21 19:14:09 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	wall_collision(t_data *data, float x, float y)
 		return TRUE;
 	int grid_x = floor(x / TILE_SIZE);
 	int grid_y = floor(y / TILE_SIZE);
-	if (data->pars->map[grid_y][grid_x] != '0')
+	if (data->pars->map[grid_y][grid_x] == '1')
 		return TRUE;
 	return FALSE; 
 }
@@ -46,6 +46,7 @@ void	update_screen(t_data *data)
 	draw_walls(data);
 	move_player(data);
 	draw_player(data);
+	cast_rays(data);
 	mlx_clear_window(data->mlx, data->win);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }

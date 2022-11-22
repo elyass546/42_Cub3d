@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/18 16:48:55 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/22 00:22:58 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,19 @@ typedef struct s_point {
 typedef struct s_ray
 {
 	float	ray_angle;
-	float	wall_hit_x;
-	float	wall_hit_y;
+	// float	wall_hit_x;
+	// float	wall_hit_y;
 	int		was_hit_vertical;
 	int		is_ray_facing_up;
 	int		is_ray_facing_down;
 	int		is_ray_facing_right;
 	int		is_ray_facing_left;
-	
+	t_point	vertical_hit;
+	t_point	horizontal_hit;
+	t_point	wall_hit;
+	float	distV;
+	float	distH;
+	float	distF;
 }	t_ray;
 
 
@@ -100,7 +105,6 @@ typedef struct s_data
 t_data		*init_data( t_pars *pars);
 void		free_exit(t_data *data, int status);
 
-
 //			actions.c
 int			action(int keycode, t_data *data);
 int			action_key_up(int keycode, t_data *data);
@@ -115,6 +119,7 @@ void		my_mlx_pixel_put(t_img *data, int x, int y, int color);
 double 		rad2deg(double radians);
 double		deg2rad(double degrees);
 float		rad_addition(float rad1, float rad2);
+float		calculate_distance(t_point a, t_point b);
 
 //			draw.c
 t_point		new_point(int x, int y);
@@ -122,6 +127,9 @@ void		draw_square(t_img *img, t_point pos, int color, int size);
 void		draw_walls(t_data *data);
 void		draw_player(t_data *data);
 void		dda(t_img *img, t_point a, t_point b, int color);
+
+//			rays.c
+void	cast_rays(t_data *data);
 
 
 
