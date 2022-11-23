@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/22 02:59:54 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/23 19:23:51 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static void	init_player_config(t_data *data)
 	data->player.pos.y = data->pars->player_y * TILE_SIZE;
 	data->player.turn_direction = 0;
 	data->player.walk_direction = 0;
+	data->player.mouse_rotation = 0;
 	data->player.rotation_angle = get_player_angle(data->pars->player_pos);
 	data->player.walk_speed = 10;
 	data->player.turn_speed = deg2rad(10);

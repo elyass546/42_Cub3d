@@ -18,6 +18,7 @@ SRC =		main.c											\
 			parsing/map_line_counter.c						\
 			parsing/map.c									\
 			raycasting/init.c								\
+			raycasting/mouse_rotation.c						\
 			raycasting/img.c								\
 			raycasting/mlx_funs.c							\
 			raycasting/actions.c							\

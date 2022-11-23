@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:42:35 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/21 18:34:23 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/23 19:26:01 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	main( int argc, char **argv )
 
 	mlx_hook(data->win, 02, 1L<<0 ,action, data);
 	mlx_hook(data->win, 03, 1L<<1 ,action_key_up, data);
+	mlx_hook(data->win, 06, 0, mouse_rotation, data);
 	mlx_hook(data->win, 17, 0, destroy, data);
 	mlx_loop(data->mlx);	
 	return (0);

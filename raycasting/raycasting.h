@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/22 00:22:58 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/23 19:25:53 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct s_player {
 	t_point	pos;
 	int		turn_direction;
 	int		walk_direction;	
+	int		mouse_rotation;
 	float	rotation_angle; 
 	float	walk_speed;
 	float	turn_speed;
@@ -110,6 +111,9 @@ int			action(int keycode, t_data *data);
 int			action_key_up(int keycode, t_data *data);
 void		update_screen(t_data *data);
 
+//			mouse_rotation.c && action.c
+void		handle_arrows(int keycode, t_data *data);
+int			mouse_rotation(int x, int y, t_data *data);
 
 //			img.c
 void		create_new_img(t_data *data);
