@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 19:32:36 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/21 23:54:48 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/23 19:01:35 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ float	rad_addition(float rad1, float rad2)
 
 	ret = rad1 + rad2;
 	if (ret < 0)
-		return (ret + 2 * PI);
+		ret += 2 * PI;
 	if (ret > 2 * PI)
-		return (ret - 2 * PI);
+		ret -= 2 * PI;
 	return (ret);
 }
 

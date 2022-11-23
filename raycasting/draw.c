@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:51:48 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/22 18:23:22 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/23 19:00:15 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,18 +87,18 @@ void	draw_walls(t_data *data)
 
 void	dda(t_img *img, t_point a, t_point b, int color)
 {
-	int		dx;
-	int		dy;
-	int		steps;
+	float		dx;
+	float		dy;
+	float		steps;
 	float	xInc;
 	float	yInc;
 
 	dx = b.x - a.x;
 	dy = b.y - a.y;
-	if (abs(dx) > abs(dy))
-		steps = abs(dx);
+	if (fabs(dx) > fabs(dy))
+		steps = fabs(dx);
 	else
-		steps = abs(dy);
+		steps = fabs(dy);
 	xInc = dx / (float) steps;
 	yInc = dy / (float) steps;
 	int i = 0;

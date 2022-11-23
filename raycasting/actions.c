@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/21 19:14:09 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/23 19:17:36 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ void	move_player(t_data *data)
 	player = &data->player;
 	
 	player->rotation_angle += player->turn_direction * player->turn_speed;
+	if (player->rotation_angle < 0)
+		player->rotation_angle += 2 * PI;
+	if (player->rotation_angle > 2 * PI)
+		player->rotation_angle -= 2 * PI;
 	move_step = player->walk_direction * player->walk_speed;
 	
 	new_player_pos.x = player->pos.x + cos(player->rotation_angle) * move_step;

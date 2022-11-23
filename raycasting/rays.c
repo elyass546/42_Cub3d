@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:10:31 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/22 18:48:07 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/23 19:19:52 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,14 +96,14 @@ void	find_horizontal_wall(t_data *data, t_ray *ray)
 	{
 		ry = floor(data->player.pos.y / TILE_SIZE) * TILE_SIZE - 0.0001;
 		rx = data->player.pos.x + (ry - data->player.pos.y) / tan(ray->ray_angle);
-		y0 = -64;
+		y0 = -TILE_SIZE;
 		x0 = y0 / tan(ray->ray_angle);
 	}
 	else
 	{
 		ry = floor(data->player.pos.y / TILE_SIZE) * TILE_SIZE + TILE_SIZE;
 		rx = data->player.pos.x + (ry - data->player.pos.y) / tan(ray->ray_angle);
-		y0 = 64;
+		y0 = TILE_SIZE;
 		x0 = y0 / tan(ray->ray_angle);
 	}
 	while (TRUE)
@@ -154,10 +154,6 @@ void	cast_single_ray(t_data *data, t_ray *ray)
 	{
 		ray->was_hit_vertical = TRUE;
 		ray->distF = ray->distV;
-		// if (ray->vertical_hit.x > data->width)
-		// 	ray->vertical_hit.x = data->width;
-		// if (ray->vertical_hit.y > data->height)
-		// 	ray->vertical_hit.y = data->height;
 		dda(&data->img, data->player.pos, ray->vertical_hit, 0x00FF0000);
 	}
 	else
@@ -167,26 +163,20 @@ void	cast_single_ray(t_data *data, t_ray *ray)
 		dda(&data->img, data->player.pos, ray->horizontal_hit, 0x00FF0000);
 	}
 	
+	
 }
 
 void	cast_rays(t_data *data)
 {
-	t_ray	ray[60]; // to change to the screen width later
-	float	ray_angle;
+	t_ray	ray;
 	int		i;
 
 	i = 0;
-	ray_angle = rad_addition(data->player.rotation_angle, -HALF_FOV);
-	// printf("%f\n", rad2deg(data->player.rotation_angle));
-	// printf("%f\n", rad2deg(ray_angle));
+	ray.ray_angle = rad_addition(data->player.rotation_angle, -HALF_FOV);
 	while (i < 60)
 	{
-		ray[i].ray_angle = ray_angle;
-		// printf("%f\n", rad2deg(ray_angle));
-	
-		cast_single_ray(data, &ray[i]);
+		cast_single_ray(data, &ray);
 		i++;
-		// ray_angle += FOV / 60;
-		ray_angle = rad_addition(ray_angle, FOV / 60);
+		ray.ray_angle = rad_addition(ray.ray_angle, FOV / 60);
 	}
 }
