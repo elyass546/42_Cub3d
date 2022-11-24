@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:10:31 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/24 15:27:10 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/24 18:09:45 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,7 @@ void	draw_wall(t_data *data, t_ray *ray)
 	float	wallH;
 	float	top_pixel;
 	float	bot_pixel;
-	float 	i;
-	float	j;
+	int		color;
 
 	wallH = (int) ((HEIGHT / 2 ) / tan(HALF_FOV)) * 64  / ray->distF;
 	top_pixel = HEIGHT / 2 - wallH / 2;
@@ -145,10 +144,22 @@ void	draw_wall(t_data *data, t_ray *ray)
 		top_pixel = 0;
 	if (bot_pixel > HEIGHT)
 		bot_pixel = HEIGHT;
-	i = 0;
-
+	if (!ray->was_hit_vertical)
+	{
+		if (ray->is_ray_facing_up)
+			color = 0x8B0000;
+		if (ray->is_ray_facing_down)
+			color = 0x40E0D0;
+	}
+	else
+	{
+		if (ray->is_ray_facing_left)
+			color = 0xFF69B4;
+		if (ray->is_ray_facing_right)
+			color = 0x228B22;
+	}
 	dda(&data->img, new_point(ray->h, 0), new_point(ray->h, top_pixel), 0xF00008b);
-	dda(&data->img, new_point(ray->h, top_pixel), new_point(ray->h, bot_pixel), 0x8b0000);
+	dda(&data->img, new_point(ray->h, top_pixel), new_point(ray->h, bot_pixel), color);
 	dda(&data->img, new_point(ray->h, bot_pixel), new_point(ray->h, HEIGHT), 0x808080);
 	ray->h++;
 }
