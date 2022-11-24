@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/23 19:17:36 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/24 15:14:44 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ void	move_player(t_data *data)
 void	update_screen(t_data *data)
 {
 	create_new_img(data);
-	draw_walls(data);
+	// draw_walls(data);
 	move_player(data);
-	draw_player(data);
+	// draw_player(data);
 	cast_rays(data);
 	mlx_clear_window(data->mlx, data->win);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);

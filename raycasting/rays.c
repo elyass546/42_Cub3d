@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:10:31 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/23 19:19:52 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/24 15:27:10 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,29 @@ void	find_horizontal_wall(t_data *data, t_ray *ray)
 	}
 }
 
+void	draw_wall(t_data *data, t_ray *ray)
+{
+	float	wallH;
+	float	top_pixel;
+	float	bot_pixel;
+	float 	i;
+	float	j;
+
+	wallH = (int) ((HEIGHT / 2 ) / tan(HALF_FOV)) * 64  / ray->distF;
+	top_pixel = HEIGHT / 2 - wallH / 2;
+	bot_pixel = HEIGHT / 2 + wallH / 2;
+	if (top_pixel < 0)
+		top_pixel = 0;
+	if (bot_pixel > HEIGHT)
+		bot_pixel = HEIGHT;
+	i = 0;
+
+	dda(&data->img, new_point(ray->h, 0), new_point(ray->h, top_pixel), 0xF00008b);
+	dda(&data->img, new_point(ray->h, top_pixel), new_point(ray->h, bot_pixel), 0x8b0000);
+	dda(&data->img, new_point(ray->h, bot_pixel), new_point(ray->h, HEIGHT), 0x808080);
+	ray->h++;
+}
+
 void	cast_single_ray(t_data *data, t_ray *ray)
 {
 	// float	xintercept;
@@ -154,15 +177,17 @@ void	cast_single_ray(t_data *data, t_ray *ray)
 	{
 		ray->was_hit_vertical = TRUE;
 		ray->distF = ray->distV;
-		dda(&data->img, data->player.pos, ray->vertical_hit, 0x00FF0000);
+		// dda(&data->img, data->player.pos, ray->vertical_hit, 0x00FF0000);
 	}
 	else
 	{
 		ray->distF = ray->distH;
 		ray->was_hit_vertical = FALSE;
-		dda(&data->img, data->player.pos, ray->horizontal_hit, 0x00FF0000);
+		// dda(&data->img, data->player.pos, ray->horizontal_hit, 0x00FF0000);
 	}
-	
+	float ca = rad_addition(data->player.rotation_angle, -ray->ray_angle);
+	ray->distF *= cos(ca);
+	draw_wall(data, ray);
 	
 }
 
@@ -173,10 +198,11 @@ void	cast_rays(t_data *data)
 
 	i = 0;
 	ray.ray_angle = rad_addition(data->player.rotation_angle, -HALF_FOV);
-	while (i < 60)
+	ray.h = 0;
+	while (i < WIDTH)
 	{
 		cast_single_ray(data, &ray);
 		i++;
-		ray.ray_angle = rad_addition(ray.ray_angle, FOV / 60);
+		ray.ray_angle = rad_addition(ray.ray_angle, FOV / WIDTH);
 	}
 }

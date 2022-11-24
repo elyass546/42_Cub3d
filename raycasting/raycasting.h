@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/23 19:25:53 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/24 15:21:31 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@
 # define FALSE 0
 # define TRUE 1
 
-# define HEIGHT 512
-# define WIDTH 1024
+# define HEIGHT 1024
+# define WIDTH 2048
 
 # define TILE_SIZE 64
 
@@ -75,6 +75,7 @@ typedef struct s_ray
 	float	distV;
 	float	distH;
 	float	distF;
+	int		h;
 }	t_ray;
 
 
