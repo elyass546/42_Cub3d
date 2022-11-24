@@ -6,12 +6,13 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:01 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/21 12:33:35 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/22 18:58:46 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
+//check
 void	check_comma_in_str(char *line)
 {
 	int	i;

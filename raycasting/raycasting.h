@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/24 15:21:31 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/24 21:51:29 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,23 @@ typedef struct s_point {
 	float	y;
 }	t_point;
 
+typedef struct s_animation {
+	void	*f1;
+	void	*f2;
+	void	*f3;
+	void	*f4;
+	void	*f5;
+	void	*f6;
+	void	*f7;
+	void	*f8;
+	void	*f9;
+	void	*f10;
+	void	*f11;
+	void	*f12;
+	int		x;
+	int		y;
+}	t_animation;
+
 
 typedef struct s_ray
 {
@@ -83,16 +100,18 @@ typedef struct s_player {
 	t_point	pos;
 	int		turn_direction;
 	int		walk_direction;	
-	int		mouse_rotation;
+	int		mouse_rotation; // rotation using mouse
 	float	rotation_angle; 
 	float	walk_speed;
 	float	turn_speed;
+	int		moves; // Player's moves
 	int		height;
 }	t_player;
 
 
 typedef struct s_data
 {
+	t_animation	frames;
 	void		*mlx;
 	void		*win;
 	t_player	player;
@@ -115,6 +134,9 @@ void		update_screen(t_data *data);
 //			mouse_rotation.c && action.c
 void		handle_arrows(int keycode, t_data *data);
 int			mouse_rotation(int x, int y, t_data *data);
+
+//			animation
+int			animation(t_data *vars);
 
 //			img.c
 void		create_new_img(t_data *data);

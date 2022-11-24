@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/24 15:14:44 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/24 23:06:53 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ void	move_player(t_data *data)
 
 void	update_screen(t_data *data)
 {
+	char *str;
+	char *str2;
+
 	create_new_img(data);
 	// draw_walls(data);
 	move_player(data);
@@ -53,6 +56,12 @@ void	update_screen(t_data *data)
 	cast_rays(data);
 	mlx_clear_window(data->mlx, data->win);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+	str = ft_itoa(data->player.moves);
+	str2 = ft_strjoin("Player moves : ", str);
+	mlx_string_put(data->mlx, data->win, WIDTH - 220, 5, 0xFF23AB, str2);
+	mlx_loop_hook(data->mlx, animation, data);
+	free(str);
+	free(str2);
 }
 
 void	handle_arrows(int keycode, t_data *data)
@@ -62,9 +71,15 @@ void	handle_arrows(int keycode, t_data *data)
 	else if (keycode == LEFT)
 		data->player.turn_direction = -1;
 	else if (keycode == UP)
+	{
+		data->player.moves++;
 		data->player.walk_direction = 1;
+	}
 	else if (keycode == DOWN)
+	{
+		data->player.moves++;		
 		data->player.walk_direction = -1;
+	}
 	update_screen(data);
 }
 
@@ -74,12 +89,14 @@ void	handle_side_walk(int key, t_data *data)
 
 	if (key == A_KEY)
 	{
+		data->player.moves++;
 		new_angle = data->player.rotation_angle - PI / 2;
 		if ( new_angle < 0 )
 			new_angle += 2 * PI;
 	}
 	else
 	{
+		data->player.moves++;
 		new_angle = data->player.rotation_angle + PI / 2;
 		if ( new_angle > 2 * PI)
 			new_angle -= 2 * PI;

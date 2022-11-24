@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:43:55 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/21 15:10:30 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/22 18:53:07 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	map_line_counter(char *file, t_pars *pars)
 	pars->row = pars->map_index;
 	pars->map = (char **)malloc(sizeof(char *) * (pars->row + 1));
 	if (!pars->map)
-		return ;//check if I can return (void)
+		return ;
 	close(fd);
 	pars->map[0] = NULL;
 }

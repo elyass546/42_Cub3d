@@ -1,5 +1,4 @@
-
-NAME = CUB3D
+NAME = cub3D
 
 CC = @cc
 
@@ -17,14 +16,14 @@ SRC =		main.c											\
 			parsing/get_next_line.c							\
 			parsing/map_line_counter.c						\
 			parsing/map.c									\
-			raycasting/init.c								\
+			raycasting/init.c	raycasting/animation.c	\
 			raycasting/mouse_rotation.c						\
 			raycasting/img.c								\
 			raycasting/mlx_funs.c							\
 			raycasting/actions.c							\
 			raycasting/extra_math.c							\
 			raycasting/draw.c								\
-			raycasting/rays.c								\
+			raycasting/rays.c
 
 OBJ = $(SRC:.c=.o)
 

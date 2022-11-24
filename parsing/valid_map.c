@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:11 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/21 14:58:53 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/22 18:50:40 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,12 @@ void	is_surrounded_by_walls(t_pars *pars)
 
 	i = 0;
 	map = pars->map;
+	if (!map[i] || !map[i][0])
+		ft_error("Empty map!\n");
 	while (map[i])
 	{
-		player_pos(map[i], pars, i);
 		is_surrounded_helper(map, pars, i);
+		player_pos(map[i], pars, i);
 		i++;
 	}
 	if (!pars->player_pos)

@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:27:46 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/21 12:59:09 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/23 19:06:47 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	colors_checker(t_pars *pars, char *line)
 int	check_line_helper(char *line, t_pars *pars)
 {
 	const char	*check[] = {"NO ", "SO ", "WE ", "EA "};
-	void		(*funcptr[5])(t_pars *, char *) = {north, south, west, east};
+	static void	(*funcptr[5])(t_pars *, char *) = {north, south, west, east};
 	int			i;
 
 	i = 0;
