@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:51:48 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/23 19:00:15 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/25 17:41:17 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,8 @@ void	draw_walls(t_data *data)
 			draw_square(&data->img,
 				new_point(j * TILE_SIZE, i * TILE_SIZE),
 					color, TILE_SIZE);
-			// printf("%c ", data->pars->map[i][j]);
 			j++;
 		}
-		// printf("\n");
 		i++;
 	}
 }

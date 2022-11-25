@@ -4,7 +4,7 @@ CC = @cc
 
 RM = @rm -f
 
-CFLAGS = -fsanitize=address -g3
+CFLAGS = -O3
 
 LIBFT	=	libft/libft.a
 
