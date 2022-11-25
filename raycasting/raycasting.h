@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/25 19:51:50 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/25 20:52:45 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@
 # define FALSE 0
 # define TRUE 1
 
-# define HEIGHT 712
-# define WIDTH 1428
+# define HEIGHT 1024
+# define WIDTH 2048
 
 # define TILE_SIZE 64
 

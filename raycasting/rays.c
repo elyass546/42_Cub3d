@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:10:31 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/25 19:58:29 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/25 20:45:35 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,10 +147,23 @@ void	draw_wall(t_data *data, t_ray *ray)
 	if (bot_pixel > HEIGHT)
 		bot_pixel = HEIGHT;
 	int	texture_offsetx;
+	t_img	*img;
 	if (ray->was_hit_vertical)
+	{
 		texture_offsetx = (int) ray->vertical_hit.y % TILE_SIZE;
+		if (ray->is_ray_facing_left)
+			img = &data->text.east;
+		if (ray->is_ray_facing_right)
+			img = &data->text.west;
+	}
 	else
-		texture_offsetx = (int) ray->vertical_hit.x % TILE_SIZE;
+	{
+		texture_offsetx = (int) ray->horizontal_hit.x % TILE_SIZE;
+		if (ray->is_ray_facing_up)
+			img = &data->text.north;
+		if (ray->is_ray_facing_down)
+			img = &data->text.south;
+	}
 	int	y = 0;
 	while (y < top_pixel)
 	{
@@ -161,7 +174,7 @@ void	draw_wall(t_data *data, t_ray *ray)
 	{
 		int	distance_from_top = y + (wall_strip_height / 2 ) - (HEIGHT / 2);
 		int texture_offsety = distance_from_top * (64.0 / (float) wall_strip_height);
-		unsigned int color = my_mlx_get_color(&data->text.north, texture_offsetx, texture_offsety);
+		unsigned int color = my_mlx_get_color(img, texture_offsetx, texture_offsety);
 		my_mlx_pixel_put(&data->img, ray->h, y, color);
 		y++;
 	}

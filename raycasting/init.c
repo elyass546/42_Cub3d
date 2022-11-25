@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/25 19:53:35 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/25 20:49:44 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,17 +72,17 @@ static void	init_animation_frames(t_data *data)
 	data->text.north.addr = mlx_get_data_addr(data->text.north.img, &data->text.north.bits_per_pixel,
 		&data->text.north.line_length, &data->text.north.endian);
 		
-	data->text.east.img = mlx_xpm_file_to_image(data->mlx, "./frames/wall.xpm",
+	data->text.east.img = mlx_xpm_file_to_image(data->mlx, "./frames/greystone.xpm",
 		&data->frames.x, &data->frames.y);
 	data->text.east.addr = mlx_get_data_addr(data->text.east.img, &data->text.east.bits_per_pixel,
 		&data->text.east.line_length, &data->text.east.endian);
 	
-	data->text.west.img = mlx_xpm_file_to_image(data->mlx, "./frames/wall.xpm",
+	data->text.west.img = mlx_xpm_file_to_image(data->mlx, "./frames/eagle.xpm",
 		&data->frames.x, &data->frames.y);
 	data->text.west.addr = mlx_get_data_addr(data->text.west.img, &data->text.west.bits_per_pixel,
 		&data->text.west.line_length, &data->text.west.endian);
 
-	data->text.south.img = mlx_xpm_file_to_image(data->mlx, "./frames/wall.xpm",
+	data->text.south.img = mlx_xpm_file_to_image(data->mlx, "./frames/cobblestone.xpm",
 		&data->frames.x, &data->frames.y);
 	data->text.south.addr = mlx_get_data_addr(data->text.south.img, &data->text.south.bits_per_pixel,
 		&data->text.south.line_length, &data->text.south.endian);
