@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:10:31 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/25 18:26:39 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/25 19:58:29 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,9 +134,8 @@ void	draw_wall(t_data *data, t_ray *ray)
 {
 	float	wallH;
 	int		wall_strip_height;
-	float	top_pixel;
-	float	bot_pixel;
-	int		color;
+	int		top_pixel;
+	int		bot_pixel;
 
 	wallH =  (TILE_SIZE / ray->distF) * ((WIDTH / 2 ) / tan(HALF_FOV));
 	wall_strip_height = (int) wallH;
@@ -147,29 +146,30 @@ void	draw_wall(t_data *data, t_ray *ray)
 		top_pixel = 0;
 	if (bot_pixel > HEIGHT)
 		bot_pixel = HEIGHT;
-	if (!ray->was_hit_vertical)
-	{
-		if (ray->is_ray_facing_up)
-			color = 0x8B0000;
-		if (ray->is_ray_facing_down)
-			color = 0x40E0D0;
-	}
+	int	texture_offsetx;
+	if (ray->was_hit_vertical)
+		texture_offsetx = (int) ray->vertical_hit.y % TILE_SIZE;
 	else
+		texture_offsetx = (int) ray->vertical_hit.x % TILE_SIZE;
+	int	y = 0;
+	while (y < top_pixel)
 	{
-		if (ray->is_ray_facing_left)
-			color = 0xFF69B4;
-		if (ray->is_ray_facing_right)
-			color = 0x228B22;
-	}
-	dda(&data->img, new_point(ray->h, 0), new_point(ray->h, top_pixel), 0xF00008b);
-	int	y = top_pixel;
-	while (y < bot_pixel)
-	{
-		my_mlx_pixel_put(&data->img, ray->h, y, color);	
+		my_mlx_pixel_put(&data->img, ray->h, y, 0xF00008b);
 		y++;
 	}
-	// dda(&data->img, new_point(ray->h, top_pixel), new_point(ray->h, bot_pixel), color);
-	dda(&data->img, new_point(ray->h, bot_pixel), new_point(ray->h, HEIGHT), 0x808080);
+	while (y < bot_pixel)
+	{
+		int	distance_from_top = y + (wall_strip_height / 2 ) - (HEIGHT / 2);
+		int texture_offsety = distance_from_top * (64.0 / (float) wall_strip_height);
+		unsigned int color = my_mlx_get_color(&data->text.north, texture_offsetx, texture_offsety);
+		my_mlx_pixel_put(&data->img, ray->h, y, color);
+		y++;
+	}
+	while (y < HEIGHT)
+	{
+		my_mlx_pixel_put(&data->img, ray->h, y, 0x808080);
+		y++;
+	}
 	ray->h++;
 }
 

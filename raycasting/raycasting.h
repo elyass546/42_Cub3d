@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/25 18:18:10 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/25 19:51:50 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ typedef struct s_point {
 }	t_point;
 
 typedef struct s_textures {
-	void	*north;
-	void	*south;
-	void	*west;
-	void	*east;
+	t_img	north;
+	t_img	south;
+	t_img	west;
+	t_img	east;
 }	t_textures;
 
 
@@ -152,8 +152,9 @@ int			animation(t_data *data);
 
 
 //			img.c
-void		create_new_img(t_data *data);
-void		my_mlx_pixel_put(t_img *data, int x, int y, int color);
+void			create_new_img(t_data *data);
+void			my_mlx_pixel_put(t_img *data, int x, int y, int color);
+unsigned int	my_mlx_get_color(t_img *img, int x, int y);
 
 //			extra_math.c
 double 		rad2deg(double radians);

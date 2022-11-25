@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 14:06:49 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/24 15:14:03 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/25 19:51:24 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,16 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-// destroy any existing image and create a new on 
+//use this to get the color from texture
+unsigned int	my_mlx_get_color(t_img *img, int x, int y)
+{
+	char	*dst;
+
+	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	return (*(unsigned int*)dst);
+}
+
+// destroy any existing image and create a new one
 void	create_new_img(t_data *data)
 {
 	if (data->img.img != NULL)
