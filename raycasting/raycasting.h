@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/24 21:51:29 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/25 16:33:15 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,14 @@ typedef struct s_point {
 	float	x;
 	float	y;
 }	t_point;
+
+typedef struct s_textures {
+	void	*north;
+	void	*south;
+	void	*west;
+	void	*east;
+}	t_textures;
+
 
 typedef struct s_animation {
 	void	*f1;
@@ -111,6 +119,7 @@ typedef struct s_player {
 
 typedef struct s_data
 {
+	t_textures	text;
 	t_animation	frames;
 	void		*mlx;
 	void		*win;

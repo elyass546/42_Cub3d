@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/24 22:56:55 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/25 17:39:50 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static float	get_player_angle(char c)
 
 static void	init_animation_frames(t_data *data)
 {
+	// init frame from xpm file to image
 	data->frames.f1 = mlx_xpm_file_to_image(data->mlx, "./frames/frame1.xpm",
 		&data->frames.x, &data->frames.y);
 	data->frames.f2 = mlx_xpm_file_to_image(data->mlx, "./frames/frame2.xpm",
@@ -64,6 +65,10 @@ static void	init_animation_frames(t_data *data)
 	data->frames.f11 = mlx_xpm_file_to_image(data->mlx, "./frames/frame11.xpm",
 		&data->frames.x, &data->frames.y);
 	data->frames.f12 = mlx_xpm_file_to_image(data->mlx, "./frames/frame12.xpm",
+		&data->frames.x, &data->frames.y);
+	data->text.north = mlx_xpm_file_to_image(data->mlx, "./frames/coal.xpm",
+		&data->frames.x, &data->frames.y);
+	data->text.west = mlx_xpm_file_to_image(data->mlx, "./frames/cobblestone.xpm",
 		&data->frames.x, &data->frames.y);
 }
 
