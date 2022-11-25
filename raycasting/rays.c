@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:10:31 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/24 18:09:45 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/25 18:04:49 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,13 +133,16 @@ void	find_horizontal_wall(t_data *data, t_ray *ray)
 void	draw_wall(t_data *data, t_ray *ray)
 {
 	float	wallH;
+	int		wall_strip_height;
 	float	top_pixel;
 	float	bot_pixel;
 	int		color;
 
-	wallH = (int) ((HEIGHT / 2 ) / tan(HALF_FOV)) * 64  / ray->distF;
-	top_pixel = HEIGHT / 2 - wallH / 2;
-	bot_pixel = HEIGHT / 2 + wallH / 2;
+	wallH =  (TILE_SIZE / ray->distF) * ((WIDTH / 2 ) / tan(HALF_FOV));
+	wall_strip_height = (int) wallH;
+	// wallH = (int) ((HEIGHT / 2 ) / tan(HALF_FOV)) * 64  / ray->distF;
+	top_pixel = HEIGHT / 2 - wall_strip_height / 2;
+	bot_pixel = HEIGHT / 2 + wall_strip_height / 2;
 	if (top_pixel < 0)
 		top_pixel = 0;
 	if (bot_pixel > HEIGHT)

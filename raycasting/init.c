@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/24 22:56:55 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/25 15:31:14 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ static void	init_player_config(t_data *data)
 	data->player.walk_speed = 10;
 	data->player.turn_speed = deg2rad(5);
 	data->player.height = 5;
-	
 }
 
 // later WIDTH AND HEIGHT WILL BE FIX
@@ -97,6 +96,7 @@ t_data	*init_data( t_pars *pars )
 	data->width = pars->col * TILE_SIZE;
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "CUB3D");
+	data->i = 0;
 	data->img.img = NULL;
 	data->pars = pars;
 	init_player_config(data);

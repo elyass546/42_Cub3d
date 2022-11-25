@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/24 21:51:29 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/25 17:33:28 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@
 # define FALSE 0
 # define TRUE 1
 
-# define HEIGHT 1024
-# define WIDTH 2048
+# define HEIGHT 712
+# define WIDTH 1428
 
 # define TILE_SIZE 64
 
@@ -119,6 +119,7 @@ typedef struct s_data
 	t_pars		*pars;
 	int			height;
 	int			width;
+	int			i;
 }	t_data;
 
 
@@ -136,7 +137,9 @@ void		handle_arrows(int keycode, t_data *data);
 int			mouse_rotation(int x, int y, t_data *data);
 
 //			animation
-int			animation(t_data *vars);
+void		animate(t_data *data);
+int			animation(t_data *data);
+
 
 //			img.c
 void		create_new_img(t_data *data);

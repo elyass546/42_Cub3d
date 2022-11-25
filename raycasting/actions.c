@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/24 23:06:53 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/25 17:17:57 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,23 @@ void	move_player(t_data *data)
 
 void	update_screen(t_data *data)
 {
-	char *str;
-	char *str2;
+	// char *str;
+	// char *str2;
 
 	create_new_img(data);
 	// draw_walls(data);
 	move_player(data);
 	// draw_player(data);
 	cast_rays(data);
-	mlx_clear_window(data->mlx, data->win);
+	// mlx_clear_window(data->mlx, data->win);
+	
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
-	str = ft_itoa(data->player.moves);
-	str2 = ft_strjoin("Player moves : ", str);
-	mlx_string_put(data->mlx, data->win, WIDTH - 220, 5, 0xFF23AB, str2);
-	mlx_loop_hook(data->mlx, animation, data);
-	free(str);
-	free(str2);
+	// str = ft_itoa(data->player.moves);
+	// str2 = ft_strjoin("Player moves : ", str);
+	// mlx_string_put(data->mlx, data->win, WIDTH - 220, 5, 0xFF23AB, str2);
+	// mlx_loop_hook(data->mlx, animation, data);
+	// free(str);
+	// free(str2);
 }
 
 void	handle_arrows(int keycode, t_data *data)
@@ -81,6 +82,7 @@ void	handle_arrows(int keycode, t_data *data)
 		data->player.walk_direction = -1;
 	}
 	update_screen(data);
+	// animate(data);
 }
 
 void	handle_side_walk(int key, t_data *data)
@@ -107,6 +109,7 @@ void	handle_side_walk(int key, t_data *data)
 		data->player.pos.x += cos(new_angle) * data->player.walk_speed;
 		data->player.pos.y += sin(new_angle) * data->player.walk_speed;
 		update_screen(data);
+		// animate(data);
 	}
 }
 
