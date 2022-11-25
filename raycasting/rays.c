@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:10:31 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/25 18:04:49 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/25 18:26:39 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,13 @@ void	draw_wall(t_data *data, t_ray *ray)
 			color = 0x228B22;
 	}
 	dda(&data->img, new_point(ray->h, 0), new_point(ray->h, top_pixel), 0xF00008b);
-	dda(&data->img, new_point(ray->h, top_pixel), new_point(ray->h, bot_pixel), color);
+	int	y = top_pixel;
+	while (y < bot_pixel)
+	{
+		my_mlx_pixel_put(&data->img, ray->h, y, color);	
+		y++;
+	}
+	// dda(&data->img, new_point(ray->h, top_pixel), new_point(ray->h, bot_pixel), color);
 	dda(&data->img, new_point(ray->h, bot_pixel), new_point(ray->h, HEIGHT), 0x808080);
 	ray->h++;
 }

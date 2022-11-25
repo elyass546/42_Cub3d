@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/25 18:18:33 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/25 18:20:32 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,10 @@ static void	init_animation_frames(t_data *data)
 	data->text.north = mlx_xpm_file_to_image(data->mlx, "./frames/coal.xpm",
 		&data->frames.x, &data->frames.y);
 	data->text.west = mlx_xpm_file_to_image(data->mlx, "./frames/cobblestone.xpm",
+		&data->frames.x, &data->frames.y);
+	data->text.south = mlx_xpm_file_to_image(data->mlx, "./frames/cobblestone.xpm",
+		&data->frames.x, &data->frames.y);
+	data->text.east = mlx_xpm_file_to_image(data->mlx, "./frames/coal.xpm",
 		&data->frames.x, &data->frames.y);
 }
 
