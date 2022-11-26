@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/26 19:46:58 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/26 21:20:53 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@
 # define WIDTH 2048
 
 # define TILE_SIZE 64
+
+# define SCALE 1
 
 # include "../parsing/parsing.h"
 # include <mlx.h>
@@ -97,8 +99,6 @@ typedef struct s_animation {
 typedef struct s_ray
 {
 	float	ray_angle;
-	// float	wall_hit_x;
-	// float	wall_hit_y;
 	int		was_hit_vertical;
 	int		is_ray_facing_up;
 	int		is_ray_facing_down;
@@ -110,7 +110,6 @@ typedef struct s_ray
 	float	distV;
 	float	distH;
 	float	distF;
-	int		h;
 	char	horizontal_content;
 	char	vertical_content;
 	char	wall_hit_content;
@@ -118,6 +117,7 @@ typedef struct s_ray
 	float	ry;
 	float	x0;
 	float	y0;
+	int		x;
 }	t_ray;
 
 

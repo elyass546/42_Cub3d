@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/26 19:48:48 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/26 21:48:09 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,19 @@ void	handle_side_walk(int key, t_data *data)
 	}
 }
 
+void	open_door(t_data *data)
+{
+	if (data->door.is_any_door_nearby)
+	{
+		if (data->pars->map[data->door.y][data->door.x] == 'O')
+			data->pars->map[data->door.y][data->door.x] = 'D';
+		else
+			data->pars->map[data->door.y][data->door.x] = 'O';
+		update_screen(data);
+		
+	}
+}
+
 // since W and S will behave like the arrows keys
 // we just gonna use the same function
 int	action(int keycode, t_data *data)
@@ -128,16 +141,7 @@ int	action(int keycode, t_data *data)
 	else if (keycode == A_KEY || keycode == D_KEY)
 		handle_side_walk(keycode, data);
 	else if (keycode == SPACE)
-	{
-		if (data->door.is_any_door_nearby)
-		{
-			if (data->pars->map[data->door.y][data->door.x] == 'O')
-				data->pars->map[data->door.y][data->door.x] = 'D';
-			else
-				data->pars->map[data->door.y][data->door.x] = 'O';
-			update_screen(data);
-		}
-	}
+		open_door(data);
 	return (0);
 }
 

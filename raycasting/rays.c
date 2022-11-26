@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:10:31 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/26 19:41:20 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/26 21:53:21 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,16 @@ int	is_ray_facing_right(float ray_angle)
 		return (FALSE);
 }
 
-
-
 void	draw_wall(t_data *data, t_ray *ray)
 {
 	float	wallH;
 	int		wall_strip_height;
 	int		top_pixel;
 	int		bot_pixel;
+	int		texture_offsetx;
+	int		texture_offsety;
+	t_img	*img;
+	int		y;
 
 	wallH =  (TILE_SIZE / ray->distF) * ((WIDTH / 2 ) / tan(HALF_FOV));
 	wall_strip_height = (int) wallH;
@@ -45,8 +47,7 @@ void	draw_wall(t_data *data, t_ray *ray)
 		top_pixel = 0;
 	if (bot_pixel > HEIGHT)
 		bot_pixel = HEIGHT;
-	int	texture_offsetx;
-	t_img	*img;
+
 	if (ray->was_hit_vertical)
 	{
 		texture_offsetx = (int) ray->wall_hit.y % TILE_SIZE;
@@ -63,17 +64,16 @@ void	draw_wall(t_data *data, t_ray *ray)
 		if (ray->is_ray_facing_down)
 			img = &data->text.south;
 	}
-	int	y = 0;
+	y = 0;
 	while (y < top_pixel)
 	{
-		my_mlx_pixel_put(&data->img, ray->h, y, data->pars->ceilling);
+		my_mlx_pixel_put(&data->img, ray->x, y, data->pars->ceilling);
 		y++;
 	}
 	if (ray->wall_hit_content == 'D')
 	{
-		if (ray->distF <= 100)
+		if (ray->distF <= 140)
 		{
-			// printf("wall can be opened\n");
 			data->door.is_any_door_nearby = TRUE;
 			data->door.x = (int) (ray->wall_hit.x) / TILE_SIZE;
 			data->door.y = (int) (ray->wall_hit.y) / TILE_SIZE;
@@ -83,37 +83,24 @@ void	draw_wall(t_data *data, t_ray *ray)
 		
 	while (y < bot_pixel)
 	{
-		int	distance_from_top = y + (wall_strip_height / 2 ) - (HEIGHT / 2);
-		int texture_offsety = distance_from_top * (64.0f / wall_strip_height);
+		texture_offsety = ( y + (wall_strip_height / 2 ) - (HEIGHT / 2) )* (64.0f / wall_strip_height);
 		unsigned int color = my_mlx_get_color(img, texture_offsetx, texture_offsety);
-		my_mlx_pixel_put(&data->img, ray->h, y, color);
+		my_mlx_pixel_put(&data->img, ray->x, y, color);
 		y++;
 	}
 	while (y < HEIGHT)
 	{
-		my_mlx_pixel_put(&data->img, ray->h, y, data->pars->floor);
+		my_mlx_pixel_put(&data->img, ray->x, y, data->pars->floor);
 		y++;
 	}
-	ray->h++;
+	ray->x++;
 }
 
 void	cast_single_ray(t_data *data, t_ray *ray)
-{
-	// float	xintercept;
-	// float	yintercept;
-	// float	xstep;
-	// float	ystep;
-
-	int		found_wallH_hit = FALSE;
-	// float	wallH_hit_x;
-	// float	wallH_hit_y;
-	
+{	
 	init_ray(ray);
 	find_horizontal_wall(data, ray);
 	find_vertical_wall(data, ray);
-
-	// dda(&data->img, data->player.pos, ray->horizontal_hit, 0x00FF0000);
-
 	ray->distV = calculate_distance(data->player.pos, ray->vertical_hit);
 	ray->distH = calculate_distance(data->player.pos, ray->horizontal_hit);
 
@@ -138,18 +125,20 @@ void	cast_single_ray(t_data *data, t_ray *ray)
 	float ca = rad_addition(data->player.rotation_angle, -ray->ray_angle);
 	ray->distF *= cos(ca);
 	draw_wall(data, ray);
-	
 }
 
 void	cast_rays(t_data *data)
 {
 	t_ray	ray;
 	int		i;
+	int		current_strip_x;
 
 	i = 0;
 	ray.ray_angle = rad_addition(data->player.rotation_angle, -HALF_FOV);
-	ray.h = 0;
 	data->door.is_any_door_nearby = FALSE;
+	data->door.x = -1;
+	data->door.y = -1;
+	ray.x = 0;
 	while (i < WIDTH)
 	{
 		cast_single_ray(data, &ray);
@@ -157,3 +146,29 @@ void	cast_rays(t_data *data)
 		ray.ray_angle = rad_addition(ray.ray_angle, FOV / WIDTH);
 	}
 }
+
+void	create_penetrating_ray()
+{
+	
+}
+
+// void	open_door_animation(t_data *data)
+// {
+// 	t_ray	ray;
+// 	int		i;
+// 	int		current_strip_x;
+
+// 	i = 0;
+// 	ray.ray_angle = rad_addition(data->player.rotation_angle, -HALF_FOV);
+// 	ray.ray_angle = data->player.rotation_angle;
+// 	data->door.is_any_door_nearby = FALSE;
+// 	data->door.x = -1;
+// 	data->door.y = -1;
+// 	ray.x = 0;
+// 	while (i < WIDTH)
+// 	{
+// 		cast_single_ray(data, &ray);
+// 		i++;
+// 		ray.ray_angle = rad_addition(ray.ray_angle, FOV / WIDTH);
+// 	}
+// }

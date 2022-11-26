@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/26 19:49:34 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/26 20:10:20 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ static void	init_animation_frames(t_data *data)
 
 static void	init_player_config(t_data *data)
 {
-	// define pos of player
 	data->player.pos.x = data->pars->player_x * TILE_SIZE;
 	data->player.pos.y = data->pars->player_y * TILE_SIZE;
 	data->player.turn_direction = 0;
@@ -110,7 +109,6 @@ static void	init_player_config(t_data *data)
 	data->player.height = 5;
 }
 
-// later WIDTH AND HEIGHT WILL BE FIX
 t_data	*init_data( t_pars *pars )
 {
 	t_data	*data;
@@ -121,7 +119,7 @@ t_data	*init_data( t_pars *pars )
 	data->height = pars->row * TILE_SIZE;
 	data->width = pars->col * TILE_SIZE;
 	data->mlx = mlx_init();
-	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "CUB3D");
+	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "cub3D");
 	data->i = 0;
 	data->img.img = NULL;
 	data->pars = pars;
