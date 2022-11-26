@@ -6,12 +6,13 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:11 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/22 18:50:40 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/26 15:27:04 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
+// check if map name ended with .cub
 int	map_name_checker(char *str)
 {
 	char	*s1;
@@ -30,6 +31,7 @@ int	map_name_checker(char *str)
 	return (0);
 }
 
+//finding player position
 void	player_pos(char *line, t_pars *pars, int y)
 {
 	int	i;
@@ -56,6 +58,7 @@ int	check_line1(char *str, int x)
 	return (0);
 }
 
+// check if the map is valid
 void	is_surrounded_helper(char **map, t_pars *pars, int i)
 {
 	int	j;

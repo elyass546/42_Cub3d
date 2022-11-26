@@ -1,10 +1,10 @@
-NAME = CUB3D
+NAME = cub3D
 
 CC = @cc
 
 RM = @rm -f
 
-SEG = -fsanitize=address -g3
+# SEG = -fsanitize=address -g3
 
 LIBFT	=	../libft/libft.a
 

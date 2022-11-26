@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:05 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/21 14:12:51 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/26 15:30:41 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <math.h>
 # include "../libft/libft.h"
 
+// get_next_line struct
 typedef struct s_gnl {
 	char	c;
 	char	*str;
@@ -40,7 +41,6 @@ typedef struct s_pars {
 	int		map_end_index;
 	int		floor;
 	int		ceilling;
-	int		id;
 	int		col;
 	int		row;
 }			t_pars;
@@ -52,6 +52,7 @@ t_pars	*parsing(char *file);
 char	*get_next_line(int fd);
 
 char	**my_split(char const *s);
+
 int		is_space(char c);
 int		is_mapchar(char c);
 int		set_colors(char *str);

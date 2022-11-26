@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:27:46 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/23 19:06:47 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/26 15:22:55 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	colors_checker(t_pars *pars, char *line)
 	s = my_split(line);
 	if (!s || !s[1] || s[2])
 		ft_error("Error in colors settings\n");
-	if ((ft_strncmp("F ", line, 2) == 0) && !pars->floor)
+	if ((ft_strncmp("F ", line, 2) == 0) && pars->floor == -1)
 		pars->floor = set_colors(s[1]);
-	else if ((ft_strncmp("C ", line, 2) == 0) && !pars->ceilling)
+	else if ((ft_strncmp("C ", line, 2) == 0) && pars->ceilling == -1)
 		pars->ceilling = set_colors(s[1]);
 	else
 		ft_error("Textures settings doesn't correct\n");
@@ -54,6 +54,7 @@ int	check_line_helper(char *line, t_pars *pars)
 	return (0);
 }
 
+// check wall in map's left
 int	is_map(char *line, t_pars *pars)
 {
 	int	i;

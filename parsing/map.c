@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:45:16 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/21 12:57:39 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/26 15:25:25 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*skip_spaces(char *line)
 
 int	check_if_filled(t_pars *pars)
 {
-	if (check_textutres(pars) && pars->ceilling && pars->floor)
+	if (check_textutres(pars) && pars->ceilling != -1 && pars->floor != -1)
 		return (1);
 	return (0);
 }
@@ -51,6 +51,7 @@ void	map_stocking(char *line, t_pars *pars)
 		pars->map[pars->map_end_index] = NULL;
 }
 
+// storing map and textures
 void	check_line(char *line, t_pars *pars)
 {
 	if (is_space(line[0]) && !pars->map[0] && !check_if_filled(pars))
@@ -69,7 +70,7 @@ void	check_line(char *line, t_pars *pars)
 		if (!line[0])
 			return ;
 		else if (!is_mapchar(line[0]))
-			ft_error("Wrong element in map\n");
+			ft_error("Wrong element in map123\n");
 		map_stocking(line, pars);
 	}
 }

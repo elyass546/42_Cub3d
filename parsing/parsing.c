@@ -6,13 +6,13 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:01 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/22 18:58:46 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/26 15:30:37 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-//check
+// check comma's number
 void	check_comma_in_str(char *line)
 {
 	int	i;
@@ -32,6 +32,7 @@ void	check_comma_in_str(char *line)
 		ft_error("Wrong input in the color section\n");
 }
 
+//setting colors
 int	set_colors(char *str)
 {
 	char	**s;
@@ -53,11 +54,11 @@ int	set_colors(char *str)
 	return (r << 8 | g << 4 | b);
 }
 
+// init t_pars variables
 static void	init(t_pars *pars)
 {
-	pars->ceilling = 0;
-	pars->floor = 0;
-	pars->id = 0;
+	pars->ceilling = -1;
+	pars->floor = -1;
 	pars->col = 0;
 	pars->row = 0;
 	pars->map_index = 0;
@@ -81,6 +82,7 @@ void	parsing_helper(char *line, t_pars *pars, int fd, char *file)
 	}
 }
 
+// main function
 t_pars	*parsing(char *file)
 {
 	int		fd;

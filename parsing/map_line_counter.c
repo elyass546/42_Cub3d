@@ -6,12 +6,13 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:43:55 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/22 18:53:07 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/26 15:27:26 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
+// counting lines in map
 void	map_line_counter(char *file, t_pars *pars)
 {
 	char	*line;
@@ -41,6 +42,7 @@ void	map_line_counter(char *file, t_pars *pars)
 	pars->map[0] = NULL;
 }
 
+// setting textures path
 void	north(t_pars *pars, char *str)
 {
 	char	**s;

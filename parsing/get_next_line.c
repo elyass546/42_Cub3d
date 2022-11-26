@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:20:57 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/20 18:48:54 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/26 13:28:07 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	is_playerchar(char c)
 
 int	is_mapchar(char c)
 {
-	if ((is_space(c) || c == '1' || c == '0' || is_playerchar(c)))
+	if ((is_space(c) || c == '1' || c == '0' || c == 'P' || is_playerchar(c)))
 		return (1);
 	return (0);
 }
