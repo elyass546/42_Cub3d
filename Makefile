@@ -23,7 +23,8 @@ SRC =		main.c											\
 			raycasting/actions.c							\
 			raycasting/extra_math.c							\
 			raycasting/draw.c								\
-			raycasting/rays.c
+			raycasting/rays.c								\
+			raycasting/rays_intersection.c					\
 
 OBJ = $(SRC:.c=.o)
 

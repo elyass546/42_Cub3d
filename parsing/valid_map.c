@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:11 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/26 15:27:04 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/26 19:45:06 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	player_pos(char *line, t_pars *pars, int y)
 			pars->player_pos = line[i];
 			pars->player_x = i;
 			pars->player_y = y;
+			line[i] = '0';
 		}
 		else if (is_playerchar(line[i]) && pars->player_pos)
 			ft_error("Duplicate player position\n");

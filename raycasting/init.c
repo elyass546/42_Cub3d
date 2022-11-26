@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/26 13:21:41 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/26 19:49:34 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ static void	init_player_config(t_data *data)
 	data->frames.y = 0;
 	data->player.moves = 0;
 	data->player.rotation_angle = get_player_angle(data->pars->player_pos);
-	data->player.walk_speed = 10;
+	data->player.walk_speed = 25;
 	data->player.turn_speed = deg2rad(5);
 	data->player.height = 5;
 }
@@ -125,6 +125,9 @@ t_data	*init_data( t_pars *pars )
 	data->i = 0;
 	data->img.img = NULL;
 	data->pars = pars;
+	data->door.is_open = FALSE;
+	data->door.x = -1;
+	data->door.y = -1;
 	init_player_config(data);
 	init_animation_frames(data);
 	return (data);

@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/25 17:17:57 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/26 19:48:48 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	wall_collision(t_data *data, float x, float y)
 		return TRUE;
 	int grid_x = floor(x / TILE_SIZE);
 	int grid_y = floor(y / TILE_SIZE);
-	if (data->pars->map[grid_y][grid_x] == '1')
+	if (data->pars->map[grid_y][grid_x] != '0' && data->pars->map[grid_y][grid_x] != 'O')
 		return TRUE;
 	return FALSE; 
 }
@@ -127,6 +127,17 @@ int	action(int keycode, t_data *data)
 		handle_arrows(DOWN, data);
 	else if (keycode == A_KEY || keycode == D_KEY)
 		handle_side_walk(keycode, data);
+	else if (keycode == SPACE)
+	{
+		if (data->door.is_any_door_nearby)
+		{
+			if (data->pars->map[data->door.y][data->door.x] == 'O')
+				data->pars->map[data->door.y][data->door.x] = 'D';
+			else
+				data->pars->map[data->door.y][data->door.x] = 'O';
+			update_screen(data);
+		}
+	}
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/26 13:19:23 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/26 19:46:58 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define UP 126
 
 # define ESC 53
+# define SPACE 49
 
 # define A_KEY 0
 # define D_KEY 2
@@ -45,6 +46,13 @@
 
 # include "../parsing/parsing.h"
 # include <mlx.h>
+
+typedef struct s_door {
+	int	is_open;
+	int	is_any_door_nearby;
+	int	x;
+	int	y;
+}	t_door;
 
 typedef struct	s_img {
 	void	*img;
@@ -103,7 +111,13 @@ typedef struct s_ray
 	float	distH;
 	float	distF;
 	int		h;
+	char	horizontal_content;
+	char	vertical_content;
 	char	wall_hit_content;
+	float	rx;
+	float	ry;
+	float	x0;
+	float	y0;
 }	t_ray;
 
 
@@ -132,6 +146,7 @@ typedef struct s_data
 	int			height;
 	int			width;
 	int			i;
+	t_door		door;
 }	t_data;
 
 
@@ -172,8 +187,17 @@ void		draw_player(t_data *data);
 void		dda(t_img *img, t_point a, t_point b, int color);
 
 //			rays.c
-void	cast_rays(t_data *data);
+void		cast_rays(t_data *data);
+int			is_ray_facing_down(float ray_angle);
+int			is_ray_facing_right(float ray_angle);
 
+
+//			rays_intersection.c
+void		init_ray(t_ray *ray);
+void		find_first_vertical_intersection(t_data *data, t_ray *ray);
+void		find_vertical_wall(t_data *data, t_ray *ray);
+void		find_first_horizontal_intersection(t_data *data, t_ray *ray);
+void		find_horizontal_wall(t_data *data, t_ray *ray);
 
 
 #endif
