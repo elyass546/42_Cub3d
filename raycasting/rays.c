@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:10:31 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/25 20:45:35 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/26 13:21:50 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,10 +116,11 @@ void	find_horizontal_wall(t_data *data, t_ray *ray)
 			ray->horizontal_hit.y = ry;
 			break ;
 		}
-		if (data->pars->map[my][mx] == '1')
+		if (data->pars->map[my][mx] == '1' || data->pars->map[my][mx] == 'P')
 		{
 			ray->horizontal_hit.x = rx;
 			ray->horizontal_hit.y = ry;
+			ray->wall_hit_content = data->pars->map[my][mx];
 			break ;
 		}
 		else
@@ -167,20 +168,22 @@ void	draw_wall(t_data *data, t_ray *ray)
 	int	y = 0;
 	while (y < top_pixel)
 	{
-		my_mlx_pixel_put(&data->img, ray->h, y, 0xF00008b);
+		my_mlx_pixel_put(&data->img, ray->h, y, data->pars->ceilling);
 		y++;
 	}
+	if (ray->wall_hit_content == 'P')
+		img = &data->text.door;
 	while (y < bot_pixel)
 	{
 		int	distance_from_top = y + (wall_strip_height / 2 ) - (HEIGHT / 2);
-		int texture_offsety = distance_from_top * (64.0 / (float) wall_strip_height);
+		int texture_offsety = distance_from_top * (64.0f / wall_strip_height);
 		unsigned int color = my_mlx_get_color(img, texture_offsetx, texture_offsety);
 		my_mlx_pixel_put(&data->img, ray->h, y, color);
 		y++;
 	}
 	while (y < HEIGHT)
 	{
-		my_mlx_pixel_put(&data->img, ray->h, y, 0x808080);
+		my_mlx_pixel_put(&data->img, ray->h, y, data->pars->floor);
 		y++;
 	}
 	ray->h++;

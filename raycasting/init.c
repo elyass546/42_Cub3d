@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/25 20:49:44 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/26 13:21:41 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,26 +67,30 @@ static void	init_animation_frames(t_data *data)
 	// 	&data->frames.x, &data->frames.y);
 	// data->frames.f12 = mlx_xpm_file_to_image(data->mlx, "./frames/frame12.xpm",
 	// 	&data->frames.x, &data->frames.y);
-	data->text.north.img = mlx_xpm_file_to_image(data->mlx, "./frames/wall.xpm",
+	data->text.north.img = mlx_xpm_file_to_image(data->mlx, data->pars->north,
 		&data->frames.x, &data->frames.y);
 	data->text.north.addr = mlx_get_data_addr(data->text.north.img, &data->text.north.bits_per_pixel,
 		&data->text.north.line_length, &data->text.north.endian);
 		
-	data->text.east.img = mlx_xpm_file_to_image(data->mlx, "./frames/greystone.xpm",
+	data->text.east.img = mlx_xpm_file_to_image(data->mlx, data->pars->east,
 		&data->frames.x, &data->frames.y);
 	data->text.east.addr = mlx_get_data_addr(data->text.east.img, &data->text.east.bits_per_pixel,
 		&data->text.east.line_length, &data->text.east.endian);
 	
-	data->text.west.img = mlx_xpm_file_to_image(data->mlx, "./frames/eagle.xpm",
+	data->text.west.img = mlx_xpm_file_to_image(data->mlx, data->pars->west,
 		&data->frames.x, &data->frames.y);
 	data->text.west.addr = mlx_get_data_addr(data->text.west.img, &data->text.west.bits_per_pixel,
 		&data->text.west.line_length, &data->text.west.endian);
 
-	data->text.south.img = mlx_xpm_file_to_image(data->mlx, "./frames/cobblestone.xpm",
+	data->text.south.img = mlx_xpm_file_to_image(data->mlx, data->pars->south,
 		&data->frames.x, &data->frames.y);
 	data->text.south.addr = mlx_get_data_addr(data->text.south.img, &data->text.south.bits_per_pixel,
 		&data->text.south.line_length, &data->text.south.endian);
 	
+	data->text.door.img = mlx_xpm_file_to_image(data->mlx, "./frames/eagle.xpm",
+		&data->frames.x, &data->frames.y);
+	data->text.door.addr = mlx_get_data_addr(data->text.door.img, &data->text.door.bits_per_pixel,
+		&data->text.door.line_length, &data->text.door.endian);
 }
 
 static void	init_player_config(t_data *data)
