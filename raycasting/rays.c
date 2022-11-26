@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:10:31 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/26 21:53:21 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/26 23:43:25 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	draw_wall(t_data *data, t_ray *ray)
 			data->door.x = (int) (ray->wall_hit.x) / TILE_SIZE;
 			data->door.y = (int) (ray->wall_hit.y) / TILE_SIZE;
 		}
-		img = &data->text.door;
+		img = data->current_door_frame;
 	}
 		
 	while (y < bot_pixel)

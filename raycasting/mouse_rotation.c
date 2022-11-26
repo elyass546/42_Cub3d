@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_rotation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 19:09:09 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/23 19:26:27 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/27 00:02:29 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-//move with mouse
+//rotate with mouse
 
 int		mouse_rotation(int	x, int y, t_data *param)
 {

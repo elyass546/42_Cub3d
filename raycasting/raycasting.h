@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/26 21:20:53 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/26 23:32:29 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ typedef struct s_textures {
 	t_img	west;
 	t_img	east;
 	t_img	door;
+	t_img	door2;
+	t_img	door3;
 }	t_textures;
 
 
@@ -147,6 +149,7 @@ typedef struct s_data
 	int			width;
 	int			i;
 	t_door		door;
+	t_img		*current_door_frame;
 }	t_data;
 
 

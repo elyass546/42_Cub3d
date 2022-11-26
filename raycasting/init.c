@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/26 20:10:20 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/26 23:43:30 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,20 @@ static void	init_animation_frames(t_data *data)
 	data->text.south.addr = mlx_get_data_addr(data->text.south.img, &data->text.south.bits_per_pixel,
 		&data->text.south.line_length, &data->text.south.endian);
 	
-	data->text.door.img = mlx_xpm_file_to_image(data->mlx, "./frames/eagle.xpm",
+	data->text.door.img = mlx_xpm_file_to_image(data->mlx, "./frames/budget_door.xpm",
 		&data->frames.x, &data->frames.y);
 	data->text.door.addr = mlx_get_data_addr(data->text.door.img, &data->text.door.bits_per_pixel,
 		&data->text.door.line_length, &data->text.door.endian);
+
+	data->text.door2.img = mlx_xpm_file_to_image(data->mlx, "./frames/budget_door2.xpm",
+		&data->frames.x, &data->frames.y);
+	data->text.door2.addr = mlx_get_data_addr(data->text.door2.img, &data->text.door2.bits_per_pixel,
+		&data->text.door2.line_length, &data->text.door2.endian);
+
+	data->text.door3.img = mlx_xpm_file_to_image(data->mlx, "./frames/budget_door3.xpm",
+		&data->frames.x, &data->frames.y);
+	data->text.door3.addr = mlx_get_data_addr(data->text.door3.img, &data->text.door3.bits_per_pixel,
+		&data->text.door3.line_length, &data->text.door3.endian);
 }
 
 static void	init_player_config(t_data *data)
@@ -128,5 +138,6 @@ t_data	*init_data( t_pars *pars )
 	data->door.y = -1;
 	init_player_config(data);
 	init_animation_frames(data);
+	data->current_door_frame = &data->text.door;
 	return (data);
 }
