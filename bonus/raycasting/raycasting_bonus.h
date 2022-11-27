@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_bonus.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/26 21:32:03 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/27 21:56:17 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#ifndef RAYCASTING_bonus_H
+#ifndef RAYCASTING_BONUS_H
 
-# define RAYCASTING_bonus_H
+# define RAYCASTING_BONUS_H
 
 # define PI 3.1415926535
 # define P2 PI / 2
@@ -48,10 +48,11 @@
 # include <mlx.h>
 
 typedef struct s_door {
-	int	is_open;
-	int	is_any_door_nearby;
-	int	x;
-	int	y;
+	int		is_open;
+	int		is_any_door_nearby;
+	int		x;
+	int		y;
+	float	distance;
 }	t_door;
 
 typedef struct	s_img {

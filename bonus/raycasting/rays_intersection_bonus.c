@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays_intersection_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 19:40:44 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/26 23:04:14 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/27 21:53:20 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,12 @@ void	find_vertical_wall(t_data *data, t_ray *ray)
 		{
 			if (data->pars->map[my][mx] == 'O')
 			{
-				if (calculate_distance(data->player.pos, new_point(ray->rx, ray->ry)) <= 100)
+				if (calculate_distance(data->player.pos, new_point(ray->rx, ray->ry)) <= 130)
 				{
 					data->door.is_any_door_nearby = TRUE;
 					data->door.is_open = FALSE;
+					data->door.x = mx;
+					data->door.y = my;
 				}
 			}
 			ray->rx += ray->x0;
@@ -124,10 +126,12 @@ void	find_horizontal_wall(t_data *data, t_ray *ray)
 		{
 			if (data->pars->map[my][mx] == 'O')
 			{
-				if (calculate_distance(data->player.pos, new_point(ray->rx, ray->ry)) <= 100)
+				if (calculate_distance(data->player.pos, new_point(ray->rx, ray->ry)) <= 130)
 				{
 					data->door.is_any_door_nearby = TRUE;
 					data->door.is_open = FALSE;
+					data->door.x = mx;
+					data->door.y = my;
 				}
 			}
 			ray->rx += ray->x0;

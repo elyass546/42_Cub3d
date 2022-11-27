@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/13 19:42:35 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/27 21:40:27 by mkorchi          ###   ########.fr       */
+/*   Created: 2022/11/27 21:37:36 by mkorchi           #+#    #+#             */
+/*   Updated: 2022/11/27 21:39:30 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "main.h"
+# include "main_bonus.h"
 
 int	destroy(t_data *data)
 {
@@ -29,9 +29,11 @@ int	main( int argc, char **argv )
 	pars = parsing(argv[1]);
 	data = init_data(pars);
 	update_screen(data);
+	mlx_hook(data->win, 06, 0, mouse_rotation, data);
 	mlx_hook(data->win, 02, 1L<<0 ,action, data);
 	mlx_hook(data->win, 03, 1L<<1 ,action_key_up, data);
 	mlx_hook(data->win, 17, 0, destroy, data);
+	// mlx_loop_hook(data->mlx, animation, data);
 	mlx_loop(data->mlx);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:10:31 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/26 23:04:12 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/27 22:02:02 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,14 @@ void	draw_wall(t_data *data, t_ray *ray)
 	}
 	if (ray->wall_hit_content == 'D')
 	{
-		if (ray->distF <= 100)
+		if (ray->distF <= 130)
 		{
-			// printf("wall can be opened\n");
-			data->door.is_any_door_nearby = TRUE;
+
 			data->door.x = (int) (ray->wall_hit.x) / TILE_SIZE;
 			data->door.y = (int) (ray->wall_hit.y) / TILE_SIZE;
+			data->door.distance  = ray->distF;
+			data->door.is_any_door_nearby = TRUE;
+			
 		}
 		img = &data->text.door;
 	}
@@ -99,21 +101,9 @@ void	draw_wall(t_data *data, t_ray *ray)
 
 void	cast_single_ray(t_data *data, t_ray *ray)
 {
-	// float	xintercept;
-	// float	yintercept;
-	// float	xstep;
-	// float	ystep;
-
-	int		found_wallH_hit = FALSE;
-	// float	wallH_hit_x;
-	// float	wallH_hit_y;
-	
 	init_ray(ray);
 	find_horizontal_wall(data, ray);
 	find_vertical_wall(data, ray);
-
-	// dda(&data->img, data->player.pos, ray->horizontal_hit, 0x00FF0000);
-
 	ray->distV = calculate_distance(data->player.pos, ray->vertical_hit);
 	ray->distH = calculate_distance(data->player.pos, ray->horizontal_hit);
 
@@ -138,7 +128,6 @@ void	cast_single_ray(t_data *data, t_ray *ray)
 	float ca = rad_addition(data->player.rotation_angle, -ray->ray_angle);
 	ray->distF *= cos(ca);
 	draw_wall(data, ray);
-	
 }
 
 void	cast_rays(t_data *data)
@@ -150,6 +139,9 @@ void	cast_rays(t_data *data)
 	ray.ray_angle = rad_addition(data->player.rotation_angle, -HALF_FOV);
 	ray.h = 0;
 	data->door.is_any_door_nearby = FALSE;
+	data->door.x = -1;
+	data->door.y = -1;
+	data->door.distance = 1000000;
 	while (i < WIDTH)
 	{
 		cast_single_ray(data, &ray);

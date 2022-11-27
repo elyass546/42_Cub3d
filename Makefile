@@ -12,7 +12,7 @@ LIBFT	=	libft/libft.a
 
 HEADERS =	main.h mandatory/parsing/parsing.h  mandatory/raycasting/raycasting.h
 
-HEADERS_BONUS =	main.h bonus/parsing/parsing_bonus.h  bonus/raycasting/raycasting_bonus.h
+HEADERS_BONUS =	main.h bonus/parsing/parsing_bonus.h  bonus/raycasting/raycasting_bonus.h bonus/main_bonus.h
 
 SRC =			main.c															\
 				mandatory/parsing/parsing.c										\
@@ -31,7 +31,7 @@ SRC =			main.c															\
 				mandatory/raycasting/rays.c										\
 				mandatory/raycasting/rays_intersection.c						\
 
-SRC_BONUS =		main.c														\
+SRC_BONUS =		bonus/main_bonus.c														\
 				bonus/parsing/parsing_bonus.c	bonus/parsing/valid_map_bonus.c		\
 				bonus/parsing/ft_split_bonus.c	bonus/parsing/check_map_bonus.c		\
 				bonus/parsing/get_next_line_bonus.c									\

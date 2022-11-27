@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/26 23:04:03 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/27 21:48:29 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,9 +125,6 @@ t_data	*init_data( t_pars *pars )
 	data->i = 0;
 	data->img.img = NULL;
 	data->pars = pars;
-	data->door.is_open = FALSE;
-	data->door.x = -1;
-	data->door.y = -1;
 	init_player_config(data);
 	init_animation_frames(data);
 	return (data);
