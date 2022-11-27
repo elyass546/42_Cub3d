@@ -42,23 +42,25 @@ static float	get_player_angle(char c)
 
 static void	init_animation_frames(t_data *data)
 {
+	int	i;
+	
 	data->text.north.img = mlx_xpm_file_to_image(data->mlx, data->pars->north,
-		&data->frames.x, &data->frames.y);
+		&i, &i);
 	data->text.north.addr = mlx_get_data_addr(data->text.north.img, &data->text.north.bits_per_pixel,
 		&data->text.north.line_length, &data->text.north.endian);
 		
 	data->text.east.img = mlx_xpm_file_to_image(data->mlx, data->pars->east,
-		&data->frames.x, &data->frames.y);
+		&i, &i);
 	data->text.east.addr = mlx_get_data_addr(data->text.east.img, &data->text.east.bits_per_pixel,
 		&data->text.east.line_length, &data->text.east.endian);
 	
 	data->text.west.img = mlx_xpm_file_to_image(data->mlx, data->pars->west,
-		&data->frames.x, &data->frames.y);
+		&i, &i);
 	data->text.west.addr = mlx_get_data_addr(data->text.west.img, &data->text.west.bits_per_pixel,
 		&data->text.west.line_length, &data->text.west.endian);
 
 	data->text.south.img = mlx_xpm_file_to_image(data->mlx, data->pars->south,
-		&data->frames.x, &data->frames.y);
+		&data->i, &data->i);
 	data->text.south.addr = mlx_get_data_addr(data->text.south.img, &data->text.south.bits_per_pixel,
 		&data->text.south.line_length, &data->text.south.endian);
 }
@@ -71,8 +73,6 @@ static void	init_player_config(t_data *data)
 	data->player.turn_direction = 0;
 	data->player.walk_direction = 0;
 	data->player.mouse_rotation = 0;
-	data->frames.x = 0;
-	data->frames.y = 0;
 	data->player.moves = 0;
 	data->player.rotation_angle = get_player_angle(data->pars->player_pos);
 	data->player.walk_speed = 25;
@@ -95,9 +95,6 @@ t_data	*init_data( t_pars *pars )
 	data->i = 0;
 	data->img.img = NULL;
 	data->pars = pars;
-	data->door.is_open = FALSE;
-	data->door.x = -1;
-	data->door.y = -1;
 	init_player_config(data);
 	init_animation_frames(data);
 	return (data);

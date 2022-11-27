@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/27 19:01:08 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/27 21:25:33 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,6 @@
 # include "../parsing/parsing.h"
 # include <mlx.h>
 
-typedef struct s_door {
-	int	is_open;
-	int	is_any_door_nearby;
-	int	x;
-	int	y;
-}	t_door;
-
 typedef struct	s_img {
 	void	*img;
 	char	*addr;
@@ -72,33 +65,12 @@ typedef struct s_textures {
 	t_img	south;
 	t_img	west;
 	t_img	east;
-	t_img	door;
 }	t_textures;
-
-
-typedef struct s_animation {
-	void	*f1;
-	void	*f2;
-	void	*f3;
-	void	*f4;
-	void	*f5;
-	void	*f6;
-	void	*f7;
-	void	*f8;
-	void	*f9;
-	void	*f10;
-	void	*f11;
-	void	*f12;
-	int		x;
-	int		y;
-}	t_animation;
 
 
 typedef struct s_ray
 {
 	float	ray_angle;
-	// float	wall_hit_x;
-	// float	wall_hit_y;
 	int		was_hit_vertical;
 	int		is_ray_facing_up;
 	int		is_ray_facing_down;
@@ -111,9 +83,6 @@ typedef struct s_ray
 	float	distH;
 	float	distF;
 	int		h;
-	char	horizontal_content;
-	char	vertical_content;
-	char	wall_hit_content;
 	float	rx;
 	float	ry;
 	float	x0;
@@ -136,7 +105,6 @@ typedef struct s_player {
 typedef struct s_data
 {
 	t_textures	text;
-	t_animation	frames;
 	void		*mlx;
 	void		*win;
 	t_player	player;
@@ -145,9 +113,6 @@ typedef struct s_data
 	int			height;
 	int			width;
 	int			i;
-	t_door		door;
-	t_img		*current_door_frame;
-	int			action_open;
 }	t_data;
 
 

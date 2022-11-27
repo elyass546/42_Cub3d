@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:42:35 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/27 18:56:26 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/27 21:21:10 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,9 @@ int	main( int argc, char **argv )
 	pars = parsing(argv[1]);
 	data = init_data(pars);
 	update_screen(data);
-	
-	// printf("height of screen : %d\n", pars->row);
-	// printf("width of screen : %d\n", pars->col);
-	// printf("position of the player : %c\n", pars->player_pos);
-
 	mlx_hook(data->win, 02, 1L<<0 ,action, data);
 	mlx_hook(data->win, 03, 1L<<1 ,action_key_up, data);
-	// mlx_hook(data->win, 06, 0, mouse_rotation, data);
 	mlx_hook(data->win, 17, 0, destroy, data);
-	// mlx_loop_hook(data->mlx, animation, data);
 	mlx_loop(data->mlx);
 	return (0);
 }

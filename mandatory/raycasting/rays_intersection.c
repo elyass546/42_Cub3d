@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 19:40:44 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/26 19:41:22 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/27 21:16:35 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,6 @@ void	init_ray(t_ray *ray)
 
 	ray->distH = 100000;
 	ray->distV = 100000;
-
-	ray->wall_hit_content = '0';
-	ray->horizontal_content = '0';
-	ray->vertical_content = '0';
 }
 
 void	find_first_vertical_intersection(t_data *data, t_ray *ray)
@@ -59,23 +55,14 @@ void	find_vertical_wall(t_data *data, t_ray *ray)
 			ray->vertical_hit.y = ray->ry;
 			break ;
 		}
-		if (data->pars->map[my][mx] == '1' || data->pars->map[my][mx] == 'D')
+		if (data->pars->map[my][mx] == '1')
 		{
 			ray->vertical_hit.x = ray->rx;
 			ray->vertical_hit.y = ray->ry;
-			ray->vertical_content = data->pars->map[my][mx];
 			break ;
 		}
 		else
 		{
-			if (data->pars->map[my][mx] == 'O')
-			{
-				if (calculate_distance(data->player.pos, new_point(ray->rx, ray->ry)) <= 100)
-				{
-					data->door.is_any_door_nearby = TRUE;
-					data->door.is_open = FALSE;
-				}
-			}
 			ray->rx += ray->x0;
 			ray->ry += ray->y0;
 		}
@@ -113,23 +100,14 @@ void	find_horizontal_wall(t_data *data, t_ray *ray)
 			ray->horizontal_hit.y = ray->ry;
 			break ;
 		}
-		if (data->pars->map[my][mx] == '1' || data->pars->map[my][mx] == 'D')
+		if (data->pars->map[my][mx] == '1')
 		{
 			ray->horizontal_hit.x = ray->rx;
 			ray->horizontal_hit.y = ray->ry;
-			ray->horizontal_content = data->pars->map[my][mx];
 			break ;
 		}
 		else
 		{
-			if (data->pars->map[my][mx] == 'O')
-			{
-				if (calculate_distance(data->player.pos, new_point(ray->rx, ray->ry)) <= 100)
-				{
-					data->door.is_any_door_nearby = TRUE;
-					data->door.is_open = FALSE;
-				}
-			}
 			ray->rx += ray->x0;
 			ray->ry += ray->y0;
 		}

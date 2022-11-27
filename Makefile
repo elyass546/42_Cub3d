@@ -14,20 +14,22 @@ HEADERS =	main.h mandatory/parsing/parsing.h  mandatory/raycasting/raycasting.h
 
 HEADERS_BONUS =	main.h bonus/parsing/parsing_bonus.h  bonus/raycasting/raycasting_bonus.h
 
-SRC =	main.c															\
-		mandatory/parsing/parsing.c	mandatory/parsing/valid_map.c		\
-		mandatory/parsing/ft_split.c	mandatory/parsing/check_map.c	\
-		mandatory/parsing/get_next_line.c								\
-		mandatory/parsing/map_line_counter.c							\
-		mandatory/parsing/map.c											\
-		mandatory/raycasting/init.c										\
-		mandatory/raycasting/img.c										\
-		mandatory/raycasting/mlx_funs.c									\
-		mandatory/raycasting/actions.c									\
-		mandatory/raycasting/extra_math.c								\
-		mandatory/raycasting/draw.c										\
-		mandatory/raycasting/rays.c										\
-		mandatory/raycasting/rays_intersection.c						\
+SRC =			main.c															\
+				mandatory/parsing/parsing.c										\
+				mandatory/parsing/valid_map.c									\
+				mandatory/parsing/ft_split.c									\
+				mandatory/parsing/check_map.c									\
+				mandatory/parsing/get_next_line.c								\
+				mandatory/parsing/map_line_counter.c							\
+				mandatory/parsing/map.c											\
+				mandatory/raycasting/init.c										\
+				mandatory/raycasting/img.c										\
+				mandatory/raycasting/mlx_funs.c									\
+				mandatory/raycasting/actions.c									\
+				mandatory/raycasting/extra_math.c								\
+				mandatory/raycasting/draw.c										\
+				mandatory/raycasting/rays.c										\
+				mandatory/raycasting/rays_intersection.c						\
 
 SRC_BONUS =		main.c														\
 				bonus/parsing/parsing_bonus.c	bonus/parsing/valid_map_bonus.c		\
