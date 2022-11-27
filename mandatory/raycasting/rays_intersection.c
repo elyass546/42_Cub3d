@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 19:40:44 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/26 21:32:08 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/26 19:41:22 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,10 @@ void	find_vertical_wall(t_data *data, t_ray *ray)
 		{
 			if (data->pars->map[my][mx] == 'O')
 			{
-				if (calculate_distance(data->player.pos, new_point(ray->rx, ray->ry)) <= 140)
+				if (calculate_distance(data->player.pos, new_point(ray->rx, ray->ry)) <= 100)
 				{
 					data->door.is_any_door_nearby = TRUE;
 					data->door.is_open = FALSE;
-					data->door.x = mx;
-					data->door.y = my;
 				}
 			}
 			ray->rx += ray->x0;
@@ -126,12 +124,10 @@ void	find_horizontal_wall(t_data *data, t_ray *ray)
 		{
 			if (data->pars->map[my][mx] == 'O')
 			{
-				if (calculate_distance(data->player.pos, new_point(ray->rx, ray->ry)) <= 140)
+				if (calculate_distance(data->player.pos, new_point(ray->rx, ray->ry)) <= 100)
 				{
 					data->door.is_any_door_nearby = TRUE;
 					data->door.is_open = FALSE;
-					data->door.x = mx;
-					data->door.y = my;
 				}
 			}
 			ray->rx += ray->x0;

@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/27 14:28:40 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/26 19:46:58 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@
 
 # define TILE_SIZE 64
 
-# define SCALE 1
-
 # include "../parsing/parsing.h"
 # include <mlx.h>
 
@@ -75,8 +73,6 @@ typedef struct s_textures {
 	t_img	west;
 	t_img	east;
 	t_img	door;
-	t_img	door2;
-	t_img	door3;
 }	t_textures;
 
 
@@ -101,6 +97,8 @@ typedef struct s_animation {
 typedef struct s_ray
 {
 	float	ray_angle;
+	// float	wall_hit_x;
+	// float	wall_hit_y;
 	int		was_hit_vertical;
 	int		is_ray_facing_up;
 	int		is_ray_facing_down;
@@ -112,6 +110,7 @@ typedef struct s_ray
 	float	distV;
 	float	distH;
 	float	distF;
+	int		h;
 	char	horizontal_content;
 	char	vertical_content;
 	char	wall_hit_content;
@@ -119,7 +118,6 @@ typedef struct s_ray
 	float	ry;
 	float	x0;
 	float	y0;
-	int		x;
 }	t_ray;
 
 
@@ -149,8 +147,6 @@ typedef struct s_data
 	int			width;
 	int			i;
 	t_door		door;
-	t_img		*current_door_frame;
-	int			action_open;
 }	t_data;
 
 

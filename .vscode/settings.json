@@ -5,6 +5,10 @@
         "__locale": "c",
         "sstream": "c",
         "raycasting.h": "c",
-        "mlx.h": "c"
+        "mlx.h": "c",
+        "unistd.h": "c",
+        "stdio.h": "c",
+        "parsing_bonus.h": "c",
+        "raycasting_bonus.h": "c"
     }
 }

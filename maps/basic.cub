@@ -1,12 +1,12 @@
-NO ./frames/wall.xpm
-SO ./frames/cobblestone.xpm
-WE ./frames/coal.xpm
-EA ./frames/greystone.xpm
+NO ./mandatory/frames/wall.xpm
+SO ./mandatory/frames/cobblestone.xpm
+WE ./mandatory/frames/coal.xpm
+EA ./mandatory/frames/greystone.xpm
 
 
 
 F 220,100,0
-C 0,0,0
+C 1,1,1
 
 
         1111111111111111111111111

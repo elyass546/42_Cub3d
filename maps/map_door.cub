@@ -1,7 +1,7 @@
-NO ./frames/wall.xpm
-SO ./frames/cobblestone.xpm
-WE ./frames/coal.xpm
-EA ./frames/greystone.xpm
+NO ./mandatory/frames/wall.xpm
+SO ./mandatory/frames/cobblestone.xpm
+WE ./mandatory/frames/coal.xpm
+EA ./mandatory/frames/greystone.xpm
 
 
 

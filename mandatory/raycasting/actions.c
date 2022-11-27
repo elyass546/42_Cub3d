@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/27 15:03:08 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/26 19:48:48 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,37 +113,6 @@ void	handle_side_walk(int key, t_data *data)
 	}
 }
 
-void	open_door(t_data *data)
-{
-	if (data->door.is_any_door_nearby)
-	{
-		if (data->pars->map[data->door.y][data->door.x] == 'O')
-		{
-			data->pars->map[data->door.y][data->door.x] = 'D';
-			update_screen(data);
-		}
-		else
-		{
-			// data->current_door_frame = &data->text.door2;
-			// update_screen(data);
-			// int	i = 0;
-			// while (i < 1000000000)
-			// 	i++;
-			// data->current_door_frame = &data->text.door3;
-			// update_screen(data);
-			// 	i = 0;
-			// while (i < 1000000000)
-			// 	i++;
-			data->action_open = TRUE;
-			// data->pars->map[data->door.y][data->door.x] = 'O';
-			// data->current_door_frame = &data->text.door3;
-			// update_screen(data);
-		}
-		// update_screen(data);
-		
-	}
-}
-
 // since W and S will behave like the arrows keys
 // we just gonna use the same function
 int	action(int keycode, t_data *data)
@@ -159,7 +128,16 @@ int	action(int keycode, t_data *data)
 	else if (keycode == A_KEY || keycode == D_KEY)
 		handle_side_walk(keycode, data);
 	else if (keycode == SPACE)
-		open_door(data);
+	{
+		if (data->door.is_any_door_nearby)
+		{
+			if (data->pars->map[data->door.y][data->door.x] == 'O')
+				data->pars->map[data->door.y][data->door.x] = 'D';
+			else
+				data->pars->map[data->door.y][data->door.x] = 'O';
+			update_screen(data);
+		}
+	}
 	return (0);
 }
 
