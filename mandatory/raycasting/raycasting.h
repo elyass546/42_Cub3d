@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/26 19:46:58 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/27 19:01:08 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,6 @@ typedef struct s_player {
 	int		height;
 }	t_player;
 
-
 typedef struct s_data
 {
 	t_textures	text;
@@ -147,6 +146,8 @@ typedef struct s_data
 	int			width;
 	int			i;
 	t_door		door;
+	t_img		*current_door_frame;
+	int			action_open;
 }	t_data;
 
 

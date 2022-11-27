@@ -69,6 +69,7 @@ clean :
 
 fclean : clean
 	$(RM) $(NAME)
+	$(RM) $(NAME_BONUS)
 	$(RM) $(LIBFT)
 	@echo [GAME DELETED]
 

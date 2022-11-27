@@ -1,7 +1,7 @@
-NO ./textures/eagle.xpm
-SO ./textures/greystone.xpm
-WE ./textures/wall.xpm
-EA ./textures/greystone.xpm
+NO ./frames/eagle.xpm
+SO ./frames/greystone.xpm
+WE ./frames/wall.xpm
+EA ./frames/greystone.xpm
 
 F 123,100,123
 C 225,123,123
