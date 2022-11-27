@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:42:35 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/25 20:50:29 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/27 14:27:12 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main( int argc, char **argv )
 	mlx_hook(data->win, 03, 1L<<1 ,action_key_up, data);
 	// mlx_hook(data->win, 06, 0, mouse_rotation, data);
 	mlx_hook(data->win, 17, 0, destroy, data);
-	// mlx_loop_hook(data->mlx, animation, data);
+	mlx_loop_hook(data->mlx, animation, data);
 	mlx_loop(data->mlx);
 	return (0);
 }

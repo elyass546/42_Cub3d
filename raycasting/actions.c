@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/27 00:03:25 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/27 15:03:08 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	update_screen(t_data *data)
 	move_player(data);
 	// draw_player(data);
 	cast_rays(data);
-	mlx_clear_window(data->mlx, data->win);
+	// mlx_clear_window(data->mlx, data->win);
 	
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 	// str = ft_itoa(data->player.moves);
@@ -124,7 +124,6 @@ void	open_door(t_data *data)
 		}
 		else
 		{
-			printf("LULE\n");
 			// data->current_door_frame = &data->text.door2;
 			// update_screen(data);
 			// int	i = 0;
@@ -135,9 +134,10 @@ void	open_door(t_data *data)
 			// 	i = 0;
 			// while (i < 1000000000)
 			// 	i++;
-			data->pars->map[data->door.y][data->door.x] = 'O';
-			data->current_door_frame = &data->text.door3;
-			update_screen(data);
+			data->action_open = TRUE;
+			// data->pars->map[data->door.y][data->door.x] = 'O';
+			// data->current_door_frame = &data->text.door3;
+			// update_screen(data);
 		}
 		// update_screen(data);
 		

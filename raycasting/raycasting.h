@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/26 23:32:29 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/27 14:28:40 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,7 @@ typedef struct s_data
 	int			i;
 	t_door		door;
 	t_img		*current_door_frame;
+	int			action_open;
 }	t_data;
 
 

@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 21:10:30 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/25 16:03:27 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/27 15:16:28 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,37 @@ void	update_and_animate(t_data *data)
 
 int	animation(t_data *data)
 {
-	update_and_animate(data);
-	// update_screen(vars);
-	if (data->i == 60)
-		data->i = 0;
-	data->i++;
+	static int	i = 0;
+
+	if (data->action_open)
+	{
+		if (i < 2)
+		{
+			data->current_door_frame = &data->text.door2;
+			update_screen(data);
+		}
+		else if (i < 4)
+		{
+			data->current_door_frame = &data->text.door3;
+			update_screen(data);
+		}
+		else if ( i < 6)
+		{
+			data->current_door_frame = &data->text.door;
+			data->action_open = FALSE;
+
+			data->pars->map[data->door.y][data->door.x] = 'O';
+			update_screen(data);
+			i = 0;
+		}
+		i++;
+	}
+	// if (i == 100)
+	// 	i = 0
+	// update_and_animate(data);
+	// // update_screen(vars);
+	// if (data->i == 60)
+	// 	data->i = 0;
+	// data->i++;
 	return (0);
 }

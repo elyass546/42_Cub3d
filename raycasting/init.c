@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/26 23:43:30 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/27 14:36:18 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ t_data	*init_data( t_pars *pars )
 	data->door.is_open = FALSE;
 	data->door.x = -1;
 	data->door.y = -1;
+	data->action_open = FALSE;
 	init_player_config(data);
 	init_animation_frames(data);
 	data->current_door_frame = &data->text.door;
