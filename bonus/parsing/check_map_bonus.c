@@ -6,11 +6,34 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:27:46 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/26 23:01:34 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/27 22:55:48 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing_bonus.h"
+
+void	door_not_in_edges(t_pars *pars)
+{
+	int	i;
+	int	j;
+	int	len;
+
+	i = 0;
+	while (pars->map[i])
+	{
+		len = ft_strlen(pars->map[i]) - 1;
+		j = 0;
+		if (pars->map[i][j] == 'D' || pars->map[i][len] == 'D')
+				ft_error("You can't set a door in map's edge\n");
+		while (pars->map[i][j])
+		{
+			if (pars->map[0][j] == 'D' || pars->map[pars->row][j] == 'D')
+				ft_error("You can't set a door in map's edge\n");
+			j++;
+		}
+		i++;
+	}
+}
 
 void	ft_error(char *str)
 {

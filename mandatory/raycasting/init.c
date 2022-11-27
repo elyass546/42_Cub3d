@@ -40,10 +40,10 @@ static float	get_player_angle(char c)
 	return (PI);
 }
 
-static void	init_animation_frames(t_data *data)
+static void	init_textures(t_data *data)
 {
 	int	i;
-	
+
 	data->text.north.img = mlx_xpm_file_to_image(data->mlx, data->pars->north,
 		&i, &i);
 	data->text.north.addr = mlx_get_data_addr(data->text.north.img, &data->text.north.bits_per_pixel,
@@ -96,6 +96,6 @@ t_data	*init_data( t_pars *pars )
 	data->img.img = NULL;
 	data->pars = pars;
 	init_player_config(data);
-	init_animation_frames(data);
+	init_textures(data);
 	return (data);
 }

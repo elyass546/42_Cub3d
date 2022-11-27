@@ -1,12 +1,12 @@
-NO ./mandatory/frames/wall.xpm
-SO ./mandatory/frames/cobblestone.xpm
-WE ./mandatory/frames/coal.xpm
-EA ./mandatory/frames/greystone.xpm
+NO ./textures/wall.xpm
+SO ./textures/cobblestone.xpm
+WE ./textures/coal.xpm
+EA ./textures/greystone.xpm
 
 
 
 F 220,100,0
-C 1,1,1
+C 0,0,1
 
 
         1111111111111111111111111
@@ -22,4 +22,4 @@ C 1,1,1
 10000000010000001101010010001
 11000001110101011111011000N0111
 11110111 1110101 101111010001
-11111111 1111111 111111111111
+11111111 1111111 11111111D111

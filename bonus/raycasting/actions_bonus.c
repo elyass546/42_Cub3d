@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/26 21:31:16 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/27 21:36:26 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,12 @@ void	update_screen(t_data *data)
 	// free(str2);
 }
 
-void	handle_arrows(int keycode, t_data *data)
+void	handle_arrows(int keycode, t_data *data, int rotation_speed)
 {
 	if (keycode == RIGHT)
-		data->player.turn_direction = 1;
+		data->player.turn_direction = rotation_speed;
 	else if (keycode == LEFT)
-		data->player.turn_direction = -1;
+		data->player.turn_direction = -rotation_speed;
 	else if (keycode == UP)
 	{
 		data->player.moves++;
@@ -120,11 +120,11 @@ int	action(int keycode, t_data *data)
 	if (keycode == ESC)
 		free_exit(data, 0);
 	else if (keycode >= LEFT && keycode <= UP)
-		handle_arrows(keycode, data);
+		handle_arrows(keycode, data, 1);
 	else if (keycode == W_KEY)
-		handle_arrows(UP, data);
+		handle_arrows(UP, data, 1);
 	else if (keycode == S_KEY)
-		handle_arrows(DOWN, data);
+		handle_arrows(DOWN, data, 1);
 	else if (keycode == A_KEY || keycode == D_KEY)
 		handle_side_walk(keycode, data);
 	else if (keycode == SPACE)

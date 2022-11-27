@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_bonus.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/27 21:56:17 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/27 22:14:21 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,7 @@ int			action_key_up(int keycode, t_data *data);
 void		update_screen(t_data *data);
 
 //			mouse_rotation.c && action.c
-void		handle_arrows(int keycode, t_data *data);
+void		handle_arrows(int keycode, t_data *data, int rotation_speed);
 int			mouse_rotation(int x, int y, t_data *data);
 
 //			animation

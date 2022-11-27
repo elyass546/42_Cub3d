@@ -10,12 +10,16 @@ CFLAGS = -fsanitize=address -g3
 
 LIBFT	=	libft/libft.a
 
-HEADERS =	main.h mandatory/parsing/parsing.h  mandatory/raycasting/raycasting.h
+HEADERS =	main.h mandatory/parsing/parsing.h	\
+			mandatory/raycasting/raycasting.h
 
-HEADERS_BONUS =	main.h bonus/parsing/parsing_bonus.h  bonus/raycasting/raycasting_bonus.h bonus/main_bonus.h
+HEADERS_BONUS =	main.h bonus/parsing/parsing_bonus.h  	\
+				bonus/raycasting/raycasting_bonus.h		\
+				bonus/main_bonus.h
 
 SRC =			main.c															\
 				mandatory/parsing/parsing.c										\
+				mandatory/parsing/check_textures_path.c							\
 				mandatory/parsing/valid_map.c									\
 				mandatory/parsing/ft_split.c									\
 				mandatory/parsing/check_map.c									\
@@ -31,13 +35,17 @@ SRC =			main.c															\
 				mandatory/raycasting/rays.c										\
 				mandatory/raycasting/rays_intersection.c						\
 
-SRC_BONUS =		bonus/main_bonus.c														\
-				bonus/parsing/parsing_bonus.c	bonus/parsing/valid_map_bonus.c		\
-				bonus/parsing/ft_split_bonus.c	bonus/parsing/check_map_bonus.c		\
+SRC_BONUS =		bonus/main_bonus.c													\
+				bonus/parsing/parsing_bonus.c										\
+				bonus/parsing/valid_map_bonus.c										\
+				bonus//parsing/check_textures_path_bonus.c							\
+				bonus/parsing/ft_split_bonus.c										\
+				bonus/parsing/check_map_bonus.c										\
 				bonus/parsing/get_next_line_bonus.c									\
 				bonus/parsing/map_line_counter_bonus.c								\
 				bonus/parsing/map_bonus.c											\
-				bonus/raycasting/init_bonus.c	bonus/raycasting/animation_bonus.c	\
+				bonus/raycasting/init_bonus.c										\
+				bonus/raycasting/animation_bonus.c									\
 				bonus/raycasting/mouse_rotation_bonus.c								\
 				bonus/raycasting/img_bonus.c										\
 				bonus/raycasting/mlx_funs_bonus.c									\

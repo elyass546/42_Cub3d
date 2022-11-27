@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:01 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/26 21:30:02 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/27 22:22:19 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	parsing_helper(char *line, t_pars *pars, int fd, char *file)
 		free(line);
 		line = get_next_line(fd);
 	}
+	check_textures_path(pars);
 }
 
 // main function

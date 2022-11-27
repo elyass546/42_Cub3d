@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:05 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/26 22:17:48 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/27 22:51:06 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int		set_colors(char *str);
 int		is_playerchar(char c);
 int		map_name_checker(char *str);
 int		is_map(char *line, t_pars *pars);
+int		opening_textures_path(char *file);
 int		check_line_helper(char *line, t_pars *pars);
 
 void	ft_error(char *str);
@@ -67,6 +68,8 @@ void	west(t_pars *pars, char *str);
 void	east(t_pars *pars, char *str);
 void	south(t_pars *pars, char *str);
 void	north(t_pars *pars, char *str);
+void	door_not_in_edges(t_pars *pars);
+void	check_textures_path(t_pars *pars);
 void	is_surrounded_by_walls(t_pars *data);
 void	check_line(char *line, t_pars *pars);
 void	colors_checker(t_pars *pars, char *line);
