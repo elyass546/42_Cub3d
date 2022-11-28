@@ -72,6 +72,7 @@ static void	init_player_config(t_data *data)
 	data->player.pos.y = data->pars->player_y * TILE_SIZE;
 	data->player.turn_direction = 0;
 	data->player.walk_direction = 0;
+	data->player.side_direction = 0;
 	data->player.mouse_rotation = 0;
 	data->player.moves = 0;
 	data->player.rotation_angle = get_player_angle(data->pars->player_pos);

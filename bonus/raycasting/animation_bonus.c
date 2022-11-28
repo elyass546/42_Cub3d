@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 21:10:30 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/28 17:13:30 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/28 21:14:00 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,6 @@ void	animate(t_data *data)
 		mlx_put_image_to_window(data->mlx, data->win, data->frames.f10, 75, 0);
 	else if (data->i < 55)
 		mlx_put_image_to_window(data->mlx, data->win, data->frames.f11, 75, 0);
-	else if (data->i < 60)
+	else if (data->i <= 60)
 		mlx_put_image_to_window(data->mlx, data->win, data->frames.f12, 75, 0);
-}
-
-void	update_and_animate(t_data *data)
-{
-	mlx_clear_window(data->mlx, data->win);
-	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
-}
-
-int	animation(t_data *data)
-{
-	update_and_animate(data);
-	if (data->i == 60)
-		data->i = 0;
-	data->i++;
-	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/28 18:58:25 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/28 21:48:46 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,32 +23,32 @@ int	wall_collision(t_data *data, float x, float y)
 	if (data->pars->map[grid_y][grid_x] != '0' && data->pars->map[grid_y][grid_x] != 'O')
 		return TRUE;
 	angle = data->player.rotation_angle;
-	if (is_ray_facing_down(angle))
-	{
-		if (is_ray_facing_right(angle))
-		{
-			if (data->pars->map[grid_y - 1][grid_x] != '0' && data->pars->map[grid_y][grid_x - 1] != '0')
-				return TRUE;
-		}
-		else
-		{
-			if (data->pars->map[grid_y - 1][grid_x] != '0' && data->pars->map[grid_y][grid_x + 1] != '0')
-				return TRUE;
-		}
-	}
-	else
-	{
-		if (is_ray_facing_right(angle))
-		{
-			if (data->pars->map[grid_y][grid_x - 1] != '0' && data->pars->map[grid_y + 1][grid_x] != '0')
-				return TRUE;
-		}
-		else
-		{
-			if (data->pars->map[grid_y][grid_x + 1] != '0' && data->pars->map[grid_y + 1][grid_x] != '0')
-				return TRUE;
-		}
-	}
+	// if (is_ray_facing_down(angle))
+	// {
+	// 	if (is_ray_facing_right(angle))
+	// 	{
+	// 		if (data->pars->map[grid_y - 1][grid_x] != '0' && data->pars->map[grid_y][grid_x - 1] != '0')
+	// 			return TRUE;
+	// 	}
+	// 	else
+	// 	{
+	// 		if (data->pars->map[grid_y - 1][grid_x] != '0' && data->pars->map[grid_y][grid_x + 1] != '0')
+	// 			return TRUE;
+	// 	}
+	// }
+	// else
+	// {
+	// 	if (is_ray_facing_right(angle))
+	// 	{
+	// 		if (data->pars->map[grid_y][grid_x - 1] != '0' && data->pars->map[grid_y + 1][grid_x] != '0')
+	// 			return TRUE;
+	// 	}
+	// 	else
+	// 	{
+	// 		if (data->pars->map[grid_y][grid_x + 1] != '0' && data->pars->map[grid_y + 1][grid_x] != '0')
+	// 			return TRUE;
+	// 	}
+	// }
 	return FALSE;
 }
 
