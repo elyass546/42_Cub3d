@@ -77,7 +77,6 @@ clean :
 	$(RM) $(OBJ)
 	$(RM) $(OBJ_BONUS)
 	@make clean -C ./libft
-	@make clean -C ./minilibx
 	@echo [OBJECTS DELETED]
 
 fclean : clean

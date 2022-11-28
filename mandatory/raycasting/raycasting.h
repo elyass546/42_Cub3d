@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/28 15:11:13 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/28 18:58:52 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 # define TILE_SIZE 64
 
 # include "../parsing/parsing.h"
-# include <mlx.h>
+# include "../../minilibx/mlx.h"
 
 typedef struct	s_img {
 	void	*img;

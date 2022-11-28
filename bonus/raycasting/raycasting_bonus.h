@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/28 15:17:43 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/28 18:39:17 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 # define TILE_SIZE 64
 
 # include "../parsing/parsing_bonus.h"
-# include <mlx.h>
+# include "../../minilibx/mlx.h"
 
 typedef struct s_door {
 	int		is_open;
