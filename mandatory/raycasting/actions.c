@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/28 22:55:41 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/28 23:00:02 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,13 +109,9 @@ void	handle_arrows(int keycode, t_data *data)
 void	handle_side_walk(int key, t_data *data)
 {
 	if (key == A_KEY)
-	{
 		data->player.side_direction = -1;
-	}
 	else
-	{
 		data->player.side_direction = 1;
-	}
 }
 
 // since W and S will behave like the arrows keys

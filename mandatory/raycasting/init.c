@@ -76,7 +76,7 @@ static void	init_player_config(t_data *data)
 	data->player.mouse_rotation = 0;
 	data->player.moves = 0;
 	data->player.rotation_angle = get_player_angle(data->pars->player_pos);
-	data->player.walk_speed = 10;
+	data->player.walk_speed = 5;
 	data->player.turn_speed = deg2rad(2);
 	data->player.height = 5;
 }
