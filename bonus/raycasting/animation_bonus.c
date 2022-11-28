@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 21:10:30 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/26 23:03:49 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/28 17:13:30 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,13 @@ void	animate(t_data *data)
 
 void	update_and_animate(t_data *data)
 {
-	// update_screen(data);
 	mlx_clear_window(data->mlx, data->win);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
-	animate(data);
 }
 
 int	animation(t_data *data)
 {
 	update_and_animate(data);
-	// update_screen(vars);
 	if (data->i == 60)
 		data->i = 0;
 	data->i++;

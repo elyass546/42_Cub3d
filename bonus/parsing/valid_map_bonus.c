@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:11 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/27 22:58:39 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/28 17:15:53 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	is_surrounded_by_walls(t_pars *pars)
 	map = pars->map;
 	if (!map[i] || !map[i][0])
 		ft_error("Empty map!\n");
-	door_not_in_edges(pars);
+	// door_not_in_edges(pars);
 	while (map[i])
 	{
 		is_surrounded_helper(map, pars, i);
