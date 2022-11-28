@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:27:46 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/28 18:12:40 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/28 18:28:43 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ void	door_not_in_edges(char **map, int i)
 			|| check_line1(map[i + 1], j) || check_line1(map[i - 1], j)
 			|| is_space(map[i - 1][j]) || is_space(map[i + 1][j])
 			|| is_space(map[i][j - 1]) || is_space(map[i][j + 1])))
-			{
-				printf("line is : %s\n", map[i]);
 				ft_error("Please check your door!\n");
-			}
 		j++;
 	}
 }
