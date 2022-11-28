@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 19:09:09 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/27 21:35:14 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/28 15:29:57 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 //move with mouse
 
-int		mouse_rotation(int	x, int y, t_data *param)
+int		mouse_rotation(int x, int y, t_data *param)
 {
 	(void)y;
-	int	rotation_speed;
 
-	rotation_speed = abs(param->player.mouse_rotation - x);
 	if (param->player.mouse_rotation < x)
-		handle_arrows(RIGHT, param, rotation_speed);
+		handle_arrows(RIGHT, param, x - param->player.mouse_rotation);
 	else if (param->player.mouse_rotation > x)
-		handle_arrows(LEFT, param, rotation_speed);
+		handle_arrows(LEFT, param, param->player.mouse_rotation - x);
 	param->player.mouse_rotation = x;
 	return (0);
 }

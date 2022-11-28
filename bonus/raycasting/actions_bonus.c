@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/27 21:36:26 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/28 15:31:00 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	move_player(t_data *data)
 	t_player	*player;
 	
 	player = &data->player;
-	
 	player->rotation_angle += player->turn_direction * player->turn_speed;
+	// printf("check turn speed %f\n", data->player.turn_speed);
 	if (player->rotation_angle < 0)
 		player->rotation_angle += 2 * PI;
 	if (player->rotation_angle > 2 * PI)
@@ -46,26 +46,16 @@ void	move_player(t_data *data)
 
 void	update_screen(t_data *data)
 {
-	// char *str;
-	// char *str2;
-
 	create_new_img(data);
 	// draw_walls(data);
 	move_player(data);
 	// draw_player(data);
 	cast_rays(data);
 	// mlx_clear_window(data->mlx, data->win);
-	
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
-	// str = ft_itoa(data->player.moves);
-	// str2 = ft_strjoin("Player moves : ", str);
-	// mlx_string_put(data->mlx, data->win, WIDTH - 220, 5, 0xFF23AB, str2);
-	// mlx_loop_hook(data->mlx, animation, data);
-	// free(str);
-	// free(str2);
 }
 
-void	handle_arrows(int keycode, t_data *data, int rotation_speed)
+void	handle_arrows(int keycode, t_data *data, float rotation_speed)
 {
 	if (keycode == RIGHT)
 		data->player.turn_direction = rotation_speed;
@@ -78,10 +68,11 @@ void	handle_arrows(int keycode, t_data *data, int rotation_speed)
 	}
 	else if (keycode == DOWN)
 	{
-		data->player.moves++;		
+		data->player.moves++;
 		data->player.walk_direction = -1;
 	}
 	update_screen(data);
+	rotation_speed = 1;
 	// animate(data);
 }
 
