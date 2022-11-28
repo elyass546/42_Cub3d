@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:11 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/28 17:15:53 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/28 18:54:44 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	is_surrounded_by_walls(t_pars *pars)
 	while (map[i])
 	{
 		is_surrounded_helper(map, pars, i);
+		door_not_in_edges(map, i);
 		player_pos(map[i], pars, i);
 		i++;
 	}

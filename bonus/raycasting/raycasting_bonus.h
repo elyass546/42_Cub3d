@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/27 22:14:21 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/28 15:17:43 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ typedef struct s_player {
 	t_point	pos;
 	int		turn_direction;
 	int		walk_direction;	
-	int		mouse_rotation; // rotation using mouse
+	float	mouse_rotation; // rotation using mouse
 	float	rotation_angle; 
 	float	walk_speed;
 	float	turn_speed;
@@ -161,7 +161,7 @@ int			action_key_up(int keycode, t_data *data);
 void		update_screen(t_data *data);
 
 //			mouse_rotation.c && action.c
-void		handle_arrows(int keycode, t_data *data, int rotation_speed);
+void		handle_arrows(int keycode, t_data *data, float rotation_speed);
 int			mouse_rotation(int x, int y, t_data *data);
 
 //			animation
