@@ -4,6 +4,8 @@ NAME_BONUS = cub3D_bonus
 
 CC = @cc
 
+MINILIBX = ./minilibx/libmlx.a
+
 RM = @rm -f
 
 CFLAGS = -fsanitize=address -g3
@@ -65,7 +67,7 @@ all :	$(NAME)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(OBJ)  $(LIBFT)
-	@gcc -Wall -Wextra -Werror -fsanitize=address -g3 $(LIBFT) -lmlx -framework OpenGL -framework AppKit  $(OBJ) -o $(NAME)
+	@gcc -Wall -Wextra -Werror -fsanitize=address -g3 $(LIBFT) $(MINILIBX) -lmlx -framework OpenGL -framework AppKit  $(OBJ) -o $(NAME)
 	@echo [GAME CREATED]
 
 $(LIBFT):
@@ -75,10 +77,12 @@ clean :
 	$(RM) $(OBJ)
 	$(RM) $(OBJ_BONUS)
 	@make clean -C ./libft
+	@make clean -C ./minilibx
 	@echo [OBJECTS DELETED]
 
 fclean : clean
 	$(RM) $(NAME)
+	$(RM) $(MINILIBX)
 	$(RM) $(NAME_BONUS)
 	$(RM) $(LIBFT)
 	@echo [GAME DELETED]
@@ -89,7 +93,7 @@ bonus : $(NAME_BONUS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME_BONUS):	$(OBJ_BONUS)  $(LIBFT)
-	$(CC) $(CFLAGS) $(LIBFT) -lmlx -framework OpenGL -framework AppKit  $(OBJ_BONUS) -o $(NAME_BONUS)
+	@gcc -Wall -Wextra -Werror -fsanitize=address -g3 $(LIBFT)  $(MINILIBX) -lmlx -framework OpenGL -framework AppKit  $(OBJ_BONUS) -o $(NAME_BONUS)
 	@echo [GAME BONUS CREATED]
 
 re : fclean all
