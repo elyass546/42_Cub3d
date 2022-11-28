@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/28 15:31:00 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/28 15:45:58 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ void	update_screen(t_data *data)
 void	handle_arrows(int keycode, t_data *data, float rotation_speed)
 {
 	if (keycode == RIGHT)
-		data->player.turn_direction = rotation_speed;
+		data->player.turn_direction = 1;
 	else if (keycode == LEFT)
-		data->player.turn_direction = -rotation_speed;
+		data->player.turn_direction = -1;
 	else if (keycode == UP)
 	{
 		data->player.moves++;
@@ -72,7 +72,6 @@ void	handle_arrows(int keycode, t_data *data, float rotation_speed)
 		data->player.walk_direction = -1;
 	}
 	update_screen(data);
-	rotation_speed = 1;
 	// animate(data);
 }
 

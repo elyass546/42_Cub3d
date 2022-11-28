@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:11 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/28 13:54:37 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/28 15:41:26 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	is_surrounded_helper(char **map, t_pars *pars, int i)
 			|| is_space(map[i - 1][j]) || is_space(map[i + 1][j])
 			|| is_space(map[i][j - 1]) || is_space(map[i][j + 1])))
 			ft_error("Please check your map!\n");
+			
 		if (!is_mapchar(map[i][j]))
 			ft_error("Wrong element inside your map!\n");
 		j++;
