@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 19:09:09 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/28 18:53:48 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/28 20:21:06 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int		mouse_rotation(int x, int y, t_data *param)
 		handle_arrows(LEFT, param, param->player.mouse_rotation - x);
 	param->player.mouse_rotation = x;
 	param->player.turn_direction = 0;
+	mlx_
 	return (0);
 }

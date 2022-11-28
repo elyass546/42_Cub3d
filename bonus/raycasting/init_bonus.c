@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/27 21:48:29 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/28 19:42:32 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,30 +43,30 @@ static float	get_player_angle(char c)
 static void	init_animation_frames(t_data *data)
 {
 	// init frame from xpm file to image
-	// data->frames.f1 = mlx_xpm_file_to_image(data->mlx, "./frames/frame1.xpm",
-	// 	&data->frames.x, &data->frames.y);
-	// data->frames.f2 = mlx_xpm_file_to_image(data->mlx, "./frames/frame2.xpm",
-	// 	&data->frames.x, &data->frames.y);
-	// data->frames.f3 = mlx_xpm_file_to_image(data->mlx, "./frames/frame3.xpm",
-	// 	&data->frames.x, &data->frames.y);
-	// data->frames.f4 = mlx_xpm_file_to_image(data->mlx, "./frames/frame4.xpm",
-	// 	&data->frames.x, &data->frames.y);
-	// data->frames.f5 = mlx_xpm_file_to_image(data->mlx, "./frames/frame5.xpm",
-	// 	&data->frames.x, &data->frames.y);
-	// data->frames.f6 = mlx_xpm_file_to_image(data->mlx, "./frames/frame6.xpm",
-	// 	&data->frames.x, &data->frames.y);
-	// data->frames.f7 = mlx_xpm_file_to_image(data->mlx, "./frames/frame7.xpm",
-	// 	&data->frames.x, &data->frames.y);
-	// data->frames.f8 = mlx_xpm_file_to_image(data->mlx, "./frames/frame8.xpm",
-	// 	&data->frames.x, &data->frames.y);
-	// data->frames.f9 = mlx_xpm_file_to_image(data->mlx, "./frames/frame9.xpm",
-	// 	&data->frames.x, &data->frames.y);
-	// data->frames.f10 = mlx_xpm_file_to_image(data->mlx, "./frames/frame10.xpm",
-	// 	&data->frames.x, &data->frames.y);
-	// data->frames.f11 = mlx_xpm_file_to_image(data->mlx, "./frames/frame11.xpm",
-	// 	&data->frames.x, &data->frames.y);
-	// data->frames.f12 = mlx_xpm_file_to_image(data->mlx, "./frames/frame12.xpm",
-	// 	&data->frames.x, &data->frames.y);
+	data->frames.f1 = mlx_xpm_file_to_image(data->mlx, "./sprites/frame1.xpm",
+		&data->frames.x, &data->frames.y);
+	data->frames.f2 = mlx_xpm_file_to_image(data->mlx, "./sprites/frame2.xpm",
+		&data->frames.x, &data->frames.y);
+	data->frames.f3 = mlx_xpm_file_to_image(data->mlx, "./sprites/frame3.xpm",
+		&data->frames.x, &data->frames.y);
+	data->frames.f4 = mlx_xpm_file_to_image(data->mlx, "./sprites/frame4.xpm",
+		&data->frames.x, &data->frames.y);
+	data->frames.f5 = mlx_xpm_file_to_image(data->mlx, "./sprites/frame5.xpm",
+		&data->frames.x, &data->frames.y);
+	data->frames.f6 = mlx_xpm_file_to_image(data->mlx, "./sprites/frame6.xpm",
+		&data->frames.x, &data->frames.y);
+	data->frames.f7 = mlx_xpm_file_to_image(data->mlx, "./sprites/frame7.xpm",
+		&data->frames.x, &data->frames.y);
+	data->frames.f8 = mlx_xpm_file_to_image(data->mlx, "./sprites/frame8.xpm",
+		&data->frames.x, &data->frames.y);
+	data->frames.f9 = mlx_xpm_file_to_image(data->mlx, "./sprites/frame9.xpm",
+		&data->frames.x, &data->frames.y);
+	data->frames.f10 = mlx_xpm_file_to_image(data->mlx, "./sprites/frame10.xpm",
+		&data->frames.x, &data->frames.y);
+	data->frames.f11 = mlx_xpm_file_to_image(data->mlx, "./sprites/frame11.xpm",
+		&data->frames.x, &data->frames.y);
+	data->frames.f12 = mlx_xpm_file_to_image(data->mlx, "./sprites/frame12.xpm",
+		&data->frames.x, &data->frames.y);
 	data->text.north.img = mlx_xpm_file_to_image(data->mlx, data->pars->north,
 		&data->frames.x, &data->frames.y);
 	data->text.north.addr = mlx_get_data_addr(data->text.north.img, &data->text.north.bits_per_pixel,

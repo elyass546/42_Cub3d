@@ -82,7 +82,6 @@ clean :
 
 fclean : clean
 	$(RM) $(NAME)
-	$(RM) $(MINILIBX)
 	$(RM) $(NAME_BONUS)
 	$(RM) $(LIBFT)
 	@echo [GAME DELETED]
