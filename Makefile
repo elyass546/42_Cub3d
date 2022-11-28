@@ -77,12 +77,10 @@ clean :
 	$(RM) $(OBJ)
 	$(RM) $(OBJ_BONUS)
 	@make clean -C ./libft
-	@make clean -C ./minilibx
 	@echo [OBJECTS DELETED]
 
 fclean : clean
 	$(RM) $(NAME)
-	$(RM) $(MINILIBX)
 	$(RM) $(NAME_BONUS)
 	$(RM) $(LIBFT)
 	@echo [GAME DELETED]

@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/28 15:45:58 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/28 18:52:19 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	move_player(t_data *data)
 	
 	player = &data->player;
 	player->rotation_angle += player->turn_direction * player->turn_speed;
-	// printf("check turn speed %f\n", data->player.turn_speed);
 	if (player->rotation_angle < 0)
 		player->rotation_angle += 2 * PI;
 	if (player->rotation_angle > 2 * PI)
