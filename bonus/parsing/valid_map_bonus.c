@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:11 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/28 15:41:26 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/28 18:05:56 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ void	is_surrounded_helper(char **map, t_pars *pars, int i)
 			|| is_space(map[i - 1][j]) || is_space(map[i + 1][j])
 			|| is_space(map[i][j - 1]) || is_space(map[i][j + 1])))
 			ft_error("Please check your map!\n");
-			
 		if (!is_mapchar(map[i][j]))
 			ft_error("Wrong element inside your map!\n");
 		j++;
@@ -91,10 +90,10 @@ void	is_surrounded_by_walls(t_pars *pars)
 	map = pars->map;
 	if (!map[i] || !map[i][0])
 		ft_error("Empty map!\n");
-	// door_not_in_edges(pars);
 	while (map[i])
 	{
 		is_surrounded_helper(map, pars, i);
+		door_not_in_edges(map, i);
 		player_pos(map[i], pars, i);
 		i++;
 	}
