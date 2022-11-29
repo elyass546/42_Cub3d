@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_bonus.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/29 14:04:47 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/29 16:08:57 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define ESC 53
 # define SPACE 49
 
+# define SHOOT_KEY 1
 # define A_KEY 0
 # define D_KEY 2
 # define S_KEY 1
@@ -94,6 +95,8 @@ typedef struct s_animation {
 	void	*f10;
 	void	*f11;
 	void	*f12;
+	void	*weapon1;
+	void	*weapon2;
 	int		x;
 	int		y;
 }	t_animation;
@@ -152,10 +155,12 @@ typedef struct s_data
 	int			height;
 	int			width;
 	int			i;
+	int			j;
 	t_door		door;
 	t_img		*current_door_frame;
 	int			action_open;
 	int			action_close;
+	int			action_shoot;
 }	t_data;
 
 
@@ -175,6 +180,8 @@ int			mouse_rotation(int x, int y, t_data *data);
 //			animation
 void		animate(t_data *data);
 
+//			weapon sprite
+int			shoot_with_mouse(t_data *data);
 
 //			img.c
 void			create_new_img(t_data *data);

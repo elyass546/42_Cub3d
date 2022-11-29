@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/29 14:07:55 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/29 16:12:47 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ static float	get_player_angle(char c)
 static void	init_animation_frames(t_data *data)
 {
 	// init frame from xpm file to image
+	data->frames.weapon1 = mlx_xpm_file_to_image(data->mlx, "./sprites/weapon_1.xpm",
+		&data->frames.x, &data->frames.y);
+	data->frames.weapon2 = mlx_xpm_file_to_image(data->mlx, "./sprites/weapon_2.xpm",
+		&data->frames.x, &data->frames.y);
 	data->frames.f1 = mlx_xpm_file_to_image(data->mlx, "./sprites/frame1.xpm",
 		&data->frames.x, &data->frames.y);
 	data->frames.f2 = mlx_xpm_file_to_image(data->mlx, "./sprites/frame2.xpm",
@@ -142,5 +146,6 @@ t_data	*init_data( t_pars *pars )
 	data->current_door_frame = &data->text.door;
 	data->action_close = FALSE;
 	data->action_open = FALSE;
+	data->action_shoot = FALSE;
 	return (data);
 }
