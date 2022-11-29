@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/28 21:48:46 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/29 14:51:28 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,19 @@ void	move_player(t_data *data)
 	t_player	*player;
 	
 	player = &data->player;
+	
 	player->rotation_angle += player->turn_direction * player->turn_speed;
 	if (player->rotation_angle < 0)
 		player->rotation_angle += 2 * PI;
 	if (player->rotation_angle > 2 * PI)
 		player->rotation_angle -= 2 * PI;
 	move_step = player->walk_direction * player->walk_speed;
-	
-	new_player_pos.x = player->pos.x + cos(player->rotation_angle) * move_step;
-	new_player_pos.y = player->pos.y + sin(player->rotation_angle) * move_step;
+	if (player->side_direction)
+		move_step = player->walk_speed;
+	new_player_pos.x = player->pos.x + cos(rad_addition(player->rotation_angle
+		, (PI / 2 * player->side_direction))) * move_step;
+	new_player_pos.y = player->pos.y + sin(rad_addition(player->rotation_angle
+		, (PI / 2 * player->side_direction))) * move_step;
 	if (!wall_collision(data, new_player_pos.x, new_player_pos.y))
 		player->pos = new_player_pos;
 }
@@ -75,10 +79,11 @@ void	move_player(t_data *data)
 void	update_screen(t_data *data)
 {
 	create_new_img(data);
-	// draw_walls(data);
 	move_player(data);
 	// draw_player(data);
 	cast_rays(data);
+	draw_minimap(data);
+	draw_player(data);
 	// mlx_clear_window(data->mlx, data->win);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }
@@ -103,28 +108,10 @@ void	handle_arrows(int keycode, t_data *data, float rotation_speed)
 
 void	handle_side_walk(int key, t_data *data)
 {
-	float	new_angle;
-
 	if (key == A_KEY)
-	{
-		data->player.moves++;
-		new_angle = data->player.rotation_angle - PI / 2;
-		if ( new_angle < 0 )
-			new_angle += 2 * PI;
-	}
+		data->player.side_direction = -1;
 	else
-	{
-		data->player.moves++;
-		new_angle = data->player.rotation_angle + PI / 2;
-		if ( new_angle > 2 * PI)
-			new_angle -= 2 * PI;
-	}
-	if ( !wall_collision(data, data->player.pos.x + cos(new_angle) * data->player.walk_speed,
-		data->player.pos.y + sin(new_angle) * data->player.walk_speed))
-	{
-		data->player.pos.x += cos(new_angle) * data->player.walk_speed;
-		data->player.pos.y += sin(new_angle) * data->player.walk_speed;
-	}
+		data->player.side_direction = 1;
 }
 
 // since W and S will behave like the arrows keys
@@ -145,10 +132,10 @@ int	action(int keycode, t_data *data)
 	{
 		if (data->door.is_any_door_nearby)
 		{
-			if (data->pars->map[data->door.y][data->door.x] == 'O')
-				data->pars->map[data->door.y][data->door.x] = 'D';
-			else
-				data->pars->map[data->door.y][data->door.x] = 'O';
+			if (data->pars->map[data->door.y][data->door.x] == 'O' && !data->action_open)
+				data->action_close = TRUE;
+			else if (!data->action_close)
+				data->action_open = TRUE;
 		}
 	}
 	return (0);
@@ -160,5 +147,7 @@ int	action_key_up(int keycode, t_data *data)
 		data->player.walk_direction = 0;
 	else if (keycode == RIGHT || keycode == LEFT)
 		data->player.turn_direction = 0;
+	else if (keycode == A_KEY || keycode == D_KEY)
+		data->player.side_direction = 0;
 	return (0);
 }

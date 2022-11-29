@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:51:48 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/26 23:03:56 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/29 15:26:03 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,20 @@ void	draw_player(t_data *data)
 {
 	float	px;
 	float	py;
+
+	float grid_x = data->player.pos.x / TILE_SIZE;
+	float grid_y = data->player.pos.y / TILE_SIZE;
 	
 	draw_square(&data->img,
-		new_point(data->player.pos.x, data->player.pos.y),
+		new_point(grid_x * SCALE, grid_y * SCALE),
 			0x00FF0000,
-				10);
-	px = data->player.pos.x + cos(data->player.rotation_angle) * 40; // 40 distance
-	py = data->player.pos.y + sin(data->player.rotation_angle) * 40;
-	// dda(&data->img,
-	// 	new_point(data->player.pos.x, data->player.pos.y),
-	// 		new_point(px, py),
-	// 			0x00FF0000);
+				2);
+	px = (grid_x * SCALE) + cos(data->player.rotation_angle) * 10;
+	py = (grid_y * SCALE) + sin(data->player.rotation_angle) * 10;
+	dda(&data->img,
+		new_point(grid_x * SCALE, grid_y * SCALE),
+			new_point(px, py),
+				0x00FF0000);
 }
 
 void	draw_square(t_img *img, t_point pos, int color, int size)
@@ -43,11 +46,11 @@ void	draw_square(t_img *img, t_point pos, int color, int size)
 	int	i;
 	int	j;
 
-	i = 1;
-	while (i < size - 1)
+	i = 0;
+	while (i < size)
 	{
-		j = 1;
-		while (j < size - 1)
+		j = 0;
+		while (j < size)
 		{
 			my_mlx_pixel_put(img, pos.x + j, pos.y + i, color);
 			j++;
@@ -56,27 +59,31 @@ void	draw_square(t_img *img, t_point pos, int color, int size)
 	}
 }
 
-void	draw_walls(t_data *data)
+void	draw_minimap(t_data *data)
 {
 	int	i;
 	int	j;
 	int	color;
 
 	i = 0;
-	while (data->pars->map[i]) // map[i]
+	while (data->pars->map[i])
 	{
 		j = 0;
-		while (data->pars->map[i][j]) //map[i][j]
+		while (data->pars->map[i][j])
 		{
 			if (data->pars->map[i][j] == '1')
 				color = 0x00FFFFFF;
+			else if (data->pars->map[i][j] == 'D')
+				color = 0x00FFD700;
+			else if (data->pars->map[i][j] == 'O')
+				color = 0x00808080;
 			else if (data->pars->map[i][j] == ' ')
 				color = 0x00808080;
 			else
 				color = 0x00000000;
 			draw_square(&data->img,
-				new_point(j * TILE_SIZE, i * TILE_SIZE),
-					color, TILE_SIZE);
+				new_point(j * SCALE, i * SCALE),
+					color, SCALE);
 			j++;
 		}
 		i++;

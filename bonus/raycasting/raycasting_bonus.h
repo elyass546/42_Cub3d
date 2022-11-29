@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/28 21:39:16 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/29 14:04:47 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,12 @@
 # define FALSE 0
 # define TRUE 1
 
-# define HEIGHT 1024
-# define WIDTH 2048
+# define HEIGHT 600
+# define WIDTH 1200
 
 # define TILE_SIZE 64
+
+# define SCALE 10
 
 # include "../parsing/parsing_bonus.h"
 # include "../../minilibx/mlx.h"
@@ -74,6 +76,8 @@ typedef struct s_textures {
 	t_img	west;
 	t_img	east;
 	t_img	door;
+	t_img	door2;
+	t_img	door3;
 }	t_textures;
 
 
@@ -126,6 +130,7 @@ typedef struct s_player {
 	t_point	pos;
 	int		turn_direction;
 	int		walk_direction;	
+	int		side_direction;
 	float	mouse_rotation; // rotation using mouse
 	float	rotation_angle; 
 	float	walk_speed;
@@ -148,6 +153,9 @@ typedef struct s_data
 	int			width;
 	int			i;
 	t_door		door;
+	t_img		*current_door_frame;
+	int			action_open;
+	int			action_close;
 }	t_data;
 
 
@@ -182,7 +190,7 @@ float		calculate_distance(t_point a, t_point b);
 //			draw.c
 t_point		new_point(int x, int y);
 void		draw_square(t_img *img, t_point pos, int color, int size);
-void		draw_walls(t_data *data);
+void		draw_minimap(t_data *data);
 void		draw_player(t_data *data);
 void		dda(t_img *img, t_point a, t_point b, int color);
 

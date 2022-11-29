@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 21:37:36 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/28 23:18:14 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/29 14:08:42 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,63 @@ int	destroy(t_data *data)
 
 int	render(t_data *data)
 {
-	char *str;
-	char *str2;
+	static int	j = 0;
+	static int	i = 0;
+
+	if (data->action_open)
+	{
+		if (j < 10)
+		{
+			data->current_door_frame = &data->text.door2;
+		}
+		else if (j < 20)
+		{
+			data->current_door_frame = &data->text.door3;
+		}
+		else if (j < 30)
+		{
+			data->current_door_frame = &data->text.door;
+			data->action_open = FALSE;
+			data->pars->map[data->door.y][data->door.x] = 'O';
+			j = 0;
+		}
+		j++;
+	}
+	else if (data->action_close)
+	{
+		data->pars->map[data->door.y][data->door.x] = 'D';
+		if (i < 10)
+		{
+			data->current_door_frame = &data->text.door3;
+		}
+		else if (i < 20)
+		{
+			data->current_door_frame = &data->text.door2;
+		}
+		else if (i < 30)
+		{
+			data->current_door_frame = &data->text.door;
+			data->action_close = FALSE;
+			i = 0;
+		}
+		i++;
+	}
+	
+	// char *str;
+	// char *str2;
 	update_screen(data);
 	// data->player.turn_direction = 0;
 	// mlx_mouse_move(data->win, WIDTH / 2, HEIGHT / 2);
-	animate(data);
-	if (data->i == 60)
-		data->i = 0;
-	data->i++;
-	str = ft_itoa(data->player.moves);
-	str2 = ft_strjoin("Player moves : ", str);
-	mlx_string_put(data->mlx, data->win, WIDTH - 220, 15, 0xFF23AB, str2);
-	free(str);
-	free(str2);
+	// animate(data);
+
+	// if (data->i == 60)
+	// 	data->i = 0;
+	// data->i++;
+	// str = ft_itoa(data->player.moves);
+	// str2 = ft_strjoin("Player moves : ", str);
+	// mlx_string_put(data->mlx, data->win, WIDTH - 220, 15, 0xFF23AB, str2);
+	// free(str);
+	// free(str2);
 	return (0);
 }
 
@@ -50,8 +93,7 @@ int	main( int argc, char **argv )
 	pars = parsing(argv[1]);
 	data = init_data(pars);
 	data->i = 0;
-	mlx_hook(data->win, 6, 0, mouse_rotation, data);
-	
+	// mlx_hook(data->win, 6, 0, mouse_rotation, data);
 	mlx_hook(data->win, 2, 1L<<0 ,action, data);
 	mlx_hook(data->win, 3, 1L<<1 ,action_key_up, data);
 	mlx_hook(data->win, 17, 0, destroy, data);

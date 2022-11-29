@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:10:31 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/28 13:47:37 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/11/29 14:03:07 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,8 @@ void	draw_wall(t_data *data, t_ray *ray)
 			data->door.y = (int) (ray->wall_hit.y) / TILE_SIZE;
 			data->door.distance  = ray->distF;
 			data->door.is_any_door_nearby = TRUE;
-			
 		}
-		img = &data->text.door;
+		img = data->current_door_frame;
 	}
 		
 	while (y < bot_pixel)
@@ -139,8 +138,8 @@ void	cast_rays(t_data *data)
 	ray.ray_angle = rad_addition(data->player.rotation_angle, -HALF_FOV);
 	ray.h = 0;
 	data->door.is_any_door_nearby = FALSE;
-	data->door.x = -1;
-	data->door.y = -1;
+	// data->door.x = -1;
+	// data->door.y = -1;
 	data->door.distance = 1000000;
 	while (i < WIDTH)
 	{
