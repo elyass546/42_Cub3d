@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 21:10:30 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/29 16:14:28 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/29 17:29:25 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ void	animate(t_data *data)
 
 int	shoot_with_mouse(t_data *data)
 {
-	mlx_put_image_to_window(data->mlx, data->win, data->frames.weapon1, WIDTH / 2, HEIGHT / 2);
+	if (data->j < 40)
+		mlx_put_image_to_window(data->mlx, data->win, data->frames.weapon1, WIDTH / 2, HEIGHT / 2);
+	else if (data->j < 80)
+		mlx_put_image_to_window(data->mlx, data->win, data->frames.weapon2, WIDTH / 2, HEIGHT / 2);
+	else if (data->j <= 120)
+		mlx_put_image_to_window(data->mlx, data->win, data->frames.weapon3, WIDTH / 2, HEIGHT / 2);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/29 16:12:47 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/29 17:28:54 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static void	init_animation_frames(t_data *data)
 	data->frames.weapon1 = mlx_xpm_file_to_image(data->mlx, "./sprites/weapon_1.xpm",
 		&data->frames.x, &data->frames.y);
 	data->frames.weapon2 = mlx_xpm_file_to_image(data->mlx, "./sprites/weapon_2.xpm",
+		&data->frames.x, &data->frames.y);
+	data->frames.weapon3 = mlx_xpm_file_to_image(data->mlx, "./sprites/weapon_3.xpm",
 		&data->frames.x, &data->frames.y);
 	data->frames.f1 = mlx_xpm_file_to_image(data->mlx, "./sprites/frame1.xpm",
 		&data->frames.x, &data->frames.y);
@@ -139,6 +141,7 @@ t_data	*init_data( t_pars *pars )
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "CUB3D");
 	data->i = 0;
+	data->j = 0;
 	data->img.img = NULL;
 	data->pars = pars;
 	init_player_config(data);

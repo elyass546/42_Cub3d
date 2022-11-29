@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 21:37:36 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/29 16:16:00 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/29 17:27:28 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,26 +54,22 @@ int	render(t_data *data)
 		}
 		i++;
 	}
-	// if (data->action_shoot)
-	// {
-		// if (a < 10)
-			// shoot_with_mouse(data);
-		// if (a < 20)
-		// {
-			// data->action_shoot = FALSE;
-			// shoot_with_mouse(data);
-			// a = 0;
-		// }
-		// a++;
-	// }
 	// char *str;
 	// char *str2;
 	update_screen(data);
 	// data->player.turn_direction = 0;
 	// mlx_mouse_move(data->win, WIDTH / 2, HEIGHT / 2);
+	if (data->action_shoot)
+		shoot_with_mouse(data);
 	animate(data);
 	if (data->i == 60)
 		data->i = 0;
+	if (data->j == 120)
+	{
+		data->j = 0;
+		data->action_shoot = FALSE;
+	}
+	data->j++;
 	data->i++;
 	// str = ft_itoa(data->player.moves);
 	// str2 = ft_strjoin("Player moves : ", str);
@@ -84,12 +80,10 @@ int	render(t_data *data)
 	return (0);
 }
 
-int	mouse(int key, t_data *data)
+int	mouse(int key, int x, int y, t_data *data)
 {
 	if (key == SHOOT_KEY)
-	{
-	}
-		// data->action_shoot = TRUE;
+		data->action_shoot = TRUE;
 	return (0);
 }
 
@@ -106,11 +100,12 @@ int	main( int argc, char **argv )
 	data = init_data(pars);
 	data->i = 0;
 	mlx_mouse_hook(data->win, mouse, data);
-	mlx_hook(data->win, 6, 0, mouse_rotation, data);
+	// mlx_hook(data->win, 6, 0, mouse_rotation, data);
 	mlx_hook(data->win, 2, 1L<<0 ,action, data);
 	mlx_hook(data->win, 3, 1L<<1 ,action_key_up, data);
 	mlx_hook(data->win, 17, 0, destroy, data);
 	mlx_loop_hook(data->mlx, render, data);
+	mlx_put_image_to_window(data->mlx, data->win, data->frames.weapon1, WIDTH / 2, HEIGHT / 2);
 	mlx_loop(data->mlx);
 	return (0);
 }
