@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 21:37:36 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/29 17:27:28 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/29 20:07:34 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,17 @@ int	render(t_data *data)
 	// mlx_mouse_move(data->win, WIDTH / 2, HEIGHT / 2);
 	if (data->action_shoot)
 		shoot_with_mouse(data);
-	animate(data);
+	// animate(data);
 	if (data->i == 60)
-		data->i = 0;
-	if (data->j == 120)
 	{
-		data->j = 0;
-		data->action_shoot = FALSE;
+		data->i = 0;
+		data->action_shoot = FALSE;	
 	}
-	data->j++;
+	// if (data->j == 150)
+	// {
+	// 	data->j = 0;
+	// }
+	// data->j++;
 	data->i++;
 	// str = ft_itoa(data->player.moves);
 	// str2 = ft_strjoin("Player moves : ", str);
@@ -100,12 +102,11 @@ int	main( int argc, char **argv )
 	data = init_data(pars);
 	data->i = 0;
 	mlx_mouse_hook(data->win, mouse, data);
-	// mlx_hook(data->win, 6, 0, mouse_rotation, data);
+	mlx_hook(data->win, 6, 0, mouse_rotation, data);
 	mlx_hook(data->win, 2, 1L<<0 ,action, data);
 	mlx_hook(data->win, 3, 1L<<1 ,action_key_up, data);
 	mlx_hook(data->win, 17, 0, destroy, data);
 	mlx_loop_hook(data->mlx, render, data);
-	mlx_put_image_to_window(data->mlx, data->win, data->frames.weapon1, WIDTH / 2, HEIGHT / 2);
 	mlx_loop(data->mlx);
 	return (0);
 }

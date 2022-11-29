@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/29 17:22:47 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/29 19:39:51 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ typedef struct s_animation {
 	void	*weapon1;
 	void	*weapon2;
 	void	*weapon3;
+	void	*weapon4;
+	void	*weapon5;
 	int		x;
 	int		y;
 }	t_animation;
