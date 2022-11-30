@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 21:10:30 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/30 13:29:41 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/30 15:21:20 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ int	shoot_with_mouse(t_data *data)
 	else if (data->i < 60)
 		mlx_put_image_to_window(data->mlx, data->win, data->frames.f12, (WIDTH / 2) - 100, (HEIGHT / 2) + 30);
 	else if (data->i <= 65)
-		mlx_put_image_to_window(data->mlx, data->win, data->frames.f13, (WIDTH / 2) - 100, (HEIGHT / 2) + 30);
+		mlx_put_image_to_window(data->mlx, data->win, data->frames.f13, (WIDTH / 2) - 100, (HEIGHT / 2) + 50);
 	return (0);
 }

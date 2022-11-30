@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 21:37:36 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/30 13:24:20 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/30 19:10:49 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,30 +54,16 @@ int	render(t_data *data)
 		}
 		i++;
 	}
-	// char *str;
-	// char *str2;
 	update_screen(data);
-	// data->player.turn_direction = 0;
-	// mlx_mouse_move(data->win, WIDTH / 2, HEIGHT / 2);
 	if (data->action_shoot)
 		shoot_with_mouse(data);
-	// animate(data);
 	if (data->i == 65)
 	{
 		data->i = 0;
 		data->action_shoot = FALSE;	
 	}
-	// if (data->j == 150)
-	// {
-	// 	data->j = 0;
-	// }
-	// data->j++;
 	data->i++;
-	// str = ft_itoa(data->player.moves);
-	// str2 = ft_strjoin("Player moves : ", str);
-	// mlx_string_put(data->mlx, data->win, WIDTH - 220, 15, 0xFF23AB, str2);
-	// free(str);
-	// free(str2);
+	data->player.turn_direction = 0;
 	
 	return (0);
 }

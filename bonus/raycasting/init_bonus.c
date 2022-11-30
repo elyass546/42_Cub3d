@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/30 13:23:47 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/30 15:22:16 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ static void	init_animation_frames(t_data *data)
 		&data->frames.x, &data->frames.y);
 	data->frames.f13 = mlx_xpm_file_to_image(data->mlx, "./sprites//machine_gun/Machine_Gun13.xpm",
 		&data->frames.x, &data->frames.y);
+	
 	data->text.north.img = mlx_xpm_file_to_image(data->mlx, data->pars->north,
 		&data->frames.x, &data->frames.y);
 	data->text.north.addr = mlx_get_data_addr(data->text.north.img, &data->text.north.bits_per_pixel,
