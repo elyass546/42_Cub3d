@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/29 20:03:03 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/11/30 13:23:47 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,40 +43,31 @@ static float	get_player_angle(char c)
 static void	init_animation_frames(t_data *data)
 {
 	// init frame from xpm file to image
-	data->frames.weapon1 = mlx_xpm_file_to_image(data->mlx, "./sprites/pistol/Pistol-1.xpm",
+	data->frames.f1 = mlx_xpm_file_to_image(data->mlx, "./sprites//machine_gun/Machine_Gun1.xpm",
 		&data->frames.x, &data->frames.y);
-	data->frames.weapon2 = mlx_xpm_file_to_image(data->mlx, "./sprites/pistol/Pistol-2.xpm",
+	data->frames.f2 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun2.xpm",
 		&data->frames.x, &data->frames.y);
-	data->frames.weapon3 = mlx_xpm_file_to_image(data->mlx, "./sprites/pistol/Pistol-3.xpm",
+	data->frames.f3 = mlx_xpm_file_to_image(data->mlx, "./sprites//machine_gun/Machine_Gun3.xpm",
 		&data->frames.x, &data->frames.y);
-	data->frames.weapon4 = mlx_xpm_file_to_image(data->mlx, "./sprites/pistol/Pistol-4.xpm",
+	data->frames.f4 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun4.xpm",
 		&data->frames.x, &data->frames.y);
-	data->frames.weapon5 = mlx_xpm_file_to_image(data->mlx, "./sprites/pistol/Pistol-5.xpm",
+	data->frames.f5 = mlx_xpm_file_to_image(data->mlx, "./sprites//machine_gun/Machine_Gun5.xpm",
 		&data->frames.x, &data->frames.y);
-
-	data->frames.f1 = mlx_xpm_file_to_image(data->mlx, "./sprites//machine_gun/Machine_Gun-1.xpm",
+	data->frames.f6 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun6.xpm",
 		&data->frames.x, &data->frames.y);
-	data->frames.f2 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun-2.xpm",
+	data->frames.f7 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun7.xpm",
 		&data->frames.x, &data->frames.y);
-	data->frames.f3 = mlx_xpm_file_to_image(data->mlx, "./sprites//machine_gun/Machine_Gun-3.xpm",
+	data->frames.f8 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun8.xpm",
 		&data->frames.x, &data->frames.y);
-	data->frames.f4 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun-4.xpm",
+	data->frames.f9 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun9.xpm",
 		&data->frames.x, &data->frames.y);
-	data->frames.f5 = mlx_xpm_file_to_image(data->mlx, "./sprites//machine_gun/Machine_Gun-5.xpm",
+	data->frames.f10 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun10.xpm",
 		&data->frames.x, &data->frames.y);
-	data->frames.f6 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun-6.xpm",
+	data->frames.f11 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun11.xpm",
 		&data->frames.x, &data->frames.y);
-	data->frames.f7 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun-7.xpm",
+	data->frames.f12 = mlx_xpm_file_to_image(data->mlx, "./sprites//machine_gun/Machine_Gun12.xpm",
 		&data->frames.x, &data->frames.y);
-	data->frames.f8 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun-8.xpm",
-		&data->frames.x, &data->frames.y);
-	data->frames.f9 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun-9.xpm",
-		&data->frames.x, &data->frames.y);
-	data->frames.f10 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun-10.xpm",
-		&data->frames.x, &data->frames.y);
-	data->frames.f11 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun-11.xpm",
-		&data->frames.x, &data->frames.y);
-	data->frames.f12 = mlx_xpm_file_to_image(data->mlx, "./sprites//machine_gun/Machine_Gun-12.xpm",
+	data->frames.f13 = mlx_xpm_file_to_image(data->mlx, "./sprites//machine_gun/Machine_Gun13.xpm",
 		&data->frames.x, &data->frames.y);
 	data->text.north.img = mlx_xpm_file_to_image(data->mlx, data->pars->north,
 		&data->frames.x, &data->frames.y);
