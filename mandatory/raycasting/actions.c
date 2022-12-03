@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/01 22:46:59 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/03 16:35:31 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ void	move_player(t_data *data)
 	move_step = player->walk_direction * player->walk_speed;
 	if (!move_step && player->side_direction)
 		move_step = player->walk_speed;
+	if (player->side_direction)
+        move_step = player->walk_speed;
 	angle = (PI / 2) * player->side_direction;
 	new_player_pos.x = player->pos.x
 		+ cos(rad_addition(player->rotation_angle, angle)) * move_step;
