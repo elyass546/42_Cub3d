@@ -1,16 +1,6 @@
 {
-    "files.associations": {
-		"parsing.h": "c",
-		"main.h": "c",
-		"__locale": "c",
-		"sstream": "c",
+	"files.associations": {
 		"raycasting.h": "c",
-		"mlx.h": "c",
-		"unistd.h": "c",
-		"stdio.h": "c",
-		"parsing_bonus.h": "c",
-		"raycasting_bonus.h": "c",
-		"libft.h": "c",
-		"main_bonus.h": "c"
+		"main.h": "c"
 	}
 }
