@@ -3,19 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/03 15:53:49 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/03 21:15:34 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYCASTING_H
 # define RAYCASTING_H
 
-# define PI 3.1415926535
-# define P2 (PI / 2)
-# define P3 (3 * PI / 2)
 # define DR 0.0174533
 # define FOV 1.0472
 # define HALF_FOV 0.523599

@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/03 19:21:40 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/03 21:16:31 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ void	wall_collision(t_data *data, float pdx, float pdy, float move_step)
 	int	y0;
 
 	if (pdx < 0)
-		x0 = -40;
+		x0 = -20;
 	else
-		x0 = 40;
+		x0 = 20;
 	
 	if (pdy < 0)
-		y0 = -40;
+		y0 = -20;
 	else
-		y0 = 40;
+		y0 = 20;
 	int ipx = floor(data->player.pos.x / TILE_SIZE);
 	int	ipy = floor(data->player.pos.y / TILE_SIZE);
 	int	ipx_ = floor((data->player.pos.x + x0) / TILE_SIZE);
@@ -62,19 +62,19 @@ void	move_player(t_data *data)
 	player = &data->player;
 	player->rotation_angle += player->turn_direction * player->turn_speed;
 	if (player->rotation_angle < 0)
-		player->rotation_angle += 2 * PI;
-	if (player->rotation_angle > 2 * PI)
-		player->rotation_angle -= 2 * PI;
+		player->rotation_angle += 2 * M_PI;
+	if (player->rotation_angle > 2 * M_PI)
+		player->rotation_angle -= 2 * M_PI;
 	move_step = player->walk_direction * player->walk_speed;
 	if (!move_step && player->side_direction)
 		move_step = player->walk_speed;
 	if (player->side_direction)
 		move_step = player->walk_speed;
 	wall_collision(data,
-		cos(rad_addition(player->rotation_angle, ((PI / 2)
+		cos(rad_addition(player->rotation_angle, (M_PI_2
 			* player->side_direction))),
 		sin(
-			rad_addition(player->rotation_angle, ((PI / 2)
+			rad_addition(player->rotation_angle, (M_PI_2
 			* player->side_direction))),
 		move_step);
 }
