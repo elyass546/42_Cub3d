@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   action_utils.c                                     :+:      :+:    :+:   */
+/*   actions_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 13:15:42 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/01 13:16:10 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/03 16:19:44 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,15 @@ void	handle_arrows(int keycode, t_data *data)
 void	handle_side_walk(int key, t_data *data)
 {
 	if (key == A_KEY)
+	{
+		data->player.moves++;
 		data->player.side_direction = -1;
+	}
 	else
+	{
+		data->player.moves++;
 		data->player.side_direction = 1;
+	}
 }
 
 // since W and S will behave like the arrows keys

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   extra_math.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 19:32:36 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/23 19:01:35 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/01 22:48:30 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "raycasting.h"
+#include "raycasting.h"
 
 float	rad_addition(float rad1, float rad2)
 {
@@ -29,7 +29,7 @@ double	deg2rad(double degrees)
 	return (degrees * (PI / 180));
 }
 
-double rad2deg(double radians)
+double	rad2deg(double radians)
 {
 	return (radians * (180 / PI));
 }

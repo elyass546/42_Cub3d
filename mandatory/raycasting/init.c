@@ -1,4 +1,4 @@
-                                                                                                    /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
@@ -6,12 +6,11 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/26 22:30:53 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/01 22:53:45 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-# include "raycasting.h"
+#include "raycasting.h"
 
 void	free_exit(t_data *data, int status)
 {
@@ -24,7 +23,6 @@ void	free_exit(t_data *data, int status)
 		mlx_destroy_window(data->mlx, data->win);
 		free(data->mlx);
 	}
-	// free_map(data->map);
 	free(data);
 	exit(status);
 }
@@ -45,29 +43,30 @@ static void	init_textures(t_data *data)
 	int	i;
 
 	data->text.north.img = mlx_xpm_file_to_image(data->mlx, data->pars->north,
-		&i, &i);
-	data->text.north.addr = mlx_get_data_addr(data->text.north.img, &data->text.north.bits_per_pixel,
-		&data->text.north.line_length, &data->text.north.endian);
-		
+			&i, &i);
+	data->text.north.addr = mlx_get_data_addr(data->text.north.img,
+			&data->text.north.bits_per_pixel, &data->text.north.line_length,
+			&data->text.north.endian);
 	data->text.east.img = mlx_xpm_file_to_image(data->mlx, data->pars->east,
-		&i, &i);
-	data->text.east.addr = mlx_get_data_addr(data->text.east.img, &data->text.east.bits_per_pixel,
-		&data->text.east.line_length, &data->text.east.endian);
-	
+			&i, &i);
+	data->text.east.addr = mlx_get_data_addr(data->text.east.img,
+			&data->text.east.bits_per_pixel,
+			&data->text.east.line_length, &data->text.east.endian);
 	data->text.west.img = mlx_xpm_file_to_image(data->mlx, data->pars->west,
-		&i, &i);
-	data->text.west.addr = mlx_get_data_addr(data->text.west.img, &data->text.west.bits_per_pixel,
-		&data->text.west.line_length, &data->text.west.endian);
-
+			&i, &i);
+	data->text.west.addr = mlx_get_data_addr(data->text.west.img,
+			&data->text.west.bits_per_pixel,
+			&data->text.west.line_length, &data->text.west.endian);
 	data->text.south.img = mlx_xpm_file_to_image(data->mlx, data->pars->south,
-		&data->i, &data->i);
-	data->text.south.addr = mlx_get_data_addr(data->text.south.img, &data->text.south.bits_per_pixel,
-		&data->text.south.line_length, &data->text.south.endian);
+			&data->i, &data->i);
+	data->text.south.addr = mlx_get_data_addr(data->text.south.img,
+			&data->text.south.bits_per_pixel,
+			&data->text.south.line_length, &data->text.south.endian);
 }
 
+// define pos of player
 static void	init_player_config(t_data *data)
 {
-	// define pos of player
 	data->player.pos.x = data->pars->player_x * TILE_SIZE;
 	data->player.pos.y = data->pars->player_y * TILE_SIZE;
 	data->player.turn_direction = 0;

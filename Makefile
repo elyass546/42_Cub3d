@@ -30,12 +30,14 @@ SRC =			main.c															\
 				mandatory/parsing/map.c											\
 				mandatory/raycasting/init.c										\
 				mandatory/raycasting/img.c										\
-				mandatory/raycasting/mlx_funs.c									\
 				mandatory/raycasting/actions.c									\
+				mandatory/raycasting/actions_utils.c							\
 				mandatory/raycasting/extra_math.c								\
 				mandatory/raycasting/draw.c										\
 				mandatory/raycasting/rays.c										\
+				mandatory/raycasting/rays_utils.c								\
 				mandatory/raycasting/rays_intersection.c						\
+				mandatory/raycasting/rays_intersection_utils.c					\
 
 SRC_BONUS =		bonus/main_bonus.c													\
 				bonus/parsing/parsing_bonus.c										\
