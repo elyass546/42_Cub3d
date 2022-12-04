@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 21:37:36 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/04 17:58:16 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/04 18:56:09 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,10 @@ int	render(t_data *data)
 	}
 	update_screen(data);
 	if (data->action_shoot)
+	{
 		shoot_with_mouse(data);
-	data->i++;
+		data->i++;
+	}
 	if (data->i >= 65)
 	{
 		data->i = 0;
