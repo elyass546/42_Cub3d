@@ -69,7 +69,7 @@ all :	$(NAME)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(OBJ)  $(LIBFT)
-	@gcc -Wall -Wextra -Werror -fsanitize=address -g3 $(LIBFT) $(MINILIBX) -lmlx -framework OpenGL -framework AppKit  $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(LIBFT) $(MINILIBX) -lmlx -framework OpenGL -framework AppKit  $(OBJ) -o $(NAME)
 	@echo [GAME CREATED]
 
 $(LIBFT):
@@ -89,11 +89,9 @@ fclean : clean
 
 bonus : $(NAME_BONUS)
 
-%.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME_BONUS):	$(OBJ_BONUS)  $(LIBFT)
-	@gcc -Wall -Wextra -Werror -fsanitize=address -g3 $(LIBFT)  $(MINILIBX) -lmlx -framework OpenGL -framework AppKit  $(OBJ_BONUS) -o $(NAME_BONUS)
+	$(CC) $(CFLAGS) $(LIBFT)  $(MINILIBX) -lmlx -framework OpenGL -framework AppKit  $(OBJ_BONUS) -o $(NAME_BONUS)
 	@echo [GAME BONUS CREATED]
 
 re : fclean all

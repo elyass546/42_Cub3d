@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 21:37:36 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/04 16:26:53 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/04 17:58:16 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	render(t_data *data)
 {
 	static int	j = 0;
 	static int	i = 0;
-	static int	a = 0;
 
 	if (data->action_open)
 	{
@@ -69,7 +68,7 @@ int	render(t_data *data)
 
 int	mouse(int key, int x, int y, t_data *data)
 {
-	if (key == SHOOT_KEY)
+	if (key == SHOOT_KEY && !data->action_shoot)
 		data->action_shoot = TRUE;
 	return (0);
 }

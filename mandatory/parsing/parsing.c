@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:01 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/27 22:19:40 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/04 18:08:13 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	set_colors(char *str)
 	if ((r > 255 || r < 0) || (g > 255 || g < 0)
 		|| (b > 255 || b < 0))
 		ft_error("Color setting is not correct\n");
-	return (r << 8 | g << 4 | b);
+	return (r << 16 | g << 8 | b);
 }
 
 // init t_pars variables
