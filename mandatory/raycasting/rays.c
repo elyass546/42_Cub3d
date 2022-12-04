@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:10:31 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/01 23:14:41 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/04 12:33:52 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-int	is_ray_facing_down(float ray_angle)
+int	is_ray_facing_down(double ray_angle)
 {
-	if (ray_angle > 0 && ray_angle < PI)
+	if (ray_angle > 0 && ray_angle < M_PI)
 		return (TRUE);
 	else
 		return (FALSE);
 }
 
-int	is_ray_facing_right(float ray_angle)
+int	is_ray_facing_right(double ray_angle)
 {
-	if (ray_angle < P2 || ray_angle > P3)
+	if (ray_angle < M_PI_2 || ray_angle > 3 * M_PI_2)
 		return (TRUE);
 	else
 		return (FALSE);
@@ -30,7 +30,7 @@ int	is_ray_facing_right(float ray_angle)
 
 void	cast_single_ray(t_data *data, t_ray *ray)
 {
-	float	ca;
+	double	ca;
 
 	init_ray(ray);
 	find_horizontal_wall(data, ray);
@@ -62,12 +62,12 @@ void	cast_rays(t_data *data)
 	int		i;
 
 	i = 0;
-	ray.ray_angle = rad_addition(data->player.rotation_angle, -HALF_FOV);
+	ray.ray_angle = rad_addition(data->player.rotation_angle, (- M_PI / 6));
 	ray.h = 0;
 	while (i < WIDTH)
 	{
 		cast_single_ray(data, &ray);
 		i++;
-		ray.ray_angle = rad_addition(ray.ray_angle, FOV / WIDTH);
+		ray.ray_angle = rad_addition(ray.ray_angle, (M_PI / 3) / WIDTH);
 	}
 }

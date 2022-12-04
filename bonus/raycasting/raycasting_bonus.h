@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_bonus.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/30 13:23:32 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/04 12:41:28 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 
 # define RAYCASTING_BONUS_H
 
-# define PI 3.1415926535
-# define P2 PI / 2
-# define P3 3 * PI / 2
 # define DR 0.0174533
 # define FOV 1.0472
 # define HALF_FOV 0.523599
@@ -55,7 +52,7 @@ typedef struct s_door {
 	int		is_any_door_nearby;
 	int		x;
 	int		y;
-	float	distance;
+	double	distance;
 }	t_door;
 
 typedef struct	s_img {
@@ -67,8 +64,8 @@ typedef struct	s_img {
 }	t_img;
 
 typedef struct s_point {
-	float	x;
-	float	y;
+	double	x;
+	double	y;
 }	t_point;
 
 typedef struct s_textures {
@@ -103,9 +100,7 @@ typedef struct s_animation {
 
 typedef struct s_ray
 {
-	float	ray_angle;
-	// float	wall_hit_x;
-	// float	wall_hit_y;
+	double	ray_angle;
 	int		was_hit_vertical;
 	int		is_ray_facing_up;
 	int		is_ray_facing_down;
@@ -114,17 +109,17 @@ typedef struct s_ray
 	t_point	vertical_hit;
 	t_point	horizontal_hit;
 	t_point	wall_hit;
-	float	distV;
-	float	distH;
-	float	distF;
+	double	distV;
+	double	distH;
+	double	distF;
 	int		h;
 	char	horizontal_content;
 	char	vertical_content;
 	char	wall_hit_content;
-	float	rx;
-	float	ry;
-	float	x0;
-	float	y0;
+	double	rx;
+	double	ry;
+	double	x0;
+	double	y0;
 }	t_ray;
 
 
@@ -133,10 +128,10 @@ typedef struct s_player {
 	int		turn_direction;
 	int		walk_direction;	
 	int		side_direction;
-	float	mouse_rotation; // rotation using mouse
-	float	rotation_angle; 
-	float	walk_speed;
-	float	turn_speed;
+	double	mouse_rotation; // rotation using mouse
+	double	rotation_angle; 
+	double	walk_speed;
+	double	turn_speed;
 	int		moves; // Player's moves
 	int		height;
 }	t_player;
@@ -173,7 +168,7 @@ int			action_key_up(int keycode, t_data *data);
 void		update_screen(t_data *data);
 
 //			mouse_rotation.c && action.c
-void		handle_arrows(int keycode, t_data *data, float rotation_speed);
+void		handle_arrows(int keycode, t_data *data, double rotation_speed);
 int			mouse_rotation(int x, int y, t_data *data);
 
 //			animation
@@ -190,8 +185,8 @@ unsigned int	my_mlx_get_color(t_img *img, int x, int y);
 //			extra_math.c
 double 		rad2deg(double radians);
 double		deg2rad(double degrees);
-float		rad_addition(float rad1, float rad2);
-float		calculate_distance(t_point a, t_point b);
+double		rad_addition(double rad1, double rad2);
+double		calculate_distance(t_point a, t_point b);
 
 //			draw.c
 t_point		new_point(int x, int y);
@@ -202,8 +197,8 @@ void		dda(t_img *img, t_point a, t_point b, int color);
 
 //			rays.c
 void		cast_rays(t_data *data);
-int			is_ray_facing_down(float ray_angle);
-int			is_ray_facing_right(float ray_angle);
+int			is_ray_facing_down(double ray_angle);
+int			is_ray_facing_right(double ray_angle);
 
 
 //			rays_intersection.c

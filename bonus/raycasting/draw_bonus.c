@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:51:48 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/29 15:26:03 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/04 12:39:17 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ t_point		new_point(int x, int y)
 
 void	draw_player(t_data *data)
 {
-	float	px;
-	float	py;
+	double	px;
+	double	py;
 
-	float grid_x = data->player.pos.x / TILE_SIZE;
-	float grid_y = data->player.pos.y / TILE_SIZE;
+	double grid_x = data->player.pos.x / TILE_SIZE;
+	double grid_y = data->player.pos.y / TILE_SIZE;
 	
 	draw_square(&data->img,
 		new_point(grid_x * SCALE, grid_y * SCALE),
@@ -92,11 +92,11 @@ void	draw_minimap(t_data *data)
 
 void	dda(t_img *img, t_point a, t_point b, int color)
 {
-	float		dx;
-	float		dy;
-	float		steps;
-	float	xInc;
-	float	yInc;
+	double		dx;
+	double		dy;
+	double		steps;
+	double	xInc;
+	double	yInc;
 
 	dx = b.x - a.x;
 	dy = b.y - a.y;
@@ -104,8 +104,8 @@ void	dda(t_img *img, t_point a, t_point b, int color)
 		steps = fabs(dx);
 	else
 		steps = fabs(dy);
-	xInc = dx / (float) steps;
-	yInc = dy / (float) steps;
+	xInc = dx / (double) steps;
+	yInc = dy / (double) steps;
 	int i = 0;
 	while (i < steps)
 	{

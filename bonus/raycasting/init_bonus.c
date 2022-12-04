@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/30 15:22:16 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/04 12:41:31 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,15 @@ void	free_exit(t_data *data, int status)
 	exit(status);
 }
 
-static float	get_player_angle(char c)
+static double	get_player_angle(char c)
 {
 	if (c == 'N')
-		return (P3);
+		return (3 * M_PI_2);
 	if (c == 'S')
-		return (PI / 2);
+		return (M_PI_2);
 	if (c == 'E')
 		return (0);
-	return (PI);
+	return (M_PI);
 }
 
 static void	init_animation_frames(t_data *data)
