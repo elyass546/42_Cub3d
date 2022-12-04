@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/04 12:41:28 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/04 16:06:20 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define D_KEY 2
 # define S_KEY 1
 # define W_KEY 13
+# define M_KEY 46
 
 # define FALSE 0
 # define TRUE 1
@@ -133,7 +134,6 @@ typedef struct s_player {
 	double	walk_speed;
 	double	turn_speed;
 	int		moves; // Player's moves
-	int		height;
 }	t_player;
 
 
@@ -155,6 +155,7 @@ typedef struct s_data
 	int			action_open;
 	int			action_close;
 	int			action_shoot;
+	int			show_map;
 }	t_data;
 
 

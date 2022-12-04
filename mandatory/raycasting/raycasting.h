@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/04 12:34:48 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/04 16:07:10 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,9 @@ typedef struct s_player {
 	int		turn_direction;
 	int		walk_direction;
 	int		side_direction;
-	int		mouse_rotation;
 	double	rotation_angle;
 	double	walk_speed;
 	double	turn_speed;
-	int		moves;
-	int		height;
 }	t_player;
 
 typedef struct s_data

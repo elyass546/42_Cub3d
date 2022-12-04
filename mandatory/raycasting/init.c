@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/04 12:34:42 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/04 16:07:14 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,9 @@ static void	init_player_config(t_data *data)
 	data->player.turn_direction = 0;
 	data->player.walk_direction = 0;
 	data->player.side_direction = 0;
-	data->player.mouse_rotation = 0;
-	data->player.moves = 0;
 	data->player.rotation_angle = get_player_angle(data->pars->player_pos);
 	data->player.walk_speed = 5;
-	data->player.turn_speed = deg2rad(2);
-	data->player.height = 5;
+	data->player.turn_speed = deg2rad(1);
 }
 
 // later WIDTH AND HEIGHT WILL BE FIX

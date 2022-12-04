@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/04 12:41:31 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/04 16:15:01 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,7 @@ static void	init_player_config(t_data *data)
 	data->player.moves = 0;
 	data->player.rotation_angle = get_player_angle(data->pars->player_pos);
 	data->player.walk_speed = 5;
-	data->player.turn_speed = deg2rad(2);
-	data->player.height = 5;
+	data->player.turn_speed = deg2rad(3);
 }
 
 // later WIDTH AND HEIGHT WILL BE FIX
@@ -133,8 +132,12 @@ t_data	*init_data( t_pars *pars )
 	data = malloc(sizeof(t_data));
 	if (!data)
 		return (NULL);
-	data->height = pars->row * TILE_SIZE;
-	data->width = pars->col * TILE_SIZE;
+	data->height = pars->row * SCALE;
+	data->width = pars->col * SCALE;
+	if (data->height > HEIGHT / 2 || data->width > WIDTH / 2)
+		data->show_map = FALSE;
+	else
+		data->show_map = TRUE;
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "CUB3D");
 	data->i = 0;
