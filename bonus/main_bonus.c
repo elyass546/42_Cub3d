@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 21:37:36 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/04 11:44:30 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/04 16:26:53 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,13 @@ int	render(t_data *data)
 	update_screen(data);
 	if (data->action_shoot)
 		shoot_with_mouse(data);
-	if (data->i == 65)
+	data->i++;
+	if (data->i >= 65)
 	{
 		data->i = 0;
 		data->action_shoot = FALSE;	
 	}
-	data->i++;
 	data->player.turn_direction = 0;
-	
 	return (0);
 }
 
@@ -74,7 +73,6 @@ int	mouse(int key, int x, int y, t_data *data)
 		data->action_shoot = TRUE;
 	return (0);
 }
-
 
 int	main( int argc, char **argv )
 {

@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/04 12:39:01 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/04 16:17:58 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,27 +28,32 @@ void	wall_collision(t_data *data, double pdx, double pdy, double move_step)
 		y0 = 20;
 	int ipx = floor(data->player.pos.x / TILE_SIZE);
 	int	ipy = floor(data->player.pos.y / TILE_SIZE);
-	int	ipx_ = floor((data->player.pos.x + x0) / TILE_SIZE);
-	int	ipy_ = floor((data->player.pos.y + y0) / TILE_SIZE);
-	int	ipx_sub = floor((data->player.pos.x - x0) / TILE_SIZE);
-	int	ipy_sub = floor((data->player.pos.y - y0) / TILE_SIZE);
+	int	ipx_ = floor((data->player.pos.x + (pdx * move_step)) / TILE_SIZE);
+	int	ipy_ = floor((data->player.pos.y + (pdy * move_step)) / TILE_SIZE);
+	// int	ipx_sub = floor((data->player.pos.x - x0) / TILE_SIZE);
+	// int	ipy_sub = floor((data->player.pos.y - y0) / TILE_SIZE);
 	if (ipy_ < 0 || ipy_ > data->pars->row)
 		return ;
 	if (ipx_ < 0 || ipx_ > ft_strlen(data->pars->map[ipy_]))
 		return ;
-	if (data->player.walk_direction == -1)
+	// if (data->player.walk_direction == -1)
+	// {
+	// 	if (data->pars->map[ipy][ipx_sub] == '0')
+	// 		data->player.pos.x += pdx * move_step;
+	// 	if (data->pars->map[ipy_sub][ipx] == '0')
+	// 		data->player.pos.y += pdy * move_step;
+	// }
+	// if (data->player.walk_direction == 1)
+	// {
+	// 	if (data->pars->map[ipy][ipx_] == '0')
+	// 		data->player.pos.x += pdx * move_step;
+	// 	if (data->pars->map[ipy_][ipx] == '0')
+	// 		data->player.pos.y += pdy * move_step;		
+	// }
+	if (data->pars->map[ipy_][ipx_] == '0' || data->pars->map[ipy_][ipx_] == 'O')
 	{
-		if (data->pars->map[ipy][ipx_sub] == '0')
 			data->player.pos.x += pdx * move_step;
-		if (data->pars->map[ipy_sub][ipx] == '0')
 			data->player.pos.y += pdy * move_step;
-	}
-	else
-	{
-		if (data->pars->map[ipy][ipx_] == '0')
-			data->player.pos.x += pdx * move_step;
-		if (data->pars->map[ipy_][ipx] == '0')
-			data->player.pos.y += pdy * move_step;		
 	}
 }
 
@@ -80,21 +85,30 @@ void	update_screen(t_data *data)
 {
 	create_new_img(data);
 	move_player(data);
-	// draw_player(data);
 	cast_rays(data);
-	draw_minimap(data);
-	draw_player(data);
+	if (data->show_map)
+	{
+		if (data->height <= HEIGHT / 2 && data->width <= WIDTH / 2)
+		{
+			draw_minimap(data);
+			draw_player(data);
+		}
+		else
+		{
+			printf("cant show map\n");
+		}
+	}
 	// mlx_clear_window(data->mlx, data->win);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }
 
 void	handle_arrows(int keycode, t_data *data, double rotation_speed)
 {
-	if (keycode == RIGHT)
-		data->player.turn_direction = 1;
-	else if (keycode == LEFT)
-		data->player.turn_direction = -1;
-	else if (keycode == UP)
+	// if (keycode == RIGHT)
+	// 	data->player.turn_direction = 1;
+	// else if (keycode == LEFT)
+	// 	data->player.turn_direction = -1;
+	if (keycode == UP)
 	{
 		data->player.moves++;
 		data->player.walk_direction = 1;
@@ -138,6 +152,8 @@ int	action(int keycode, t_data *data)
 				data->action_open = TRUE;
 		}
 	}
+	else if (keycode == M_KEY)
+		data->show_map = !data->show_map;
 	return (0);
 }
 
