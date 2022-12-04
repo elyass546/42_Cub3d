@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/04 16:17:58 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/04 21:12:17 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,47 +14,19 @@
 
 void	wall_collision(t_data *data, double pdx, double pdy, double move_step)
 {
-	int	x0;
-	int	y0;
+	int	old_px;
+	int	old_py;
+	int	new_px;
+	int	new_py;
 
-	if (pdx < 0)
-		x0 = -20;
-	else
-		x0 = 20;
-	
-	if (pdy < 0)
-		y0 = -20;
-	else
-		y0 = 20;
-	int ipx = floor(data->player.pos.x / TILE_SIZE);
-	int	ipy = floor(data->player.pos.y / TILE_SIZE);
-	int	ipx_ = floor((data->player.pos.x + (pdx * move_step)) / TILE_SIZE);
-	int	ipy_ = floor((data->player.pos.y + (pdy * move_step)) / TILE_SIZE);
-	// int	ipx_sub = floor((data->player.pos.x - x0) / TILE_SIZE);
-	// int	ipy_sub = floor((data->player.pos.y - y0) / TILE_SIZE);
-	if (ipy_ < 0 || ipy_ > data->pars->row)
-		return ;
-	if (ipx_ < 0 || ipx_ > ft_strlen(data->pars->map[ipy_]))
-		return ;
-	// if (data->player.walk_direction == -1)
-	// {
-	// 	if (data->pars->map[ipy][ipx_sub] == '0')
-	// 		data->player.pos.x += pdx * move_step;
-	// 	if (data->pars->map[ipy_sub][ipx] == '0')
-	// 		data->player.pos.y += pdy * move_step;
-	// }
-	// if (data->player.walk_direction == 1)
-	// {
-	// 	if (data->pars->map[ipy][ipx_] == '0')
-	// 		data->player.pos.x += pdx * move_step;
-	// 	if (data->pars->map[ipy_][ipx] == '0')
-	// 		data->player.pos.y += pdy * move_step;		
-	// }
-	if (data->pars->map[ipy_][ipx_] == '0' || data->pars->map[ipy_][ipx_] == 'O')
-	{
-			data->player.pos.x += pdx * move_step;
-			data->player.pos.y += pdy * move_step;
-	}
+	old_px = floor(data->player.pos.x / TILE_SIZE);
+	old_py = floor(data->player.pos.y / TILE_SIZE);
+	new_px = floor((data->player.pos.x + (pdx * move_step)) / TILE_SIZE);
+	new_py = floor((data->player.pos.y + (pdy * move_step)) / TILE_SIZE);
+	if (data->pars->map[new_py][old_px] == '0' || data->pars->map[new_py][old_px] == 'O')
+		data->player.pos.y += pdy * move_step;
+	if (data->pars->map[old_py][new_px] == '0' || data->pars->map[old_py][new_px] == 'O')
+		data->player.pos.x += pdx * move_step;
 }
 
 void	move_player(t_data *data)
