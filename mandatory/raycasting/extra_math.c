@@ -3,43 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   extra_math.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 19:32:36 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/01 22:48:30 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/04 12:34:52 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting.h"
 
-float	rad_addition(float rad1, float rad2)
+double	rad_addition(double rad1, double rad2)
 {
-	float	ret;
+	double	ret;
 
 	ret = rad1 + rad2;
 	if (ret < 0)
-		ret += 2 * PI;
-	if (ret > 2 * PI)
-		ret -= 2 * PI;
+		return (ret + 2 * M_PI);
+	if (ret > 2 * M_PI)
+		return ( ret - 2 * M_PI);
 	return (ret);
 }
 
 double	deg2rad(double degrees)
 {
-	return (degrees * (PI / 180));
+	return (degrees * (M_PI / 180));
 }
 
 double	rad2deg(double radians)
 {
-	return (radians * (180 / PI));
+	return (radians * (180 / M_PI));
 }
 
-static float	ft_pow(float a)
+static double	ft_pow(double a)
 {
 	return (a * a);
 }
 
-float	calculate_distance(t_point a, t_point b)
+double	calculate_distance(t_point a, t_point b)
 {
 	return (sqrt(ft_pow(b.x - a.x) + ft_pow(b.y - a.y)));
 }

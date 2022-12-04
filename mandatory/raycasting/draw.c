@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:51:48 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/01 19:42:57 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/04 12:34:29 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ t_point	new_point(int x, int y)
 
 void	draw_player(t_data *data)
 {
-	float	px;
-	float	py;
+	double	px;
+	double	py;
 
 	draw_square(&data->img,
 		new_point(data->player.pos.x, data->player.pos.y), 0x00FF0000, 10);
@@ -78,9 +78,9 @@ void	draw_walls(t_data *data)
 
 void	dda(t_img *img, t_point a, t_point b, int color)
 {
-	float	dx;
-	float	dy;
-	float	steps;
+	double	dx;
+	double	dy;
+	double	steps;
 	int		i;
 
 	dx = b.x - a.x;
@@ -93,8 +93,8 @@ void	dda(t_img *img, t_point a, t_point b, int color)
 	while (i < steps)
 	{
 		my_mlx_pixel_put(img, round(a.x), round(a.y), color);
-		a.x += dx / (float) steps;
-		a.y += dy / (float) steps;
+		a.x += dx / (double) steps;
+		a.y += dy / (double) steps;
 		i++;
 	}
 }

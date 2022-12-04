@@ -6,23 +6,23 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:10:31 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/11/29 14:03:07 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/04 12:40:53 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "raycasting_bonus.h"
 
-int	is_ray_facing_down(float ray_angle)
+int	is_ray_facing_down(double ray_angle)
 {
-	if (ray_angle > 0 && ray_angle < PI)
+	if (ray_angle > 0 && ray_angle < M_PI)
 		return (TRUE);
 	else
 		return (FALSE);
 }
 
-int	is_ray_facing_right(float ray_angle)
+int	is_ray_facing_right(double ray_angle)
 {
-	if (ray_angle < P2 || ray_angle > P3)
+	if (ray_angle < M_PI_2 || ray_angle > 3 * M_PI_2)
 		return (TRUE);
 	else
 		return (FALSE);
@@ -32,7 +32,7 @@ int	is_ray_facing_right(float ray_angle)
 
 void	draw_wall(t_data *data, t_ray *ray)
 {
-	float	wallH;
+	double	wallH;
 	int		wall_strip_height;
 	int		top_pixel;
 	int		bot_pixel;
@@ -124,7 +124,7 @@ void	cast_single_ray(t_data *data, t_ray *ray)
 		ray->wall_hit.y = ray->horizontal_hit.y;
 		// dda(&data->img, data->player.pos, ray->horizontal_hit, 0x00FF0000);
 	}
-	float ca = rad_addition(data->player.rotation_angle, -ray->ray_angle);
+	double ca = rad_addition(data->player.rotation_angle, -ray->ray_angle);
 	ray->distF *= cos(ca);
 	draw_wall(data, ray);
 }
