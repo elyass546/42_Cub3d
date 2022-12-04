@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:10:31 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/04 12:40:53 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/04 19:05:43 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,14 @@ void	draw_wall(t_data *data, t_ray *ray)
 			data->door.y = (int) (ray->wall_hit.y) / TILE_SIZE;
 			data->door.distance  = ray->distF;
 			data->door.is_any_door_nearby = TRUE;
+			img = data->current_door_frame;
 		}
-		img = data->current_door_frame;
+		else
+		{
+			img = &data->text.door;
+		}
 	}
-		
+
 	while (y < bot_pixel)
 	{
 		int	distance_from_top = y + (wall_strip_height / 2 ) - (HEIGHT / 2);
