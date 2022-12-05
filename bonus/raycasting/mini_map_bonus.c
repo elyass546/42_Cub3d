@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:33:50 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/05 12:51:50 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/05 16:16:52 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	draw_minimap(t_data *data, int x, int y)
 			else if (data->pars->map[offset_y][offset_x] == 'D')
 				color = 0x00FFD700;
 			else if (data->pars->map[offset_y][offset_x] == 'O')
-				color = 0x00808080;
+				color = 0x00000000;
 			else
 				color = 0x00808080;
 			draw_square(&data->img,
@@ -57,20 +57,37 @@ void	draw_minimap(t_data *data, int x, int y)
 	}
 }
 
+void	draw_circle(t_data *data, t_point p, int r, int color)
+{
+      double 	i;
+	  double	angle;
+	  double	x1;
+	  double	y1;
+
+	  while (i < 360)
+	  {
+		angle = i;
+		x1 = r * cos(angle * M_PI / 180);
+        y1 = r * sin(angle * M_PI / 180);
+		my_mlx_pixel_put(&data->img, p.x + x1, p.y + y1, color);
+		i += 0.1;
+	  }
+}
+
 void	draw_player_in_map(t_data *data, int x, int y)
 {
-	// double grid_x = data->player.pos.x / TILE_SIZE;
-	// double grid_y = data->player.pos.y / TILE_SIZE;
+	t_point	center_p;
+	float	px;
+	float	py;
 
-	draw_square(&data->img,
-		new_point(SCALE * 4 , SCALE * 4 ),
-			0x702963,
-				10);
-	float px = (4 * SCALE) + cos(data->player.rotation_angle) * 25;
-	float py = (4 * SCALE) + sin(data->player.rotation_angle) * 25;
+	center_p.x = SCALE * 4 + SCALE / 2;
+	center_p.y = SCALE * 4 + SCALE /2;
+	draw_circle(data, center_p, 10, 0x702963);
+	px = center_p.x + cos(data->player.rotation_angle) * 20;
+	py = center_p.y + sin(data->player.rotation_angle) * 20;
 	dda(&data->img,
-		new_point(4 * SCALE + 5, SCALE * 4 + 5),
-			new_point(px + 5, py + 5),
+		new_point(center_p.x, center_p.x),
+			new_point(px, py),
 				0x702963);
 }
 

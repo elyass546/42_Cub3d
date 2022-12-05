@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/04 16:07:14 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/05 16:30:49 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ void	free_exit(t_data *data, int status)
 		if (data->img.img)
 			mlx_destroy_image(data->mlx, data->img.img);
 		mlx_destroy_window(data->mlx, data->win);
+		destroy_textures(data);
 		free(data->mlx);
 	}
+	
 	free(data);
 	exit(status);
 }
@@ -36,6 +38,18 @@ static double	get_player_angle(char c)
 	if (c == 'E')
 		return (0);
 	return (M_PI);
+}
+
+void	destroy_textures(t_data *data)
+{
+	if (data->pars->north)
+		mlx_destroy_image(data->mlx, data->pars->north);
+	if (data->pars->west)
+		mlx_destroy_image(data->mlx, data->pars->west);
+	if (data->pars->south)
+		mlx_destroy_image(data->mlx, data->pars->south);
+	if (data->pars->east)
+		mlx_destroy_image(data->mlx, data->pars->east);
 }
 
 static void	init_textures(t_data *data)

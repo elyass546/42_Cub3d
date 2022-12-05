@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/05 11:07:15 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/05 15:53:48 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,6 +210,7 @@ void		find_horizontal_wall(t_data *data, t_ray *ray);
 
 //			mini_map_bonus.c
 void		draw_minimap(t_data *data, int x, int y);
+void		mini_map(t_data *data);
 
 
 #endif
