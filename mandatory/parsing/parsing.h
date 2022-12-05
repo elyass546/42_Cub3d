@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:05 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/27 22:19:26 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/05 16:37:01 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int		check_line_helper(char *line, t_pars *pars);
 
 void	ft_error(char *str);
 void	check_map(t_pars *pars);
+void	free_parsing(t_pars *pars);
 void	west(t_pars *pars, char *str);
 void	east(t_pars *pars, char *str);
 void	south(t_pars *pars, char *str);

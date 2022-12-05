@@ -21,6 +21,7 @@ HEADERS_BONUS =	main.h bonus/parsing/parsing_bonus.h  	\
 
 SRC =			main.c															\
 				mandatory/parsing/parsing.c										\
+				mandatory/parsing/free_parsing.c								\
 				mandatory/parsing/check_textures_path.c							\
 				mandatory/parsing/valid_map.c									\
 				mandatory/parsing/ft_split.c									\
@@ -41,6 +42,7 @@ SRC =			main.c															\
 
 SRC_BONUS =		bonus/main_bonus.c													\
 				bonus/parsing/parsing_bonus.c										\
+				bonus/parsing/free_parsing_bonus.c									\
 				bonus/parsing/valid_map_bonus.c										\
 				bonus//parsing/check_textures_path_bonus.c							\
 				bonus/parsing/ft_split_bonus.c										\
