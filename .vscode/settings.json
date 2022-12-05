@@ -3,6 +3,7 @@
 		"raycasting.h": "c",
 		"main.h": "c",
 		"parsing.h": "c",
-		"raycasting_bonus.h": "c"
+		"raycasting_bonus.h": "c",
+		"main_bonus.h": "c"
 	}
 }

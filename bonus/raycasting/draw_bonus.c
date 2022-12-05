@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:51:48 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/04 16:04:41 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/05 16:00:20 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,36 +59,36 @@ void	draw_square(t_img *img, t_point pos, int color, int size)
 	}
 }
 
-void	draw_minimap(t_data *data)
-{
-	int	i;
-	int	j;
-	int	color;
+// void	draw_minimap(t_data *data)
+// {
+// 	int	i;
+// 	int	j;
+// 	int	color;
 
-	i = 0;
-	while (data->pars->map[i])
-	{
-		j = 0;
-		while (data->pars->map[i][j])
-		{
-			if (data->pars->map[i][j] == '1')
-				color = 0x00FFFFFF;
-			else if (data->pars->map[i][j] == 'D')
-				color = 0x00FFD700;
-			else if (data->pars->map[i][j] == 'O')
-				color = 0x00808080;
-			else if (data->pars->map[i][j] == ' ')
-				color = 0x00808080;
-			else
-				color = 0x00000000;
-			draw_square(&data->img,
-				new_point(j * SCALE, i * SCALE),
-					color, SCALE);
-			j++;
-		}
-		i++;
-	}
-}
+// 	i = 0;
+// 	while (data->pars->map[i])
+// 	{
+// 		j = 0;
+// 		while (data->pars->map[i][j])
+// 		{
+// 			if (data->pars->map[i][j] == '1')
+// 				color = 0x00FFFFFF;
+// 			else if (data->pars->map[i][j] == 'D')
+// 				color = 0x00FFD700;
+// 			else if (data->pars->map[i][j] == 'O')
+// 				color = 0x00808080;
+// 			else if (data->pars->map[i][j] == ' ')
+// 				color = 0x00808080;
+// 			else
+// 				color = 0x00000000;
+// 			draw_square(&data->img,
+// 				new_point(j * SCALE, i * SCALE),
+// 					color, SCALE);
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }
 
 void	dda(t_img *img, t_point a, t_point b, int color)
 {
