@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/04 16:06:20 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/05 11:07:15 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 
 # define TILE_SIZE 64
 
-# define SCALE 10
+# define SCALE 20
 
 # include "../parsing/parsing_bonus.h"
 # include "../../minilibx/mlx.h"
@@ -192,7 +192,6 @@ double		calculate_distance(t_point a, t_point b);
 //			draw.c
 t_point		new_point(int x, int y);
 void		draw_square(t_img *img, t_point pos, int color, int size);
-void		draw_minimap(t_data *data);
 void		draw_player(t_data *data);
 void		dda(t_img *img, t_point a, t_point b, int color);
 
@@ -208,6 +207,9 @@ void		find_first_vertical_intersection(t_data *data, t_ray *ray);
 void		find_vertical_wall(t_data *data, t_ray *ray);
 void		find_first_horizontal_intersection(t_data *data, t_ray *ray);
 void		find_horizontal_wall(t_data *data, t_ray *ray);
+
+//			mini_map_bonus.c
+void		draw_minimap(t_data *data, int x, int y);
 
 
 #endif

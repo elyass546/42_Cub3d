@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/04 21:12:17 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/05 10:35:58 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,7 @@ void	update_screen(t_data *data)
 	cast_rays(data);
 	if (data->show_map)
 	{
-		if (data->height <= HEIGHT / 2 && data->width <= WIDTH / 2)
-		{
-			draw_minimap(data);
-			draw_player(data);
-		}
-		else
-		{
-			printf("cant show map\n");
-		}
+		mini_map(data);
 	}
 	// mlx_clear_window(data->mlx, data->win);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
