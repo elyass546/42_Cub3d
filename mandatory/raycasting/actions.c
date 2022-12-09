@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/04 21:11:22 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/09 21:58:14 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,9 @@ void	move_player(t_data *data)
 		move_step = player->walk_speed;
 	wall_collision(data,
 		cos(rad_addition(player->rotation_angle, (M_PI_2
-			* player->side_direction))),
+					* player->side_direction))),
 		sin(rad_addition(player->rotation_angle, (M_PI_2
-			* player->side_direction))),
-		move_step);
+					* player->side_direction))), move_step);
 }
 
 void	update_screen(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:10:31 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/04 12:33:52 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/09 21:52:25 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	cast_rays(t_data *data)
 	int		i;
 
 	i = 0;
-	ray.ray_angle = rad_addition(data->player.rotation_angle, (- M_PI / 6));
+	ray.ray_angle = rad_addition(data->player.rotation_angle, (-M_PI / 6));
 	ray.h = 0;
 	while (i < WIDTH)
 	{

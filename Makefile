@@ -30,6 +30,7 @@ SRC =			main.c															\
 				mandatory/parsing/map_line_counter.c							\
 				mandatory/parsing/map.c											\
 				mandatory/raycasting/init.c										\
+				mandatory/raycasting/free.c										\
 				mandatory/raycasting/img.c										\
 				mandatory/raycasting/actions.c									\
 				mandatory/raycasting/actions_utils.c							\

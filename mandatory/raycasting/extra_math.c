@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 19:32:36 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/04 12:34:52 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/09 21:55:27 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ double	rad_addition(double rad1, double rad2)
 	if (ret < 0)
 		return (ret + 2 * M_PI);
 	if (ret > 2 * M_PI)
-		return ( ret - 2 * M_PI);
+		return (ret - 2 * M_PI);
 	return (ret);
 }
 

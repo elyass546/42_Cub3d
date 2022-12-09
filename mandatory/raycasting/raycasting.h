@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/04 16:07:10 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/09 21:54:40 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,9 @@ typedef struct s_data
 
 //				init.c
 t_data			*init_data( t_pars *pars);
+void			destroy_textures(t_data *data);
+
+//				free.c
 void			free_exit(t_data *data, int status);
 
 //				actions.c
