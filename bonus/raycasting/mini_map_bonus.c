@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:33:50 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/05 16:16:52 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/10 21:34:39 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	draw_circle(t_data *data, t_point p, int r, int color)
 	  double	x1;
 	  double	y1;
 
+	  i = 0;
 	  while (i < 360)
 	  {
 		angle = i;
@@ -81,7 +82,7 @@ void	draw_player_in_map(t_data *data, int x, int y)
 	float	py;
 
 	center_p.x = SCALE * 4 + SCALE / 2;
-	center_p.y = SCALE * 4 + SCALE /2;
+	center_p.y = SCALE * 4 + SCALE / 2;
 	draw_circle(data, center_p, 10, 0x702963);
 	px = center_p.x + cos(data->player.rotation_angle) * 20;
 	py = center_p.y + sin(data->player.rotation_angle) * 20;
