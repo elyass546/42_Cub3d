@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:11 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/29 13:11:15 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/10 21:15:39 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ void	is_surrounded_helper(char **map, t_pars *pars, int i)
 			|| map[i][j + 1] == '\0' || map[i + 1] == NULL
 			|| j >= pars->col - 1 || i >= pars->row - 1
 			|| check_line1(map[i + 1], j) || check_line1(map[i - 1], j)
-			|| is_space(map[i - 1][j]) || is_space(map[i + 1][j])
-			|| is_space(map[i][j - 1]) || is_space(map[i][j + 1])))
+			|| is_space(map[i - 1][j]) || !map[i - 1][j] || is_space(map[i + 1][j]) || !map[i + 1][j]
+			|| is_space(map[i][j - 1]) || !map[i][j - 1] || !map[i][j + 1] || is_space(map[i][j + 1])))
 			ft_error("Please check your map!\n");
 		if (!is_mapchar(map[i][j]))
 			ft_error("Wrong element inside your map!\n");
@@ -86,7 +86,7 @@ void	is_surrounded_by_walls(t_pars *pars)
 	char	**map;
 	size_t	i;
 
-	i = 0;
+	i = 1;
 	map = pars->map;
 	if (!map[i] || !map[i][0])
 		ft_error("Empty map!\n");
