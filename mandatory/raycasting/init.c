@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/09 21:54:14 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/10 11:15:02 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ static void	init_textures(t_data *data)
 // define pos of player
 static void	init_player_config(t_data *data)
 {
-	data->player.pos.x = data->pars->player_x * TILE_SIZE;
-	data->player.pos.y = data->pars->player_y * TILE_SIZE;
+	data->player.pos.x = data->pars->player_x * TILE_SIZE + TILE_SIZE / 2;
+	data->player.pos.y = data->pars->player_y * TILE_SIZE + TILE_SIZE / 2;
 	data->player.turn_direction = 0;
 	data->player.walk_direction = 0;
 	data->player.side_direction = 0;

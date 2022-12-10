@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:10:40 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/03 15:35:05 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/10 11:40:11 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ void	draw_wall(t_data *data, t_ray *ray)
 	int		y;
 
 	draw_wall_utils(data, ray, &wall);
-	y = 0;
-	while (y < wall.top_pixel)
-		my_mlx_pixel_put(&data->img, ray->h, y++, data->pars->ceilling);
+	dda(&data->img, new_point(ray->h, 0),
+		new_point(ray->h, wall.top_pixel), data->pars->ceilling);
+	y = wall.top_pixel;
 	while (y < wall.bot_pixel)
 	{
 		wall.distance_from_top = y
@@ -60,7 +60,7 @@ void	draw_wall(t_data *data, t_ray *ray)
 		my_mlx_pixel_put(&data->img, ray->h, y, wall.color);
 		y++;
 	}
-	while (y < HEIGHT)
-		my_mlx_pixel_put(&data->img, ray->h, y++, data->pars->floor);
+	dda(&data->img, new_point(ray->h, wall.bot_pixel),
+		new_point(ray->h, HEIGHT), data->pars->floor);
 	ray->h++;
 }

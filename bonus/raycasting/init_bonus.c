@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/05 10:36:23 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/10 11:43:12 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,8 @@ static void	init_animation_frames(t_data *data)
 
 static void	init_player_config(t_data *data)
 {
-	data->player.pos.x = data->pars->player_x * TILE_SIZE;
-	data->player.pos.y = data->pars->player_y * TILE_SIZE;
+	data->player.pos.x = data->pars->player_x * TILE_SIZE + TILE_SIZE / 2;
+	data->player.pos.y = data->pars->player_y * TILE_SIZE + TILE_SIZE / 2;
 	data->player.turn_direction = 0;
 	data->player.walk_direction = 0;
 	data->player.side_direction = 0;
@@ -132,10 +132,7 @@ t_data	*init_data( t_pars *pars )
 		return (NULL);
 	data->height = pars->row * SCALE;
 	data->width = pars->col * SCALE;
-	// if (data->height > HEIGHT / 2 || data->width > WIDTH / 2)
-	// 	data->show_map = FALSE;
-	// else
-		data->show_map = TRUE;
+	data->show_map = TRUE;
 	data->mlx = mlx_init();
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "CUB3D");
 	data->i = 0;

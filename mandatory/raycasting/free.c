@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 21:53:56 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/09 21:55:15 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/10 11:14:06 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,16 @@ void	free_exit(t_data *data, int status)
 {
 	if (status)
 		ft_putstr_fd("ERROR\n", 2);
-	if (data->mlx)
-	{
-		if (data->img.img)
-			mlx_destroy_image(data->mlx, data->img.img);
-		mlx_destroy_window(data->mlx, data->win);
-		destroy_textures(data);
-		free(data->mlx);
-	}
-	free(data);
+	(void) data;
+	// if (data->mlx)
+	// {
+	// 	if (data->img.img)
+	// 		mlx_destroy_image(data->mlx, data->img.img);
+	// 	mlx_destroy_window(data->mlx, data->win);
+	// 	destroy_textures(data);
+	// 	free(data->mlx);
+	// }
+	// free(data);
 	exit(status);
 }
 

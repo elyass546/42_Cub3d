@@ -8,7 +8,7 @@ MINILIBX = ./minilibx/libmlx.a
 
 RM = @rm -f
 
-CFLAGS = 
+CFLAGS = -O3
 
 LIBFT	=	libft/libft.a
 
@@ -72,29 +72,34 @@ all :	$(NAME)
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME):	$(OBJ)  $(LIBFT)
+$(NAME):	$(OBJ)  $(LIBFT) $(MINILIBX)
 	$(CC) $(CFLAGS) $(LIBFT) $(MINILIBX) -lmlx -framework OpenGL -framework AppKit  $(OBJ) -o $(NAME)
 	@echo [GAME CREATED]
 
 $(LIBFT):
 	@make -C ./libft
 
+$(MINILIBX):
+	@make -C ./minilibx
+
 clean :
 	$(RM) $(OBJ)
 	$(RM) $(OBJ_BONUS)
 	@make clean -C ./libft
+	@make clean -C ./minilibx
 	@echo [OBJECTS DELETED]
 
 fclean : clean
 	$(RM) $(NAME)
 	$(RM) $(NAME_BONUS)
 	$(RM) $(LIBFT)
+	$(RM) $(MINILIBX)
 	@echo [GAME DELETED]
 
 bonus : $(NAME_BONUS)
 
 
-$(NAME_BONUS):	$(OBJ_BONUS)  $(LIBFT)
+$(NAME_BONUS):	$(OBJ_BONUS)  $(LIBFT) $(MINILIBX)
 	$(CC) $(CFLAGS) $(LIBFT)  $(MINILIBX) -lmlx -framework OpenGL -framework AppKit  $(OBJ_BONUS) -o $(NAME_BONUS)
 	@echo [GAME BONUS CREATED]
 

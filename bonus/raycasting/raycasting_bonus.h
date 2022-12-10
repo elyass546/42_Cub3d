@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/05 15:53:48 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/10 11:29:12 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,11 @@ void		free_exit(t_data *data, int status);
 //			actions.c
 int			action(int keycode, t_data *data);
 int			action_key_up(int keycode, t_data *data);
+void		wall_collision(t_data *data, double pdx, double pdy, double move_step);
+
+//			mlx_funs_bonus.c
 void		update_screen(t_data *data);
+void		move_player(t_data *data);
 
 //			mouse_rotation.c && action.c
 void		handle_arrows(int keycode, t_data *data, double rotation_speed);

@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:10:31 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/04 19:05:43 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/10 11:34:42 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	draw_wall(t_data *data, t_ray *ray)
 	int		wall_strip_height;
 	int		top_pixel;
 	int		bot_pixel;
+	int		y;
 
 	wallH =  (TILE_SIZE / ray->distF) * ((WIDTH / 2 ) / tan(HALF_FOV));
 	wall_strip_height = (int) wallH;
@@ -63,12 +64,7 @@ void	draw_wall(t_data *data, t_ray *ray)
 		if (ray->is_ray_facing_down)
 			img = &data->text.south;
 	}
-	int	y = 0;
-	while (y < top_pixel)
-	{
-		my_mlx_pixel_put(&data->img, ray->h, y, data->pars->ceilling);
-		y++;
-	}
+	dda(&data->img, new_point(ray->h, 0), new_point(ray->h, top_pixel), data->pars->ceilling);
 	if (ray->wall_hit_content == 'D')
 	{
 		if (ray->distF <= 130)
@@ -85,7 +81,7 @@ void	draw_wall(t_data *data, t_ray *ray)
 			img = &data->text.door;
 		}
 	}
-
+	y = top_pixel;
 	while (y < bot_pixel)
 	{
 		int	distance_from_top = y + (wall_strip_height / 2 ) - (HEIGHT / 2);
@@ -94,11 +90,7 @@ void	draw_wall(t_data *data, t_ray *ray)
 		my_mlx_pixel_put(&data->img, ray->h, y, color);
 		y++;
 	}
-	while (y < HEIGHT)
-	{
-		my_mlx_pixel_put(&data->img, ray->h, y, data->pars->floor);
-		y++;
-	}
+	dda(&data->img, new_point(ray->h, bot_pixel), new_point(ray->h, HEIGHT), data->pars->floor);
 	ray->h++;
 }
 
