@@ -77,16 +77,16 @@ $(NAME):	$(OBJ)  $(LIBFT) $(MINILIBX)
 	@echo [GAME CREATED]
 
 $(LIBFT):
-	@make -C ./libft
+	@make -s -C ./libft
 
 $(MINILIBX):
-	@make -C ./minilibx
+	@make -s -C ./minilibx
 
 clean :
 	$(RM) $(OBJ)
 	$(RM) $(OBJ_BONUS)
-	@make clean -C ./libft
-	@make clean -C ./minilibx
+	@make -s clean -C ./libft
+	@make -s clean -C ./minilibx
 	@echo [OBJECTS DELETED]
 
 fclean : clean
