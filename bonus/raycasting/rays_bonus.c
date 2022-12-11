@@ -6,11 +6,11 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:10:31 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/10 11:34:42 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/11 20:32:37 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "raycasting_bonus.h"
+#include "raycasting_bonus.h"
 
 int	is_ray_facing_down(double ray_angle)
 {
@@ -28,43 +28,34 @@ int	is_ray_facing_right(double ray_angle)
 		return (FALSE);
 }
 
-
-
-void	draw_wall(t_data *data, t_ray *ray)
+void	init_drawing(t_data *data, t_ray *ray, int wall_strip_height)
 {
-	double	wallH;
-	int		wall_strip_height;
-	int		top_pixel;
-	int		bot_pixel;
-	int		y;
-
-	wallH =  (TILE_SIZE / ray->distF) * ((WIDTH / 2 ) / tan(HALF_FOV));
-	wall_strip_height = (int) wallH;
-	top_pixel = HEIGHT / 2 - wall_strip_height / 2;
-	bot_pixel = HEIGHT / 2 + wall_strip_height / 2;
-	if (top_pixel < 0)
-		top_pixel = 0;
-	if (bot_pixel > HEIGHT)
-		bot_pixel = HEIGHT;
-	int	texture_offsetx;
-	t_img	*img;
+	ray->top_pixel = HEIGHT / 2 - wall_strip_height / 2;
+	ray->bot_pixel = HEIGHT / 2 + wall_strip_height / 2;
+	if (ray->top_pixel < 0)
+		ray->top_pixel = 0;
+	if (ray->bot_pixel > HEIGHT)
+		ray->bot_pixel = HEIGHT;
 	if (ray->was_hit_vertical)
 	{
-		texture_offsetx = (int) ray->wall_hit.y % TILE_SIZE;
+		ray->texture_offsetx = (int) ray->wall_hit.y % TILE_SIZE;
 		if (ray->is_ray_facing_left)
-			img = &data->text.east;
+			ray->img = &data->text.east;
 		if (ray->is_ray_facing_right)
-			img = &data->text.west;
+			ray->img = &data->text.west;
 	}
 	else
 	{
-		texture_offsetx = (int) ray->wall_hit.x % TILE_SIZE;
+		ray->texture_offsetx = (int) ray->wall_hit.x % TILE_SIZE;
 		if (ray->is_ray_facing_up)
-			img = &data->text.north;
+			ray->img = &data->text.north;
 		if (ray->is_ray_facing_down)
-			img = &data->text.south;
+			ray->img = &data->text.south;
 	}
-	dda(&data->img, new_point(ray->h, 0), new_point(ray->h, top_pixel), data->pars->ceilling);
+}
+
+void	check_for_doors(t_data *data, t_ray *ray)
+{
 	if (ray->wall_hit_content == 'D')
 	{
 		if (ray->distF <= 130)
@@ -74,23 +65,35 @@ void	draw_wall(t_data *data, t_ray *ray)
 			data->door.y = (int) (ray->wall_hit.y) / TILE_SIZE;
 			data->door.distance  = ray->distF;
 			data->door.is_any_door_nearby = TRUE;
-			img = data->current_door_frame;
+			ray->img = data->current_door_frame;
 		}
 		else
-		{
-			img = &data->text.door;
-		}
+			ray->img = &data->text.door;
 	}
-	y = top_pixel;
-	while (y < bot_pixel)
+}
+
+void	draw_wall(t_data *data, t_ray *ray)
+{
+	double	wall_height;
+	int		wall_strip_height;
+
+	int		y;
+
+	wall_height = (TILE_SIZE / ray->distF) * ((WIDTH / 2 ) / tan(HALF_FOV));
+	wall_strip_height = (int) wall_height;
+	init_drawing(data, ray, wall_strip_height);
+	dda(&data->img, new_point(ray->h, 0), new_point(ray->h, ray->top_pixel), data->pars->ceilling);
+	check_for_doors(data, ray);
+	y = ray->top_pixel;
+	while (y < ray->bot_pixel)
 	{
-		int	distance_from_top = y + (wall_strip_height / 2 ) - (HEIGHT / 2);
-		int texture_offsety = distance_from_top * (64.0f / wall_strip_height);
-		unsigned int color = my_mlx_get_color(img, texture_offsetx, texture_offsety);
+		ray->texture_offsety = (y + (wall_strip_height / 2 )
+			- (HEIGHT / 2)) * (64.0f / wall_strip_height);
+		unsigned int color = my_mlx_get_color(ray->img, ray->texture_offsetx, ray->texture_offsety);
 		my_mlx_pixel_put(&data->img, ray->h, y, color);
 		y++;
 	}
-	dda(&data->img, new_point(ray->h, bot_pixel), new_point(ray->h, HEIGHT), data->pars->floor);
+	dda(&data->img, new_point(ray->h, ray->bot_pixel), new_point(ray->h, HEIGHT), data->pars->floor);
 	ray->h++;
 }
 
@@ -109,7 +112,6 @@ void	cast_single_ray(t_data *data, t_ray *ray)
 		ray->wall_hit.x = ray->vertical_hit.x;
 		ray->wall_hit.y = ray->vertical_hit.y;
 		ray->wall_hit_content = ray->vertical_content;
-		// dda(&data->img, data->player.pos, ray->vertical_hit, 0x00FF0000);
 	}
 	else
 	{
@@ -118,7 +120,6 @@ void	cast_single_ray(t_data *data, t_ray *ray)
 		ray->wall_hit_content = ray->horizontal_content;
 		ray->wall_hit.x = ray->horizontal_hit.x;
 		ray->wall_hit.y = ray->horizontal_hit.y;
-		// dda(&data->img, data->player.pos, ray->horizontal_hit, 0x00FF0000);
 	}
 	double ca = rad_addition(data->player.rotation_angle, -ray->ray_angle);
 	ray->distF *= cos(ca);
@@ -134,8 +135,6 @@ void	cast_rays(t_data *data)
 	ray.ray_angle = rad_addition(data->player.rotation_angle, -HALF_FOV);
 	ray.h = 0;
 	data->door.is_any_door_nearby = FALSE;
-	// data->door.x = -1;
-	// data->door.y = -1;
 	data->door.distance = 1000000;
 	while (i < WIDTH)
 	{

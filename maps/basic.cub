@@ -3,8 +3,6 @@ SO ./textures/cobblestone.xpm
 WE ./textures/coal.xpm
 EA ./textures/greystone.xpm
 
-
-
 F 139,90,43
 C 243,231,231
 
