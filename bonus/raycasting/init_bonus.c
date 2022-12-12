@@ -6,26 +6,11 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/12 16:20:17 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/12 17:29:20 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting_bonus.h"
-
-void	free_exit(t_data *data, int status)
-{
-	if (status)
-		ft_putstr_fd("ERROR\n", 2);
-	if (data->mlx)
-	{
-		if (data->img.img)
-			mlx_destroy_image(data->mlx, data->img.img);
-		mlx_destroy_window(data->mlx, data->win);
-		free(data->mlx);
-	}
-	free(data);
-	exit(status);
-}
 
 static double	get_player_angle(char c)
 {

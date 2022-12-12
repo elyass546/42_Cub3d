@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/12 16:39:08 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/12 17:31:03 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,5 +222,8 @@ void			check_if_any_open_doors(t_data *data, t_ray *ray);
 void			check_for_doors(t_data *data, t_ray *ray);
 void			on_close(t_data *data, int *i);
 void			on_open(t_data	*data, int *j);
+
+//				free_bonus.c
+void			free_exit(t_data *data, int status);
 
 #endif

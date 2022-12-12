@@ -63,6 +63,7 @@ SRC_BONUS =		bonus/main_bonus.c													\
 				bonus/raycasting/rays_intersection_bonus.c							\
 				bonus/raycasting/mini_map_bonus.c									\
 				bonus/raycasting/door_bonus.c										\
+				bonus/raycasting/free_bonus.c										\
 
 OBJ = $(SRC:.c=.o)
 
