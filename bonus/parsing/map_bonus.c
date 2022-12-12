@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:45:16 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/26 23:02:11 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/12 17:24:10 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	check_line(char *line, t_pars *pars)
 		if (!line[0])
 			return ;
 		else if (!is_mapchar(line[0]))
-			ft_error("Wrong element in map123\n");
+			ft_error("Wrong element in map\n");
 		map_stocking(line, pars);
 	}
 }
