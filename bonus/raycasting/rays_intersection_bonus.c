@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 19:40:44 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/12 13:00:46 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/12 16:14:31 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	init_ray(t_ray *ray)
 	ray->is_ray_facing_up = !ray->is_ray_facing_down;
 	ray->is_ray_facing_right = is_ray_facing_right(ray->ray_angle);
 	ray->is_ray_facing_left = !ray->is_ray_facing_right;
-	ray->distH = 100000;
-	ray->distV = 100000;
+	ray->dist_h = 100000;
+	ray->dist_v = 100000;
 	ray->wall_hit_content = '0';
 	ray->horizontal_content = '0';
 	ray->vertical_content = '0';

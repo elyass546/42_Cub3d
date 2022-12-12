@@ -6,13 +6,13 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 14:43:33 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/12 15:53:18 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/12 16:12:56 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting_bonus.h"
 
-void	*get_img(t_data *data, const char *path)
+void	*get_img(t_data *data, char *path)
 {
 	void	*img;
 

@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 13:00:30 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/12 13:02:30 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/12 16:16:57 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	check_for_doors(t_data *data, t_ray *ray)
 {
 	if (ray->wall_hit_content == 'D')
 	{
-		if (ray->distF <= 130)
+		if (ray->dist_f <= 130)
 		{
 			data->door.x = (int)(ray->wall_hit.x) / TILE_SIZE;
 			data->door.y = (int)(ray->wall_hit.y) / TILE_SIZE;
-			data->door.distance = ray->distF;
+			data->door.distance = ray->dist_f;
 			data->door.is_any_door_nearby = TRUE;
 			ray->img = data->current_door_frame;
 		}

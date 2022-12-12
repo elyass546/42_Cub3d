@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:10:31 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/12 13:02:24 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/12 16:17:50 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	draw_wall(t_data *data, t_ray *ray)
 	int				y;
 	unsigned int	color;
 
-	wall_height = (TILE_SIZE / ray->distF) * ((WIDTH / 2) / tan(HALF_FOV));
+	wall_height = (TILE_SIZE / ray->dist_f) * ((WIDTH / 2) / tan(HALF_FOV));
 	wall_strip_height = (int) wall_height;
 	init_drawing(data, ray, wall_strip_height);
 	dda(&data->img, new_point(ray->h, 0), new_point(ray->h, ray->top_pixel),
@@ -71,26 +71,26 @@ void	cast_single_ray(t_data *data, t_ray *ray)
 	init_ray(ray);
 	find_horizontal_wall(data, ray);
 	find_vertical_wall(data, ray);
-	ray->distV = calculate_distance(data->player.pos, ray->vertical_hit);
-	ray->distH = calculate_distance(data->player.pos, ray->horizontal_hit);
-	if (ray->distV < ray->distH)
+	ray->dist_v = calculate_distance(data->player.pos, ray->vertical_hit);
+	ray->dist_h = calculate_distance(data->player.pos, ray->horizontal_hit);
+	if (ray->dist_v < ray->dist_h)
 	{
 		ray->was_hit_vertical = TRUE;
-		ray->distF = ray->distV;
+		ray->dist_f = ray->dist_v;
 		ray->wall_hit.x = ray->vertical_hit.x;
 		ray->wall_hit.y = ray->vertical_hit.y;
 		ray->wall_hit_content = ray->vertical_content;
 	}
 	else
 	{
-		ray->distF = ray->distH;
+		ray->dist_f = ray->dist_h;
 		ray->was_hit_vertical = FALSE;
 		ray->wall_hit_content = ray->horizontal_content;
 		ray->wall_hit.x = ray->horizontal_hit.x;
 		ray->wall_hit.y = ray->horizontal_hit.y;
 	}
 	ray->ca = rad_addition(data->player.rotation_angle, -ray->ray_angle);
-	ray->distF *= cos(ray->ca);
+	ray->dist_f *= cos(ray->ca);
 	draw_wall(data, ray);
 }
 

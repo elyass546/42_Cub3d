@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 21:10:30 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/12 15:59:17 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/12 16:12:42 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	init_door_animation(t_data *data)
 			&data->text.door3.line_length, &data->text.door3.endian);
 }
 
-static int	shoot_with_mouse2(t_data *data, int x, int y)
+static void	shoot_with_mouse2(t_data *data, int x, int y)
 {
 	if (data->i < 35)
 		mlx_put_image_to_window(data->mlx, data->win, data->frames.f7, x, y);

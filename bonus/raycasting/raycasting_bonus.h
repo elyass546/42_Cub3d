@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/12 16:05:12 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/12 16:13:06 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,7 @@ void			wall_collision(t_data *data, double pdx,
 //				mlx_funs_bonus.c
 void			update_screen(t_data *data);
 void			move_player(t_data *data);
-void			*get_img(t_data *data, const char *path);
+void			*get_img(t_data *data, char *path);
 
 //				mouse_rotation.c && action.c
 void			handle_arrows(int keycode, t_data *data, double rotation_speed);
