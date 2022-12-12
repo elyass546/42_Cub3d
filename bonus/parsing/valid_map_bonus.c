@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:11 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/12 16:55:39 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/12 16:57:30 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	is_surrounded_by_walls(t_pars *pars)
 	char	**map;
 	size_t	i;
 
-	i = 1;
+	i = 0;
 	map = pars->map;
 	if (!map[i] || !map[i][0])
 		ft_error("Empty map!\n");
