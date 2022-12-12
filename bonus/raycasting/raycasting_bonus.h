@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/10 11:29:12 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/11 20:27:39 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,11 @@ typedef struct s_ray
 	double	ry;
 	double	x0;
 	double	y0;
+	t_img	*img;
+	int		texture_offsetx;
+	int		texture_offsety;
+	int		top_pixel;
+	int		bot_pixel;
 }	t_ray;
 
 
