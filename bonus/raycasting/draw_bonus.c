@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:51:48 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/09 23:41:21 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/12 14:15:51 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,7 @@ void	dda(t_img *img, t_point a, t_point b, int color)
 		steps = fabs(dy);
 	x_inc = dx / (double) steps;
 	y_inc = dy / (double) steps;
-	int i = 0;
-	while (i < steps)
+	while (steps > 0)
 	{
 		if (a.y < 0 || a.y > HEIGHT)
 			return ;
@@ -85,6 +84,6 @@ void	dda(t_img *img, t_point a, t_point b, int color)
 		my_mlx_pixel_put(img, round(a.x), round(a.y), color);
 		a.x += x_inc;
 		a.y += y_inc;
-		i++;
+		steps--;
 	}
 }

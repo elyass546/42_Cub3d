@@ -6,11 +6,11 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 19:32:36 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/04 12:39:32 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/12 14:16:20 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "raycasting_bonus.h"
+#include "raycasting_bonus.h"
 
 double	rad_addition(double rad1, double rad2)
 {
@@ -29,7 +29,7 @@ double	deg2rad(double degrees)
 	return (degrees * (M_PI / 180));
 }
 
-double rad2deg(double radians)
+double	rad2deg(double radians)
 {
 	return (radians * (180 / M_PI));
 }

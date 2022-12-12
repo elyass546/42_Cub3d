@@ -6,12 +6,11 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:16:53 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/10 11:43:12 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/12 14:51:35 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-# include "raycasting_bonus.h"
+#include "raycasting_bonus.h"
 
 void	free_exit(t_data *data, int status)
 {
@@ -24,7 +23,6 @@ void	free_exit(t_data *data, int status)
 		mlx_destroy_window(data->mlx, data->win);
 		free(data->mlx);
 	}
-	// free_map(data->map);
 	free(data);
 	exit(status);
 }
@@ -40,71 +38,28 @@ static double	get_player_angle(char c)
 	return (M_PI);
 }
 
-static void	init_animation_frames(t_data *data)
+static void	init_textures(t_data *data)
 {
-	// init frame from xpm file to image
-	data->frames.f1 = mlx_xpm_file_to_image(data->mlx, "./sprites//machine_gun/Machine_Gun1.xpm",
-		&data->frames.x, &data->frames.y);
-	data->frames.f2 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun2.xpm",
-		&data->frames.x, &data->frames.y);
-	data->frames.f3 = mlx_xpm_file_to_image(data->mlx, "./sprites//machine_gun/Machine_Gun3.xpm",
-		&data->frames.x, &data->frames.y);
-	data->frames.f4 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun4.xpm",
-		&data->frames.x, &data->frames.y);
-	data->frames.f5 = mlx_xpm_file_to_image(data->mlx, "./sprites//machine_gun/Machine_Gun5.xpm",
-		&data->frames.x, &data->frames.y);
-	data->frames.f6 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun6.xpm",
-		&data->frames.x, &data->frames.y);
-	data->frames.f7 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun7.xpm",
-		&data->frames.x, &data->frames.y);
-	data->frames.f8 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun8.xpm",
-		&data->frames.x, &data->frames.y);
-	data->frames.f9 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun9.xpm",
-		&data->frames.x, &data->frames.y);
-	data->frames.f10 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun10.xpm",
-		&data->frames.x, &data->frames.y);
-	data->frames.f11 = mlx_xpm_file_to_image(data->mlx,  "./sprites//machine_gun/Machine_Gun11.xpm",
-		&data->frames.x, &data->frames.y);
-	data->frames.f12 = mlx_xpm_file_to_image(data->mlx, "./sprites//machine_gun/Machine_Gun12.xpm",
-		&data->frames.x, &data->frames.y);
-	data->frames.f13 = mlx_xpm_file_to_image(data->mlx, "./sprites//machine_gun/Machine_Gun13.xpm",
-		&data->frames.x, &data->frames.y);
-	
 	data->text.north.img = mlx_xpm_file_to_image(data->mlx, data->pars->north,
-		&data->frames.x, &data->frames.y);
-	data->text.north.addr = mlx_get_data_addr(data->text.north.img, &data->text.north.bits_per_pixel,
-		&data->text.north.line_length, &data->text.north.endian);
-		
+			&data->frames.x, &data->frames.y);
+	data->text.north.addr = mlx_get_data_addr(data->text.north.img,
+			&data->text.north.bits_per_pixel, &data->text.north.line_length,
+			&data->text.north.endian);
 	data->text.east.img = mlx_xpm_file_to_image(data->mlx, data->pars->east,
-		&data->frames.x, &data->frames.y);
-	data->text.east.addr = mlx_get_data_addr(data->text.east.img, &data->text.east.bits_per_pixel,
-		&data->text.east.line_length, &data->text.east.endian);
-	
+			&data->frames.x, &data->frames.y);
+	data->text.east.addr = mlx_get_data_addr(data->text.east.img,
+			&data->text.east.bits_per_pixel, &data->text.east.line_length,
+			&data->text.east.endian);
 	data->text.west.img = mlx_xpm_file_to_image(data->mlx, data->pars->west,
-		&data->frames.x, &data->frames.y);
-	data->text.west.addr = mlx_get_data_addr(data->text.west.img, &data->text.west.bits_per_pixel,
-		&data->text.west.line_length, &data->text.west.endian);
-
+			&data->frames.x, &data->frames.y);
+	data->text.west.addr = mlx_get_data_addr(data->text.west.img,
+			&data->text.west.bits_per_pixel, &data->text.west.line_length,
+			&data->text.west.endian);
 	data->text.south.img = mlx_xpm_file_to_image(data->mlx, data->pars->south,
-		&data->frames.x, &data->frames.y);
-	data->text.south.addr = mlx_get_data_addr(data->text.south.img, &data->text.south.bits_per_pixel,
-		&data->text.south.line_length, &data->text.south.endian);
-	
-	data->text.door.img = mlx_xpm_file_to_image(data->mlx, "./frames/budget_door.xpm",
-		&data->frames.x, &data->frames.y);
-	data->text.door.addr = mlx_get_data_addr(data->text.door.img, &data->text.door.bits_per_pixel,
-		&data->text.door.line_length, &data->text.door.endian);
-
-	data->text.door2.img = mlx_xpm_file_to_image(data->mlx, "./frames/budget_door2.xpm",
-		&data->frames.x, &data->frames.y);
-	data->text.door2.addr = mlx_get_data_addr(data->text.door2.img, &data->text.door2.bits_per_pixel,
-		&data->text.door2.line_length, &data->text.door2.endian);
-	
-	data->text.door3.img = mlx_xpm_file_to_image(data->mlx, "./frames/budget_door3.xpm",
-		&data->frames.x, &data->frames.y);
-	data->text.door3.addr = mlx_get_data_addr(data->text.door3.img, &data->text.door3.bits_per_pixel,
-		&data->text.door3.line_length, &data->text.door3.endian);
-
+			&data->frames.x, &data->frames.y);
+	data->text.south.addr = mlx_get_data_addr(data->text.south.img,
+			&data->text.south.bits_per_pixel, &data->text.south.line_length,
+			&data->text.south.endian);
 }
 
 static void	init_player_config(t_data *data)
@@ -120,7 +75,7 @@ static void	init_player_config(t_data *data)
 	data->player.moves = 0;
 	data->player.rotation_angle = get_player_angle(data->pars->player_pos);
 	data->player.walk_speed = 5;
-	data->player.turn_speed = deg2rad(3);
+	data->player.turn_speed = deg2rad(1);
 }
 
 t_data	*init_data( t_pars *pars )
@@ -140,7 +95,9 @@ t_data	*init_data( t_pars *pars )
 	data->img.img = NULL;
 	data->pars = pars;
 	init_player_config(data);
-	init_animation_frames(data);
+	init_textures(data);
+	init_door_animation(data);
+	init_gun_animation(data);
 	data->current_door_frame = &data->text.door;
 	data->action_close = FALSE;
 	data->action_open = FALSE;

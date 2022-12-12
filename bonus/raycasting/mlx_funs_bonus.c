@@ -6,11 +6,20 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 14:43:33 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/09 23:37:00 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/12 15:53:18 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycasting_bonus.h"
+
+void	*get_img(t_data *data, const char *path)
+{
+	void	*img;
+
+	img = mlx_xpm_file_to_image(data->mlx,
+			path, &data->frames.x, &data->frames.y);
+	return (img);
+}
 
 void	update_screen(t_data *data)
 {
