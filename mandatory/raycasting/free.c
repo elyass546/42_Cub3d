@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 21:53:56 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/11 15:39:32 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/12 17:09:46 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	free_exit(t_data *data, int status)
 		destroy_textures(data);
 		free(data->mlx);
 	}
+	free_parsing(data->pars);
 	free(data);
 	exit(status);
 }

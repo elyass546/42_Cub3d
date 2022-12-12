@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:27:46 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/26 15:22:55 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/12 17:14:56 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,23 @@ void	colors_checker(t_pars *pars, char *line)
 
 	s = my_split(line);
 	if (!s || !s[1] || s[2])
+	{
+		if (s)
+			free_all(s);
+		free_parsing(pars);
 		ft_error("Error in colors settings\n");
+	}
 	if ((ft_strncmp("F ", line, 2) == 0) && pars->floor == -1)
 		pars->floor = set_colors(s[1]);
 	else if ((ft_strncmp("C ", line, 2) == 0) && pars->ceilling == -1)
 		pars->ceilling = set_colors(s[1]);
 	else
-		ft_error("Textures settings doesn't correct\n");
+	{
+		if (s)
+			free_all(s);
+		free_parsing(pars);
+		ft_error("Textures settings aren't correct\n");
+	}
 	free_all(s);
 }
 

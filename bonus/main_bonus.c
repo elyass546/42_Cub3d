@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 21:37:36 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/09 23:07:51 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/12 16:38:40 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,35 +24,9 @@ int	render(t_data *data)
 	static int	i = 0;
 
 	if (data->action_open)
-	{
-		if (j < 10)
-			data->current_door_frame = &data->text.door2;
-		else if (j < 20)
-			data->current_door_frame = &data->text.door3;
-		else if (j < 30)
-		{
-			data->current_door_frame = &data->text.door;
-			data->action_open = FALSE;
-			data->pars->map[data->door.y][data->door.x] = 'O';
-			j = 0;
-		}
-		j++;
-	}
+		on_open(data, &j);
 	else if (data->action_close)
-	{
-		data->pars->map[data->door.y][data->door.x] = 'D';
-		if (i < 10)
-			data->current_door_frame = &data->text.door3;
-		else if (i < 20)
-			data->current_door_frame = &data->text.door2;
-		else if (i < 30)
-		{
-			data->current_door_frame = &data->text.door;
-			data->action_close = FALSE;
-			i = 0;
-		}
-		i++;
-	}
+		on_close(data, &i);
 	update_screen(data);
 	if (data->action_shoot)
 	{

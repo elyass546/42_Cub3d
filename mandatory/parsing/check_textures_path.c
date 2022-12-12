@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures_path.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 21:58:05 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/01 13:05:24 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/12 17:17:45 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,20 @@ int	opening_textures_path(char *file)
 	return (1);
 }
 
+static void	free_error_(t_pars *pars)
+{
+	free_parsing(pars);
+	ft_error("File doesn't exist!\n");
+}
+
 void	check_textures_path(t_pars *pars)
 {
 	if (!opening_textures_path(pars->north))
-		ft_error("File doesn't exist!\n");
+		free_error_(pars);
 	if (!opening_textures_path(pars->west))
-		ft_error("File doesn't exist!\n");
+		free_error_(pars);
 	if (!opening_textures_path(pars->east))
-		ft_error("File doesn't exist!\n");
+		free_error_(pars);
 	if (!opening_textures_path(pars->south))
-		ft_error("File doesn't exist!\n");
+		free_error_(pars);
 }

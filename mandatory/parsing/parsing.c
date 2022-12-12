@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:01 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/04 18:08:13 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/12 17:19:11 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,21 @@ t_pars	*parsing(char *file)
 	t_pars	*pars;
 
 	pars = malloc(sizeof(t_pars));
+	if (!pars)
+		ft_error("Error\n");
 	init(pars);
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
+	{
+		free(pars);
 		ft_error("File doesn't exist\n");
+	}
 	line = get_next_line(fd);
 	if (!line)
+	{
+		free(pars);
 		ft_error("Empty map\n");
+	}
 	parsing_helper(line, pars, fd, file);
 	is_surrounded_by_walls(pars);
 	close(fd);

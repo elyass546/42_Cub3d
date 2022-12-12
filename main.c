@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:42:35 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/04 15:33:43 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/12 17:08:07 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ int	render(t_data *data)
 	return (0);
 }
 
+int exito(t_data *data)
+{
+	while (1);
+	exit(0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_pars	*pars;
@@ -35,6 +41,11 @@ int	main(int argc, char **argv)
 		ft_error("Map doesn't end with .cub\n");
 	pars = parsing(argv[1]);
 	data = init_data(pars);
+	if (!data)
+	{
+		free_parsing(pars);
+		ft_error("Error\n");
+	}
 	mlx_hook(data->win, 2, 1L << 0, action, data);
 	mlx_hook(data->win, 3, 1L << 1, action_key_up, data);
 	mlx_hook(data->win, 17, 0, destroy, data);
