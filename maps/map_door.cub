@@ -1,7 +1,7 @@
-NO ./textures/wall.xpm
-SO ./textures/cobblestone.xpm
-WE ./textures/coal.xpm
-EA ./textures/greystone.xpm
+NO ./textures/1.xpm
+SO ./textures/2.xpm
+WE ./textures/3.xpm
+EA ./textures/4.xpm
 
 
 

@@ -1,7 +1,7 @@
-NO ./textures/eagle.xpm
-SO ./textures/greystone.xpm
-WE ./textures/wall.xpm
-EA ./textures/greystone.xpm
+NO ./textures/1.xpm
+SO ./textures/2.xpm
+WE ./textures/3.xpm
+EA ./textures/4.xpm
 
 F 139,90,43
 C 243,231,231
