@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/14 15:32:20 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/14 15:41:35 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	wall_collision(t_data *data, double pdx, double pdy, double move_step)
 				data->player.pos.y += pdy * move_step;
 		}
 	}
-	if (data->pars->map[new_py][new_px] != '0' && data->pars->map[new_py][new_px] != 'O' )
+	if (data->pars->map[new_py][new_px] != '0'
+		&& data->pars->map[new_py][new_px] != 'O')
 		data->player.pos = old_point;
 }
 

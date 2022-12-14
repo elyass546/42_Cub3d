@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:42:35 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/12 17:08:07 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/14 15:41:57 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,6 @@ int	render(t_data *data)
 {
 	update_screen(data);
 	return (0);
-}
-
-int exito(t_data *data)
-{
-	while (1);
-	exit(0);
 }
 
 int	main(int argc, char **argv)
