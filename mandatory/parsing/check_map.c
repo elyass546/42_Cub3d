@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:27:46 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/14 19:07:21 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/14 22:06:02 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ void	colors_checker(t_pars *pars, char *line)
 	char	**s;
 
 	s = my_split(line);
+	if ((((ft_strncmp("F ", line, 2) == 0) && pars->floor == -1)
+		|| ((ft_strncmp("C ", line, 2) == 0) && pars->ceilling == -1))
+		&& pars->texture_checker < 4)
+		ft_error("a texture is not set yet!\n");
 	if (!s || !s[1] || s[2])
 	{
 		if (s)
@@ -55,6 +59,7 @@ int	check_line_helper(char *line, t_pars *pars)
 		if (ft_strncmp(check[i], line, 3) == 0)
 		{
 			funcptr[i](pars, line);
+			pars->texture_checker++;
 			return (1);
 		}
 		i++;

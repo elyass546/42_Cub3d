@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:01 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/14 19:05:02 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/14 21:58:06 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static void	init(t_pars *pars)
 	pars->flag = -1;
 	pars->col = 0;
 	pars->row = 0;
+	pars->texture_checker = 0;
 	pars->map_index = 0;
 	pars->map_end_index = 0;
 	pars->player_pos = 0;

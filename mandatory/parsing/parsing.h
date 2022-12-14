@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:05 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/14 18:15:31 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/14 19:29:54 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_pars {
 	int			player_y;
 	int			map_index;
 	int			map_end_index;
+	int			texture_checker;
 	int			floor;
 	int			ceilling;
 	int			flag;
