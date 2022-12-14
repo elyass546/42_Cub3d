@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:42:35 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/12 17:08:07 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/14 15:02:37 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	render(t_data *data)
 
 int exito(t_data *data)
 {
+	(void)data;
 	while (1);
 	exit(0);
 }

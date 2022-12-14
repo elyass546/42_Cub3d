@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/09 23:36:56 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/14 14:57:35 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	wall_collision(t_data *data, double pdx, double pdy, double move_step)
 		data->player.pos.x += pdx * move_step;
 }
 
-void	handle_arrows(int keycode, t_data *data, double rotation_speed)
+void	handle_arrows(int keycode, t_data *data)
 {
 	if (keycode == UP)
 	{
@@ -60,11 +60,11 @@ int	action(int keycode, t_data *data)
 	if (keycode == ESC)
 		free_exit(data, 0);
 	else if (keycode >= LEFT && keycode <= UP)
-		handle_arrows(keycode, data, 1);
+		handle_arrows(keycode, data);
 	else if (keycode == W_KEY)
-		handle_arrows(UP, data, 1);
+		handle_arrows(UP, data);
 	else if (keycode == S_KEY)
-		handle_arrows(DOWN, data, 1);
+		handle_arrows(DOWN, data);
 	else if (keycode == A_KEY || keycode == D_KEY)
 		handle_side_walk(keycode, data);
 	else if (keycode == SPACE)
