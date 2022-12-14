@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:42:35 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/14 15:02:37 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/14 17:01:31 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,6 @@ int	render(t_data *data)
 {
 	update_screen(data);
 	return (0);
-}
-
-int exito(t_data *data)
-{
-	(void)data;
-	while (1);
-	exit(0);
 }
 
 int	main(int argc, char **argv)
