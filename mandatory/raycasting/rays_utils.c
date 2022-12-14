@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 23:10:40 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/10 11:40:11 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/14 13:23:33 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ void	draw_wall_utils(t_data *data, t_ray *ray, t_wall *wall)
 	{
 		wall->texture_offsetx = (int) ray->wall_hit.y % TILE_SIZE;
 		if (ray->is_ray_facing_left)
-			wall->img = &data->text.east;
-		if (ray->is_ray_facing_right)
 			wall->img = &data->text.west;
+		if (ray->is_ray_facing_right)
+			wall->img = &data->text.east;
 	}
 	else
 	{
 		wall->texture_offsetx = (int) ray->wall_hit.x % TILE_SIZE;
 		if (ray->is_ray_facing_up)
-			wall->img = &data->text.north;
-		if (ray->is_ray_facing_down)
 			wall->img = &data->text.south;
+		if (ray->is_ray_facing_down)
+			wall->img = &data->text.north;
 	}
 }
 

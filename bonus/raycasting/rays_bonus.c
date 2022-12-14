@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 16:10:31 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/12 16:17:50 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/14 13:23:58 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ void	init_drawing(t_data *data, t_ray *ray, int wall_strip_height)
 	{
 		ray->texture_offsetx = (int) ray->wall_hit.y % TILE_SIZE;
 		if (ray->is_ray_facing_left)
-			ray->img = &data->text.east;
-		if (ray->is_ray_facing_right)
 			ray->img = &data->text.west;
+		if (ray->is_ray_facing_right)
+			ray->img = &data->text.east;
 	}
 	else
 	{
 		ray->texture_offsetx = (int) ray->wall_hit.x % TILE_SIZE;
 		if (ray->is_ray_facing_up)
-			ray->img = &data->text.north;
-		if (ray->is_ray_facing_down)
 			ray->img = &data->text.south;
+		if (ray->is_ray_facing_down)
+			ray->img = &data->text.north;
 	}
 }
 
