@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:27:46 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/14 15:03:32 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/14 19:07:21 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	colors_checker(t_pars *pars, char *line)
 	{
 		if (s)
 			free_all(s);
-		free_parsing(pars);
 		ft_error("Error in colors settings\n");
 	}
 	if ((ft_strncmp("F ", line, 2) == 0) && pars->floor == -1)
@@ -39,7 +38,6 @@ void	colors_checker(t_pars *pars, char *line)
 	{
 		if (s)
 			free_all(s);
-		free_parsing(pars);
 		ft_error("Textures settings aren't correct\n");
 	}
 	free_all(s);

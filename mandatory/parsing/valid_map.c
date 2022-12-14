@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:11 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/14 17:37:23 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/14 19:06:43 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,7 @@ void	is_surrounded_helper(char **map, t_pars *pars, int i)
 			|| is_space(map[i][j - 1]) || is_space(map[i][j + 1])))
 			ft_error("Please check your map!\n");
 		if (!is_mapchar(map[i][j]))
-		{
-			free_parsing(pars);
 			ft_error("Wrong element inside your map!\n");
-		}
 		j++;
 	}
 }
@@ -93,10 +90,7 @@ void	is_surrounded_by_walls(t_pars *pars)
 	i = 0;
 	map = pars->map;
 	if (!map[i] || !map[i][0])
-	{
-		free_parsing(pars);
 		ft_error("Empty map!\n");
-	}
 	while (map[i])
 	{
 		is_surrounded_helper(map, pars, i);
@@ -104,8 +98,5 @@ void	is_surrounded_by_walls(t_pars *pars)
 		i++;
 	}
 	if (!pars->player_pos)
-	{
-		free_parsing(pars);
 		ft_error("Player not found!\n");
-	}
 }

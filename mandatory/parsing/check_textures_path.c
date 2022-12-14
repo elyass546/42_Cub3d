@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_textures_path.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 21:58:05 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/14 18:15:17 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/14 19:06:01 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,16 @@ int	opening_textures_path(char *file)
 	return (1);
 }
 
-static void	free_error_(t_pars *pars)
-{
-	free_parsing(pars);
-	ft_error("File doesn't exist!\n");
-}
-
 void	check_textures_path(t_pars *pars)
 {
 	if (!opening_textures_path(pars->north))
-		free_error_(pars);
+		ft_error("File doesn't exist!\n");
 	if (!opening_textures_path(pars->west))
-		free_error_(pars);
+		ft_error("File doesn't exist!\n");
 	if (!opening_textures_path(pars->east))
-		free_error_(pars);
+		ft_error("File doesn't exist!\n");
 	if (!opening_textures_path(pars->south))
-		free_error_(pars);
+		ft_error("File doesn't exist!\n");
 }
 
 void	map_line_counter_norm(char *line, t_pars *pars, int fd)

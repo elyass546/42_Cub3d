@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:01 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/14 17:28:47 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/14 19:05:02 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,16 +97,10 @@ t_pars	*parsing(char *file)
 	init(pars);
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-	{
-		free(pars);
 		ft_error("File doesn't exist\n");
-	}
 	line = get_next_line(fd);
 	if (!line)
-	{
-		free(pars);
 		ft_error("Empty map\n");
-	}
 	parsing_helper(line, pars, fd, file);
 	is_surrounded_by_walls(pars);
 	close(fd);
