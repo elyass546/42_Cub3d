@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:43:55 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/26 15:27:26 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/14 16:58:15 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	map_line_counter(char *file, t_pars *pars)
 	{
 		if (ft_strlen(line) > pars->col)
 			pars->col = ft_strlen(line);
-		if (is_map(line, pars) || line[0] == '1')
+		if (is_map(line) || line[0] == '1')
 			pars->map_index++;
 		free(line);
 		line = get_next_line(fd);

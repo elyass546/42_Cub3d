@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/09 21:58:14 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/14 15:04:06 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,8 @@ void	wall_collision(t_data *data, double pdx, double pdy, double move_step)
 
 void	move_player(t_data *data)
 {
-	t_point		new_player_pos;
 	double		move_step;
 	t_player	*player;
-	double		angle;
 
 	player = &data->player;
 	player->rotation_angle += player->turn_direction * player->turn_speed;

@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:05 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/05 16:37:01 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/14 15:03:49 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,21 @@ typedef struct s_gnl {
 }				t_gnl;
 
 typedef struct s_pars {
-	char	**map;
-	char	*north;
-	char	*south;
-	char	*west;
-	char	*east;
-	char	player_pos;
-	int		player_x;
-	int		player_y;
-	int		map_index;
-	int		map_end_index;
-	int		floor;
-	int		ceilling;
-	int		col;
-	int		row;
-}			t_pars;
+	char		**map;
+	char		*north;
+	char		*south;
+	char		*west;
+	char		*east;
+	char		player_pos;
+	int			player_x;
+	int			player_y;
+	int			map_index;
+	int			map_end_index;
+	int			floor;
+	int			ceilling;
+	size_t		col;
+	int			row;
+}				t_pars;
 
 // ***************** parsing ************************* //
 
@@ -58,7 +58,7 @@ int		is_mapchar(char c);
 int		set_colors(char *str);
 int		is_playerchar(char c);
 int		map_name_checker(char *str);
-int		is_map(char *line, t_pars *pars);
+int		is_map(char *line);
 int		opening_textures_path(char *file);
 int		check_line_helper(char *line, t_pars *pars);
 

@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 19:40:44 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/03 15:52:50 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/14 15:08:31 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ void	find_horizontal_wall(t_data *data, t_ray *ray)
 	int	mx;
 	int	my;
 
+	mx = 0;
+	my = 0;
 	find_first_horizontal_intersection(data, ray);
 	while (TRUE)
 	{
