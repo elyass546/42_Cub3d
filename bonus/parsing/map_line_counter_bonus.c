@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map_line_counter_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:43:55 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/14 16:51:51 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/14 18:06:06 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing_bonus.h"
 
-// counting lines in map
+// counting lines in map and check if there is an empty line
 void	map_line_counter(char *file, t_pars *pars)
 {
 	char	*line;
@@ -25,15 +25,7 @@ void	map_line_counter(char *file, t_pars *pars)
 	if (!line)
 		ft_error("Empty map\n");
 	pars->col = ft_strlen(line);
-	while (line)
-	{
-		if (ft_strlen(line) > (size_t) pars->col)
-			pars->col = ft_strlen(line);
-		if (is_map(line, pars) || line[0] == '1')
-			pars->map_index++;
-		free(line);
-		line = get_next_line(fd);
-	}
+	map_line_counter_norm(line, pars, fd);
 	pars->row = pars->map_index;
 	pars->map = (char **)malloc(sizeof(char *) * (pars->row + 1));
 	if (!pars->map)

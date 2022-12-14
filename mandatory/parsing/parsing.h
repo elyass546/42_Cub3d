@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:05 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/14 15:03:49 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/14 18:15:31 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_pars {
 	int			map_end_index;
 	int			floor;
 	int			ceilling;
+	int			flag;
 	size_t		col;
 	int			row;
 }				t_pars;
@@ -75,5 +76,6 @@ void	check_line(char *line, t_pars *pars);
 void	colors_checker(t_pars *pars, char *line);
 void	map_line_counter(char *file, t_pars *pars);
 void	player_pos(char *line, t_pars *pars, int player_y);
+void	map_line_counter_norm(char *line, t_pars *pars, int fd);
 
 #endif

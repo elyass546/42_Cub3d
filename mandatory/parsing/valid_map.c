@@ -6,7 +6,7 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:11 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/14 17:01:10 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/14 17:37:23 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ void	is_surrounded_by_walls(t_pars *pars)
 	}
 	while (map[i])
 	{
-		printf("check map : %s\n", map[i]);
 		is_surrounded_helper(map, pars, i);
 		player_pos(map[i], pars, i);
 		i++;

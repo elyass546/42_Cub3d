@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:01 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/12 17:19:11 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/14 17:28:47 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static void	init(t_pars *pars)
 {
 	pars->ceilling = -1;
 	pars->floor = -1;
+	pars->flag = -1;
 	pars->col = 0;
 	pars->row = 0;
 	pars->map_index = 0;

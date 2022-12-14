@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:05 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/14 16:51:22 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/14 18:06:27 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_pars {
 	int		map_end_index;
 	int		floor;
 	int		ceilling;
+	int		flag;
 	int		col;
 	int		row;
 }			t_pars;
@@ -59,7 +60,7 @@ int		set_colors(char *str);
 int		is_playerchar(char c);
 int		map_name_checker(char *str);
 int		check_line1(char *str, size_t x);
-int		is_map(char *line, t_pars *pars);
+int		is_map(char *line);
 int		opening_textures_path(char *file);
 int		check_line_helper(char *line, t_pars *pars);
 
@@ -77,5 +78,6 @@ void	check_line(char *line, t_pars *pars);
 void	colors_checker(t_pars *pars, char *line);
 void	map_line_counter(char *file, t_pars *pars);
 void	player_pos(char *line, t_pars *pars, int player_y);
+void	map_line_counter_norm(char *line, t_pars *pars, int fd);
 
 #endif

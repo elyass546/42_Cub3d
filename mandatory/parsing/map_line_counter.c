@@ -6,13 +6,13 @@
 /*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:43:55 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/14 16:58:15 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/14 18:17:53 by ie-laabb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-// counting lines in map
+// counting lines in map and check if there is an empty line
 void	map_line_counter(char *file, t_pars *pars)
 {
 	char	*line;
@@ -25,15 +25,7 @@ void	map_line_counter(char *file, t_pars *pars)
 	if (!line)
 		ft_error("Empty map\n");
 	pars->col = ft_strlen(line);
-	while (line)
-	{
-		if (ft_strlen(line) > pars->col)
-			pars->col = ft_strlen(line);
-		if (is_map(line) || line[0] == '1')
-			pars->map_index++;
-		free(line);
-		line = get_next_line(fd);
-	}
+	map_line_counter_norm(line, pars, fd);
 	pars->row = pars->map_index;
 	pars->map = (char **)malloc(sizeof(char *) * (pars->row + 1));
 	if (!pars->map)
