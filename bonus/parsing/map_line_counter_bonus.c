@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_line_counter_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:43:55 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/11/26 23:02:14 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/14 16:51:51 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	map_line_counter(char *file, t_pars *pars)
 	pars->col = ft_strlen(line);
 	while (line)
 	{
-		if (ft_strlen(line) > pars->col)
+		if (ft_strlen(line) > (size_t) pars->col)
 			pars->col = ft_strlen(line);
 		if (is_map(line, pars) || line[0] == '1')
 			pars->map_index++;

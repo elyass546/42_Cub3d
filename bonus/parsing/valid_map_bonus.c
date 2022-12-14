@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 17:19:11 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/12 16:57:30 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/14 16:51:02 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	map_name_checker(char *str)
 //finding player position
 void	player_pos(char *line, t_pars *pars, int y)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < ft_strlen(line))
@@ -52,7 +52,7 @@ void	player_pos(char *line, t_pars *pars, int y)
 	}
 }
 
-int	check_line1(char *str, int x)
+int	check_line1(char *str, size_t x)
 {
 	if (x > ft_strlen(str))
 		return (1);

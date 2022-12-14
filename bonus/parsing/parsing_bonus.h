@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:21:05 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/05 16:37:07 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/14 16:51:22 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		is_mapchar(char c);
 int		set_colors(char *str);
 int		is_playerchar(char c);
 int		map_name_checker(char *str);
-int		check_line1(char *str, int x);
+int		check_line1(char *str, size_t x);
 int		is_map(char *line, t_pars *pars);
 int		opening_textures_path(char *file);
 int		check_line_helper(char *line, t_pars *pars);

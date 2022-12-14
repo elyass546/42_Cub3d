@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 18:27:46 by ie-laabb          #+#    #+#             */
-/*   Updated: 2022/12/04 12:47:12 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/14 16:51:36 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int	is_map(char *line, t_pars *pars)
 	int	i;
 
 	i = 0;
+	(void) pars;
 	while (line[i] == ' ')
 		i++;
 	if (line[i] == '1')

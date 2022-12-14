@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:09:07 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/12 17:31:03 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/14 16:52:19 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,6 @@ typedef struct s_player {
 	double	rotation_angle;
 	double	walk_speed;
 	double	turn_speed;
-	int		moves;
 }	t_player;
 
 typedef struct s_data
@@ -176,7 +175,7 @@ void			move_player(t_data *data);
 void			*get_img(t_data *data, char *path);
 
 //				mouse_rotation.c && action.c
-void			handle_arrows(int keycode, t_data *data, double rotation_speed);
+void			handle_arrows(int keycode, t_data *data);
 int				mouse_rotation(int x, int y, t_data *data);
 
 //				animation_bonus.c

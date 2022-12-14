@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 14:43:33 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/12 16:12:56 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/14 16:52:01 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	update_screen(t_data *data)
 
 void	move_player(t_data *data)
 {
-	t_point		new_player_pos;
 	double		move_step;
 	t_player	*player;
 

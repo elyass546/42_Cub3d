@@ -8,7 +8,7 @@ MINILIBX = ./minilibx/libmlx.a
 
 RM = @rm -f
 
-CFLAGS = -O3
+CFLAGS = -O3 -Wall -Wextra -Werror
 
 LIBFT	=	libft/libft.a
 

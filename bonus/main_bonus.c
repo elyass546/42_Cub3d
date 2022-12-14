@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 21:37:36 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/12 19:17:02 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/14 16:49:06 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	render(t_data *data)
 
 int	mouse(int key, int x, int y, t_data *data)
 {
+	(void) x;
+	(void) y;
 	if (key == SHOOT_KEY && !data->action_shoot)
 		data->action_shoot = TRUE;
 	return (0);

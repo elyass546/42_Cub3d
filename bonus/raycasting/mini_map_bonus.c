@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:33:50 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/12 14:14:45 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/14 16:52:58 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	is_out_of_bounds(t_data *data, int offset_x, int offset_y)
 {
 	if (offset_x < 0 || offset_y < 0
 		|| offset_y >= data->pars->row
-		|| offset_x >= ft_strlen(data->pars->map[offset_y]))
+		|| offset_x >= (int) ft_strlen(data->pars->map[offset_y]))
 		return (TRUE);
 	return (FALSE);
 }

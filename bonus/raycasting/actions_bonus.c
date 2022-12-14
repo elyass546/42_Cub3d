@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ie-laabb <ie-laabb@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/14 17:02:21 by ie-laabb         ###   ########.fr       */
+/*   Updated: 2022/12/14 17:04:31 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,9 @@ void	wall_collision(t_data *data, double pdx, double pdy, double move_step)
 void	handle_arrows(int keycode, t_data *data)
 {
 	if (keycode == UP)
-	{
-		data->player.moves++;
 		data->player.walk_direction = 1;
-	}
 	else if (keycode == DOWN)
-	{
-		data->player.moves++;
 		data->player.walk_direction = -1;
-	}
 }
 
 void	handle_side_walk(int key, t_data *data)
