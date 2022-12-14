@@ -6,7 +6,7 @@
 /*   By: mkorchi <mkorchi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 18:27:00 by mkorchi           #+#    #+#             */
-/*   Updated: 2022/12/09 21:58:14 by mkorchi          ###   ########.fr       */
+/*   Updated: 2022/12/14 15:32:14 by mkorchi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,27 @@
 
 void	wall_collision(t_data *data, double pdx, double pdy, double move_step)
 {
-	int	old_px;
-	int	old_py;
-	int	new_px;
-	int	new_py;
+	int		old_px;
+	int		old_py;
+	int		new_px;
+	int		new_py;
+	t_point	old_point;
 
 	old_px = floor(data->player.pos.x / TILE_SIZE);
 	old_py = floor(data->player.pos.y / TILE_SIZE);
 	new_px = floor((data->player.pos.x + (pdx * move_step)) / TILE_SIZE);
 	new_py = floor((data->player.pos.y + (pdy * move_step)) / TILE_SIZE);
+	old_point = data->player.pos;
 	if (data->pars->map[new_py][old_px] == '0')
-		data->player.pos.y += pdy * move_step;
-	if (data->pars->map[old_py][new_px] == '0')
-		data->player.pos.x += pdx * move_step;
+	{
+		if (data->pars->map[old_py][new_px] == '0')
+		{
+			data->player.pos.x += pdx * move_step;
+			data->player.pos.y += pdy * move_step;
+		}
+	}
+	if (data->pars->map[new_py][new_px] != '0')
+		data->player.pos = old_point;
 }
 
 void	move_player(t_data *data)
