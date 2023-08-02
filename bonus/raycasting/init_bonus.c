@@ -25,26 +25,22 @@ static double	get_player_angle(char c)
 
 static void	init_textures(t_data *data)
 {
-	data->text.north.img = mlx_xpm_file_to_image(data->mlx, data->pars->north,
-			&data->frames.x, &data->frames.y);
+	data->text.north.img = get_img(data, data->pars->north);
 	data->text.north.addr = mlx_get_data_addr(data->text.north.img,
 			&data->text.north.bits_per_pixel, &data->text.north.line_length,
 			&data->text.north.endian);
-	data->text.east.img = mlx_xpm_file_to_image(data->mlx, data->pars->east,
-			&data->frames.x, &data->frames.y);
+	data->text.east.img = get_img(data, data->pars->east);
 	data->text.east.addr = mlx_get_data_addr(data->text.east.img,
-			&data->text.east.bits_per_pixel, &data->text.east.line_length,
-			&data->text.east.endian);
-	data->text.west.img = mlx_xpm_file_to_image(data->mlx, data->pars->west,
-			&data->frames.x, &data->frames.y);
+			&data->text.east.bits_per_pixel,
+			&data->text.east.line_length, &data->text.east.endian);
+	data->text.west.img = get_img(data, data->pars->west);
 	data->text.west.addr = mlx_get_data_addr(data->text.west.img,
-			&data->text.west.bits_per_pixel, &data->text.west.line_length,
-			&data->text.west.endian);
-	data->text.south.img = mlx_xpm_file_to_image(data->mlx, data->pars->south,
-			&data->frames.x, &data->frames.y);
+			&data->text.west.bits_per_pixel,
+			&data->text.west.line_length, &data->text.west.endian);
+	data->text.south.img = get_img(data, data->pars->south);
 	data->text.south.addr = mlx_get_data_addr(data->text.south.img,
-			&data->text.south.bits_per_pixel, &data->text.south.line_length,
-			&data->text.south.endian);
+			&data->text.south.bits_per_pixel,
+			&data->text.south.line_length, &data->text.south.endian);
 }
 
 static void	init_player_config(t_data *data)

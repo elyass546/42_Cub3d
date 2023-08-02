@@ -31,21 +31,18 @@ void	init_gun_animation(t_data *data)
 
 void	init_door_animation(t_data *data)
 {
-	data->text.door.img = mlx_xpm_file_to_image(data->mlx,
-			"./frames/budget_door.xpm",
-			&data->frames.x, &data->frames.y);
+	data->text.door.img = get_img(data,
+			"./frames/budget_door.xpm");
 	data->text.door.addr = mlx_get_data_addr(data->text.door.img,
 			&data->text.door.bits_per_pixel,
 			&data->text.door.line_length, &data->text.door.endian);
-	data->text.door2.img = mlx_xpm_file_to_image(data->mlx,
-			"./frames/budget_door2.xpm",
-			&data->frames.x, &data->frames.y);
+	data->text.door2.img = get_img(data,
+			"./frames/budget_door2.xpm");
 	data->text.door2.addr = mlx_get_data_addr(data->text.door2.img,
 			&data->text.door2.bits_per_pixel,
 			&data->text.door2.line_length, &data->text.door2.endian);
-	data->text.door3.img = mlx_xpm_file_to_image(data->mlx,
-			"./frames/budget_door3.xpm",
-			&data->frames.x, &data->frames.y);
+	data->text.door3.img = get_img(data,
+			"./frames/budget_door3.xpm");
 	data->text.door3.addr = mlx_get_data_addr(data->text.door3.img,
 			&data->text.door3.bits_per_pixel,
 			&data->text.door3.line_length, &data->text.door3.endian);

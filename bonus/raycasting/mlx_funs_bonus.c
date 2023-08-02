@@ -18,6 +18,12 @@ void	*get_img(t_data *data, char *path)
 
 	img = mlx_xpm_file_to_image(data->mlx,
 			path, &data->frames.x, &data->frames.y);
+	if (!img)
+	{
+		ft_error("Texture Error\n");
+		free(data);
+		exit(1);
+	}
 	return (img);
 }
 

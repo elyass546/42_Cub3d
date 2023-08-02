@@ -25,7 +25,7 @@ void	colors_checker(t_pars *pars, char *line)
 
 	s = my_split(line);
 	if ((((ft_strncmp("F ", line, 2) == 0) && pars->floor == -1)
-		|| ((ft_strncmp("C ", line, 2) == 0) && pars->ceilling == -1))
+			|| ((ft_strncmp("C ", line, 2) == 0) && pars->ceilling == -1))
 		&& pars->texture_checker < 4)
 		ft_error("a texture is not set yet!\n");
 	if (!s || !s[1] || s[2])
