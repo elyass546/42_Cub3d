@@ -27,7 +27,7 @@ cub3D is a graphic design project aimed at improving skills in windows, colors, 
 - Rotating the point of view using the mouse
 
 ## Contributions
-- **<a href="https://github.com/mkorchi">Mohamed Korchi</a>:** Implemented raycasting, added textures, implemented doors, and created the minimap system.
+- **<a href="https://github.com/mkorchi">Mohamed Korchi</a>:** Implemented raycasting & textures, implemented doors, and created the minimap system.
 - **<a href="https://github.com/elyass546">Ilias El Aabbassi</a>:** Handled parsing and provided textures, implemented smooth mouse-based rotation, and animated the gun for enhanced visual appeal.
 
 ## Conclusion
